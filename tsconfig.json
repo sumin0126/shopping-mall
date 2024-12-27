@@ -1,22 +1,37 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "baseUrl": "." /* 절대경로 모듈이 아닌, 모듈이 위치한 기준 디렉토리 */,
+    "target": "ESNext" /* 컴파일할 ECMAScript 버전 */,
+    "useDefineForClassFields": true /* 클래스 필드 정의에 var 대신 defineProperty 사용 여부 */,
+    "lib": [/* 컴파일에 포함할 라이브러리 */ "DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false /* Javascript 파일 컴파일 허용 */,
+    "skipLibCheck": true /* 정의파일 타입 확인 건너뛸지 여부 */,
+    "esModuleInterop": true /* 모든 import의 namespace 생성을 통한 CommonJS 와 ES모듈 간 상호운용 여부 */,
+    "allowSyntheticDefaultImports": true /* default export가 없는 모듈에서 기본호출 허용 */,
+    "strict": true /* use-strict 엄격타입 활성화 여부 */,
+    "forceConsistentCasingInFileNames": true /* 같은 파일에 대한 일관되지 않은 케이스 참조 허용금지 여부 */,
+    "module": "ESNext" /* 생성될 모듈 코드 */,
+    "moduleResolution": "Node" /* 모듈 해석방식 */,
+    "resolveJsonModule": true /* import json 파일 활성화 여부 */,
+    "isolatedModules": true /* 모듈을 단일 파일로 컴파일 여부 */,
+    "noEmit": true /* 컴파일된 파일 생성 여부 */,
+    "jsx": "preserve" /* jsx 코드 생성 방식 */,
+    "jsxImportSource": "@emotion/react" /* jsx 코드 생성시 import할 모듈 */,
+    "noImplicitAny": true /* any 사용시 오류 여부 */,
+    "strictNullChecks": true /* null, undefined 타입을 다른 모든 타입의 하위 타입으로 간주하지 않음 */,
+    "incremental": true /* 증분 컴파일 여부 */,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "typeRoots": [/* typeRoots: 타입 정의 파일(*.d.ts)을 검색할 디렉토리 경로 */ "src/types", "./node_modules/@types"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    /* include: 컴파일에 포함할 디렉토리/파일 경로 */
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "extends": "./tsconfig.paths.json" /* extends: 다른 tsconfig 파일을 상속 */,
+  "exclude": [/* exclude: 컴파일에서 제외할 디렉토리/파일 경로 */ "node_modules"]
 }

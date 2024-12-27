@@ -1,0 +1,128 @@
+.login-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+
+  .login-img {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+.login-wrapper {
+  width: 37.5rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2.5rem 3.75rem;
+  font-family: 'Playfair Display';
+  color: #222;
+
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #222;
+  }
+
+  .login-box-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-size: 1.5rem;
+      color: #222;
+    }
+
+    .account {
+      font-family: 'Playfair Display';
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: 1px solid #333;
+      border-radius: 1.25rem;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      letter-spacing: 0.063rem;
+      transition: background-color 0.5s ease;
+    }
+
+    .account:hover {
+      background-color: #222;
+      color: #fff;
+    }
+  }
+
+  .login-box-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.875rem;
+
+    p {
+      color: #777;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      width: 100%;
+      height: 2.5rem;
+      outline: none;
+      border: none;
+      background-color: transparent;
+      border-bottom: 1px solid #222;
+      font-size: 1rem;
+      color: #222;
+    }
+  }
+
+  .login-box-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .find-box {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+
+      button,
+      p {
+        font-family: 'Playfair Display';
+        color: #777;
+      }
+
+      .id:hover,
+      .ps:hover {
+        color: #222;
+      }
+    }
+
+    .login-btn {
+      font-family: 'Playfair Display';
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: 1px solid #333;
+      border-radius: 1.25rem;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      letter-spacing: 0.063rem;
+      transition: background-color 0.5s ease;
+    }
+
+    .login-btn:hover {
+      background-color: #222;
+      color: #fff;
+    }
+  }
+}
