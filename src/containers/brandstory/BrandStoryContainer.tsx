@@ -1,6 +1,9 @@
 import BrandStoryInfo from '@/components/card/brandstory/BrandStoryInfo';
 import BrandStorySlider from '@/components/card/brandstory/BrandStorySlider';
 
+/**
+ * @description 브랜드 스토리 컨테이너
+ */
 const BrandStoryContainer = () => {
   // 임시 데이터
   const BrandStoryImage = [

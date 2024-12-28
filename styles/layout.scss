@@ -1,0 +1,167 @@
+// header
+.main-header-container {
+  width: 100%;
+  height: 7.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3% 4%;
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  background-color: #fff;
+
+  &.active {
+    background-color: transparent;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #222;
+  }
+
+  .main-header-left {
+    width: 20%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 14%;
+
+    .shop,
+    .about,
+    .look-book {
+      font-family: 'Playfair Display';
+      font-weight: 600;
+    }
+  }
+
+  .main-header-center {
+    width: calc(100% - 40%);
+    text-align: center;
+
+    .logo {
+      font-size: 2.125rem;
+      font-weight: 700;
+      font-family: 'Open Sans';
+      color: #222;
+    }
+  }
+
+  .main-header-right {
+    width: 20%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 14%;
+
+    .search,
+    .cart,
+    .login {
+      font-family: 'Playfair Display';
+      font-weight: 600;
+    }
+  }
+
+  .shop,
+  .about,
+  .look-book,
+  .search,
+  .cart,
+  .login {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.313rem;
+      left: 50%;
+      width: 0;
+      height: 0.063rem;
+      background-color: #333;
+      transition: all 0.3s ease-in-out;
+      transform: translateX(-50%);
+    }
+
+    /* Hover 상태에서 밑줄 확장 */
+    &:hover::after {
+      width: 100%;
+      left: 0;
+      transform: translateX(0);
+    }
+  }
+}
+
+// footer
+.footer-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.875rem;
+  padding: 5rem 8rem;
+  font-family: 'Playfair Display';
+  color: #222;
+
+  .footer-left {
+    p {
+      margin-bottom: 1.25rem;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        font-size: 0.875rem;
+        margin-top: 0.625rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .footer-center {
+    p {
+      margin-bottom: 1.25rem;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        font-size: 0.875rem;
+        margin-top: 0.625rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    p {
+      margin-bottom: 1.25rem;
+    }
+
+    button {
+      border: 1px solid #222;
+      border-radius: 1.3rem;
+      width: 12.5rem;
+      height: 2.1rem;
+      background-color: transparent;
+      cursor: pointer;
+      margin-bottom: 0.625rem;
+      font-size: 0.75rem;
+      transition: background-color 0.8s ease;
+    }
+
+    button:hover {
+      background-color: #222;
+      color: #fff;
+      border: none;
+    }
+  }
+}

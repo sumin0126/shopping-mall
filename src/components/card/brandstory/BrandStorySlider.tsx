@@ -12,6 +12,12 @@ interface IBrandStorySlider {
   BrandStoryImage: IProps[];
 }
 
+/**
+ * @description 브랜드스토리 이미지슬라이더 컴포넌트
+ *
+ * @param img - 이미지 아이디
+ * @param img - 이미지
+ */
 const BrandStorySlider = ({ BrandStoryImage }: IBrandStorySlider) => {
   const settings = {
     dots: true,
@@ -22,11 +28,11 @@ const BrandStorySlider = ({ BrandStoryImage }: IBrandStorySlider) => {
   };
 
   return (
-    <div className='brand-story-slider'>
+    <div className="brand-story-slider">
       <Slider {...settings}>
-        {BrandStoryImage.map((image) => (
-          <div key={image.id} className='slider-card-wrapper'>
-            <Image src={image.img} alt='brandStorySliderImg' fill style={{ objectFit: 'cover' }} />
+        {BrandStoryImage.map(image => (
+          <div key={image.id} className="slider-card-wrapper">
+            <Image src={image.img} alt="brandStorySliderImg" fill style={{ objectFit: 'cover' }} />
           </div>
         ))}
       </Slider>

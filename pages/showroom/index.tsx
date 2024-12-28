@@ -1,12 +1,11 @@
+import LayoutContainer from '@/containers/layout/LayoutContainer';
 import ShowRoomContainer from '@/containers/showroom/ShowRoomContainer';
-
-import React from 'react';
 
 const index = () => {
   return (
-    <div>
+    <LayoutContainer>
       <ShowRoomContainer />
-    </div>
+    </LayoutContainer>
   );
 };
 

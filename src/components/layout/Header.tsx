@@ -1,19 +1,22 @@
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import classNames from 'classnames';
+
 import AboutNavbar from '@/components/layout/navbar/AboutNavbar';
 import ShopNavbar from '@/components/layout/navbar/ShopNavbar';
 import { headerOpaqueState } from '@/stores/header';
-import classNames from 'classnames';
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
 
+/**
+ * @description 헤더 컴포넌트
+ */
 const Header = () => {
   const [countItemsInCart, setCountItemsInCart] = useState(0);
   const [isOpenShopNavBar, setIsOpenShopNavBar] = useState(false);
   const [isOpenAboutNavBar, setIsOpenAboutNavBar] = useState(false);
 
-  const isOpaque = useRecoilValue(headerOpaqueState);
-
   const router = useRouter();
+  const isOpaque = useRecoilValue(headerOpaqueState);
 
   // 클릭 시 로그인 페이지로 이동하는 함수
   const handleClickLogin = () => {
@@ -35,9 +38,19 @@ const Header = () => {
     setIsOpenShopNavBar(true);
   };
 
+  // 클릭 시 shop navbar 닫아주는 함수
+  const closeShopNavBar = () => {
+    setIsOpenShopNavBar(false);
+  };
+
   // 클릭 시 about navbar 열어주는 함수
   const handleClickAbout = () => {
     setIsOpenAboutNavBar(true);
+  };
+
+  // 클릭 시 about navbar 닫아주는 함수
+  const closeAboutNavBar = () => {
+    setIsOpenAboutNavBar(false);
   };
 
   // 상품을 찜하면 장바구니의 수가 + 1 늘어나는 함수
@@ -74,12 +87,8 @@ const Header = () => {
         </button>
       </div>
 
-      {isOpenShopNavBar && (
-        <ShopNavbar isOpenShopNavBar={isOpenShopNavBar} closeShopNavBar={() => setIsOpenShopNavBar(false)} />
-      )}
-      {isOpenAboutNavBar && (
-        <AboutNavbar isOpenAboutNavBar={isOpenAboutNavBar} closeAboutNavBar={() => setIsOpenAboutNavBar(false)} />
-      )}
+      {isOpenShopNavBar && <ShopNavbar isOpenShopNavBar={isOpenShopNavBar} closeShopNavBar={closeShopNavBar} />}
+      {isOpenAboutNavBar && <AboutNavbar isOpenAboutNavBar={isOpenAboutNavBar} closeAboutNavBar={closeAboutNavBar} />}
     </div>
   );
 };

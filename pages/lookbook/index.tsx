@@ -1,8 +1,12 @@
+import LayoutContainer from '@/containers/layout/LayoutContainer';
 import LookBookContainer from '@/containers/lookbook/LookBookContainer';
-import React from 'react';
 
 const index = () => {
-  return <LookBookContainer />;
+  return (
+    <LayoutContainer>
+      <LookBookContainer />
+    </LayoutContainer>
+  );
 };
 
 export default index;

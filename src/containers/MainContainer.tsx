@@ -1,35 +1,17 @@
 import Image from 'next/image';
+import router from 'next/router';
+import { useRecoilState } from 'recoil';
+import { useEffect, useRef } from 'react';
 
 import MainProductList from '@/components/card/mainProduct/MainProductList';
-import router from 'next/router';
-import { useEffect, useRef, useState } from 'react';
-import { useRecoilState } from 'recoil';
 import { headerOpaqueState } from '@/stores/header';
 
+/**
+ * @description 메인 컨테이너
+ */
 const MainContainer = () => {
   const [isOpaque, setIsOpaque] = useRecoilState(headerOpaqueState);
   const imageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setIsOpaque(false);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (imageRef.current) {
-        // 이미지 높이만큼 스크롤됐는지 확인
-        const imageHeight = imageRef.current.offsetHeight;
-        setIsOpaque(window.scrollY + 120 > imageHeight);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      setIsOpaque(true);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   // 임시 데이터
   const BestProducts = [
@@ -50,6 +32,33 @@ const MainContainer = () => {
     { id: 8, img: '/img/newItem4.jpg', itemName: 'clo circle', itemColor: 'black bell' },
   ];
 
+  // 첫 렌더링 시에 isOpaque의 상태를 업데이트해주는 함수
+  useEffect(() => {
+    setIsOpaque(false);
+  }, []);
+
+  // window에 스크롤 이벤트 걸어서 header 배경을 변경해주는 함수
+  useEffect(() => {
+    const handleScroll = () => {
+      if (imageRef.current) {
+        // 배경이미지 높이를 변수에 저장
+        const imageHeight = imageRef.current.offsetHeight;
+        // 스크롤 위치가 배경이미지 높이 + 120px을 초과했는지 확인
+        // 초과했다면 setIsOpaque(true)로 업데이트
+        setIsOpaque(window.scrollY + 120 > imageHeight);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // MainContainer 컴포넌트가 언마운트될때 처리
+    return () => {
+      // setIsOpaque(true)를 업데이트함으로써 다른 페이지에서는 헤더바 배경이 흰색임
+      setIsOpaque(true);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   // 클릭 시 룩북 페이지로 이동하는 함수
   const handleClickLookBook = () => {
     router.push('/lookbook');
@@ -61,8 +70,8 @@ const MainContainer = () => {
         <Image src="/img/main.png" alt="mainImg" fill style={{ objectFit: 'cover' }} />
       </div>
 
-      <MainProductList MainProducts={BestProducts} title="Best" isSlider={true} />
-      <MainProductList MainProducts={NewProducts} title="New" isSlider={false} />
+      <MainProductList MainProducts={BestProducts} category="Best" isSlider={true} />
+      <MainProductList MainProducts={NewProducts} category="New" isSlider={false} />
 
       <div className="lookBook-wrapper">
         <div className="lookBook-banner-img">

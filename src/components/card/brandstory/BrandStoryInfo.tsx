@@ -1,20 +1,22 @@
-import React from 'react';
 import Image from 'next/image';
 
+/**
+ * @description 브랜드스토리 정보 컴포넌트
+ */
 const BrandStoryInfo = () => {
   return (
-    <div className='brand-info'>
-      <div className='img-box'>
-        <Image src='/img/brandstory.jpg' alt='brandInfoImg' width={340} height={580} style={{ objectFit: 'cover' }} />
+    <div className="brand-info">
+      <div className="img-box">
+        <Image src="/img/brandstory.jpg" alt="brandInfoImg" width={340} height={580} style={{ objectFit: 'cover' }} />
       </div>
 
-      <div className='text-wrapper'>
-        <p className='title'>
+      <div className="text-wrapper">
+        <p className="title">
           미닛뮤트는 2015년 설립되었으며, <br />
           미니멀하지만 실용적인 가방을 만드는 브랜드입니다. <br />
           시간이 지날수록 아름다워지는 가방을 생각하며 만들고 있습니다.
         </p>
-        <p className='sub-title'>
+        <p className="sub-title">
           여행을 하며 사용할 수 있는 가볍고 작은 크기의 <br />
           실용적인 가죽 가방을 만들고 싶다는 생각으로 시작한 브랜드입니다. <br />
           여권 포함 여행 필수품이 들어가는 크기와, 심플한 디자인 그리고 가벼운 무게감을 <br />

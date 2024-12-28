@@ -13,7 +13,7 @@
     letter-spacing: 1px;
     color: #222;
     margin-top: 160px;
-    margin-bottom: 100px;
+    margin-bottom: 40px;
   }
 }
 
@@ -26,10 +26,6 @@
     border-bottom: 1px solid #333;
   }
 
-  // &.active {
-  //   border-bottom: 1px solid #333;
-  // }
-
   .title {
     margin: 0;
     font-size: 16px;
@@ -37,70 +33,80 @@
     cursor: pointer;
   }
 
-  .first-img {
-    margin-top: 20px;
-  }
+  .content {
+    transition: max-height 0.5s ease;
+    max-height: 0;
+    overflow: hidden;
 
-  .text-img-wrapper {
-    margin-top: 40px;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    gap: 50px;
-    font-family: 'Open Sans';
+    &.active {
+      max-height: 2000px;
+    }
 
-    .text {
-      text-align: right;
+    .first-img {
+      margin-top: 20px;
+    }
+
+    .text-img-wrapper {
+      margin-top: 40px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 40px;
+      justify-content: right;
+      align-items: center;
+      gap: 50px;
+      font-family: 'Open Sans';
 
-      p {
-        font-size: 12px;
-        color: #555;
-      }
-
-      .name {
+      .text {
+        text-align: right;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
-        gap: 10px;
+        gap: 40px;
 
-        .store-name {
-          font-size: 18px;
-          font-weight: 700;
-          color: #222;
+        p {
+          font-size: 12px;
+          color: #555;
         }
-      }
 
-      .hour {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-end;
-        gap: 10px;
+        .name {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-end;
+          gap: 10px;
 
-        .store-hour {
-          font-size: 14px;
-          font-weight: 700;
-          color: #222;
+          .store-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #222;
+          }
         }
-      }
 
-      .store-number {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-end;
-        gap: 10px;
+        .hour {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-end;
+          gap: 10px;
+
+          .store-hour {
+            font-size: 14px;
+            font-weight: 700;
+            color: #222;
+          }
+        }
+
+        .store-number {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-end;
+          gap: 10px;
+        }
       }
     }
-  }
 
-  .second-img {
-    margin-top: 40px;
+    .second-img {
+      margin-top: 40px;
+    }
   }
 }
