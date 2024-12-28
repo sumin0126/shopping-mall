@@ -1,7 +1,8 @@
 import ShowRoomList from '@/components/card/showroom/ShowRoomList';
-import Footer from '@/components/layout/Footer';
-import Header from '@/components/layout/Header';
 
+/**
+ * @description 쇼룸 컨테이너
+ */
 const ShowRoomContainer = () => {
   // 임시 데이터
   const ShowRoomInfos = [
@@ -49,13 +50,8 @@ const ShowRoomContainer = () => {
 
   return (
     <div className="show-room-container">
-      <Header />
-
       <p className="show-room">SHOWROOM</p>
-
       <ShowRoomList ShowRoomInfos={ShowRoomInfos} />
-
-      <Footer />
     </div>
   );
 };

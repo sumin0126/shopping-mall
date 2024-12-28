@@ -6,6 +6,9 @@ interface ILayoutContainerProps {
   children: React.ReactNode;
 }
 
+/**
+ * @description 레이아웃 컨테이너
+ */
 const LayoutContainer = ({ children }: ILayoutContainerProps) => {
   return (
     <>

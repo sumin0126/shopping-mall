@@ -14,6 +14,14 @@ interface IMainProductSliderProps {
   MainProducts: IProduct[];
 }
 
+/**
+ * @description 메인상품 이미지슬라이더 컴포넌트
+ *
+ * @param id - 상품 아이디
+ * @param img - 상품 대표이미지
+ * @param itemName - 상품 이름
+ * @param itemColor - 상품 컬러
+ */
 const MainProductSlider = ({ MainProducts }: IMainProductSliderProps) => {
   const settings = {
     dots: true,

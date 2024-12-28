@@ -1,7 +1,8 @@
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import LookBookList from '@/components/card/lookbook/LookBookList';
 
+/**
+ * @description 룩북 컨테이너
+ */
 const LookBookContainer = () => {
   // 임시 데이터
   const LookBookImages = [
@@ -24,11 +25,7 @@ const LookBookContainer = () => {
 
   return (
     <div className="look-book-container">
-      <Header />
-
       <LookBookList LookBookImages={LookBookImages} />
-
-      <Footer />
     </div>
   );
 };
