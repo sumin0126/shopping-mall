@@ -5,6 +5,7 @@
 @import './brandstory.scss';
 @import './showroom.scss';
 @import './layout.scss';
+@import './newarrival.scss';
 
 * {
   padding: 0;
@@ -103,6 +104,15 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    position: relative;
+
+    // .wish-icon {
+    //   position: absolute;
+    //   top: 20px;
+    //   right: 30px;
+    //   font-size: 20px;
+    //   color: #555;
+    // }
   }
 
   .product-info {

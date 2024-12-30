@@ -1,0 +1,65 @@
+.new-arrival-container {
+  width: 100%;
+  height: auto;
+}
+
+.new-arrival-list-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 80px 100px;
+}
+
+.new-arrival-card-container {
+  width: 25%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  cursor: pointer;
+
+  .img-box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .wish-icon {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+    }
+  }
+
+  .item-info {
+    font-family: 'Playfair Display';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    color: #222;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+  .color {
+    font-size: 12px;
+  }
+
+  .price {
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+}
