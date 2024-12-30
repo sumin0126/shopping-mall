@@ -1,5 +1,5 @@
-import BrandStoryInfo from '@/components/card/brandstory/BrandStoryInfo';
-import BrandStorySlider from '@/components/card/brandstory/BrandStorySlider';
+import BrandStoryInfo from '@/components/card/brandStory/BrandStoryInfo';
+import BrandStorySlider from '@/components/card/brandStory/BrandStorySlider';
 
 /**
  * @description 브랜드 스토리 컨테이너

@@ -1,3 +1,4 @@
+import router from 'next/router';
 import { MouseEvent, useRef, useEffect } from 'react';
 
 interface IShopNavbarProps {
@@ -31,11 +32,15 @@ const ShopNavbar = ({ isOpenShopNavBar, closeShopNavBar }: IShopNavbarProps) => 
     };
   }, [isOpenShopNavBar, closeShopNavBar]);
 
+  const handleClickNewArrival = () => {
+    router.push('/newarrival');
+  };
+
   return (
     <div className="navbar-container">
       <div className={`navbar-wrapper ${isOpenShopNavBar ? 'active' : ''}`} ref={navbarRef}>
         <p>SHOP</p>
-        <button>NEW ARRIVAL</button>
+        <button onClick={handleClickNewArrival}>NEW ARRIVAL</button>
         <button>ALL ITEMS</button>
         <button>TWIN BAG</button>
         <button>REMOOD BAG</button>
