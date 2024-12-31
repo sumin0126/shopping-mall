@@ -7,10 +7,46 @@
   width: 100%;
   height: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  flex-wrap: wrap;
-  padding: 80px 100px;
+
+  .list-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 80px 100px;
+  }
+
+  .page-nation {
+    width: 200px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 40px 0;
+
+    p {
+      font-family: 'Playfair Display';
+      cursor: pointer;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .arrow-left,
+    .arrow-right {
+      font-size: 20px;
+      color: #999;
+      cursor: pointer;
+      &:hover {
+        color: #555;
+      }
+    }
+  }
 }
 
 .new-arrival-card-container {
