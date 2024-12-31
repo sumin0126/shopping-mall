@@ -33,6 +33,21 @@ const NewArrivalContainer = () => {
     { id: 10, img: '/img/newarrival10.jpg', itemName: 'clo soft', itemColor: 'wine', itemPrice: '195,000' },
     { id: 11, img: '/img/newarrival11.jpg', itemName: 'clo soft', itemColor: 'bourbon', itemPrice: '195,000' },
     { id: 12, img: '/img/newarrival12.jpg', itemName: 'clo circle', itemColor: 'black bell', itemPrice: '95,000' },
+    {
+      id: 13,
+      img: '/img/newarrival13.jpg',
+      itemName: 'clo pouch keyring',
+      itemColor: 'black bell',
+      itemPrice: '42,000',
+    },
+    {
+      id: 14,
+      img: '/img/newarrival14.jpg',
+      itemName: 'clo pouch keyring',
+      itemColor: 'bourbon',
+      itemPrice: '42,000',
+    },
+    { id: 15, img: '/img/newarrival15.jpg', itemName: 'clo pouch keyring', itemColor: 'wine', itemPrice: '42,000' },
   ];
 
   return (
