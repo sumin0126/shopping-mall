@@ -1,4 +1,4 @@
-import router from 'next/router';
+import { useRouter } from 'next/router';
 import { MouseEvent, useRef, useEffect } from 'react';
 
 interface IShopNavbarProps {
@@ -14,6 +14,8 @@ interface IShopNavbarProps {
  */
 const ShopNavbar = ({ isOpenShopNavBar, closeShopNavBar }: IShopNavbarProps) => {
   const navbarRef = useRef<HTMLDivElement>(null);
+  const categoryRef = useRef<HTMLButtonElement>(null);
+  const router = useRouter();
 
   // 클릭 이벤트의 타겟이 navbarRef 내부가 아니면(= 네비바 배경) 네비바를 닫아주는 함수
   useEffect(() => {
@@ -32,19 +34,51 @@ const ShopNavbar = ({ isOpenShopNavBar, closeShopNavBar }: IShopNavbarProps) => 
     };
   }, [isOpenShopNavBar, closeShopNavBar]);
 
+  // 현재 페이지 이름 추출
+  const pageName = router.pathname.replace('/', '').toLowerCase();
+
+  // 클릭한 네비바 카테고리명 추출
+  const category = categoryRef.current?.textContent?.toLowerCase().split(' ').join('');
+
+  // 현재 페이지와 카테고리명 비교
+  const isActive = pageName === category;
+
+  // 클릭 시 New Arrival 페이지로 이동하는 함수
   const handleClickNewArrival = () => {
     router.push('/newarrival');
+  };
+
+  // 클릭 시 All Items 페이지로 이동하는 함수
+  const handleClickAllItems = () => {
+    router.push('/allitems');
+  };
+
+  // 클릭 시 twin bag 페이지로 이동하는 함수
+  const handleClickTwinBag = () => {
+    router.push('/twin');
+  };
+
+  // 클릭 시 remood bag 페이지로 이동하는 함수
+  const handleClickRemoodBag = () => {
+    router.push('/remood');
+  };
+
+  // 클릭 시 clo bag 페이지로 이동하는 함수
+  const handleClickCloBag = () => {
+    router.push('/clo');
   };
 
   return (
     <div className="navbar-container">
       <div className={`navbar-wrapper ${isOpenShopNavBar ? 'active' : ''}`} ref={navbarRef}>
         <p>SHOP</p>
-        <button onClick={handleClickNewArrival}>NEW ARRIVAL</button>
-        <button>ALL ITEMS</button>
-        <button>TWIN BAG</button>
-        <button>REMOOD BAG</button>
-        <button>CLO BAG</button>
+        <button className={isActive ? 'highlight-category' : ''} ref={categoryRef} onClick={handleClickNewArrival}>
+          NEW ARRIVAL
+        </button>
+        <button onClick={handleClickAllItems}>ALL ITEMS</button>
+        <button onClick={handleClickTwinBag}>TWIN BAG</button>
+        <button onClick={handleClickRemoodBag}>REMOOD BAG</button>
+        <button onClick={handleClickCloBag}>CLO BAG</button>
         <button>MINIMAL BAG</button>
         <button>ACCESSORY</button>
       </div>

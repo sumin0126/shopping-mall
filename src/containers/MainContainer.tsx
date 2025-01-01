@@ -21,15 +21,31 @@ const MainContainer = () => {
     { id: 4, img: '/img/bestItem4.png', itemName: 'clo soft', itemColor: 'black bell' },
   ];
 
+  // 임시 데이터
   const NewProducts = [
-    { id: 1, img: '/img/newItem.jpg', itemName: 'tobo L', itemColor: 'brick' },
-    { id: 2, img: '/img/newItem2.jpg', itemName: 'tobo bag', itemColor: 'brick' },
-    { id: 3, img: '/img/newItem3.jpg', itemName: 'tobo L', itemColor: 'sand' },
-    { id: 4, img: '/img/newItem4.jpg', itemName: 'clo circle', itemColor: 'black bell' },
-    { id: 5, img: '/img/newItem.jpg', itemName: 'tobo L', itemColor: 'brick' },
-    { id: 6, img: '/img/newItem2.jpg', itemName: 'tobo bag', itemColor: 'brick' },
-    { id: 7, img: '/img/newItem3.jpg', itemName: 'tobo L', itemColor: 'sand' },
-    { id: 8, img: '/img/newItem4.jpg', itemName: 'clo circle', itemColor: 'black bell' },
+    { id: 1, img: '/img/newarrival.jpg', itemName: 'FUR', itemColor: 'cappuccino' },
+    {
+      id: 2,
+      img: '/img/newarrival2.jpg',
+      itemName: 'FUR Large',
+      itemColor: 'shakerato (LIMITED)',
+    },
+    {
+      id: 3,
+      img: '/img/newarrival3.jpg',
+      itemName: 'clo circle',
+      itemColor: 'snow blue (LIMITED)',
+    },
+    {
+      id: 4,
+      img: '/img/newarrival4.jpg',
+      itemName: 'clo circle',
+      itemColor: 'butter cream (LIMITED)',
+    },
+    { id: 5, img: '/img/newarrival5.jpg', itemName: 'FUR', itemColor: 'shakerato' },
+    { id: 6, img: '/img/newarrival6.jpg', itemName: 'tobo L', itemColor: 'sand' },
+    { id: 7, img: '/img/newarrival7.jpg', itemName: 'tobo bag', itemColor: 'brick' },
+    { id: 8, img: '/img/newarrival8.jpg', itemName: 'tobo L', itemColor: 'brick' },
   ];
 
   // 첫 렌더링 시에 isOpaque의 상태를 업데이트해주는 함수
@@ -67,7 +83,7 @@ const MainContainer = () => {
   return (
     <div className="main-container">
       <div className="main-img" ref={imageRef}>
-        <Image src="/img/main.png" alt="mainImg" fill style={{ objectFit: 'cover' }} />
+        <Image src="/img/brandstory2.png" alt="mainImg" fill style={{ objectFit: 'cover' }} />
       </div>
 
       <MainProductList MainProducts={BestProducts} category="Best" isSlider={true} />
@@ -75,7 +91,7 @@ const MainContainer = () => {
 
       <div className="lookBook-wrapper">
         <div className="lookBook-banner-img">
-          <Image src="/img/lookBook.jpeg" alt="lookBookImg" fill style={{ objectFit: 'cover' }} priority />
+          <Image src="/img/brandstory4.png" alt="lookBookImg" fill style={{ objectFit: 'cover' }} priority />
         </div>
         <button onClick={handleClickLookBook}>LOOK BOOK</button>
       </div>
