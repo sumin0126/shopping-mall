@@ -1,3 +1,5 @@
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -32,9 +34,12 @@ const ShowRoomCard = ({ title, firstImg, miniImg, secondImg, storeName, address,
 
   return (
     <div className="show-room-card-container">
-      <p className="title" onClick={handleClickOpenCard}>
-        {title}
-      </p>
+      <div className="title-box" onClick={handleClickOpenCard}>
+        <p className="title">{title}</p>
+        <div className={`arrow-wrapper ${isOpenCard ? 'open' : 'closed'}`}>
+          <FontAwesomeIcon icon={faChevronDown} className="arrow" />
+        </div>
+      </div>
 
       <div className={`content ${isOpenCard ? 'active' : ''}`}>
         <div className="first-img">

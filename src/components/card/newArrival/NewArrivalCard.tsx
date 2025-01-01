@@ -9,6 +9,14 @@ interface INewArrivalCardProps {
   itemPrice: string;
 }
 
+/**
+ * @description 신상품 카드 컴포넌트
+ *
+ * @param img - 상품 대표이미지
+ * @param itemName - 상품 이름
+ * @param itemColor - 상품 컬러
+ * @param itemPrice - 상품 가격
+ */
 const NewArrivalCard = ({ img, itemName, itemColor, itemPrice }: INewArrivalCardProps) => {
   return (
     <div className="new-arrival-card-container">

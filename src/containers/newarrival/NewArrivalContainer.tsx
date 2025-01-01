@@ -1,8 +1,11 @@
-import NewArrivalList from '@/components/card/newArrival/newArrivalList';
+import NewArrivalList from '@/components/card/newArrival/NewArrivalList';
 
+/**
+ * @description 신상품 컨테이너
+ */
 const NewArrivalContainer = () => {
   // 임시 데이터
-  const NewArrivalItem = [
+  const ItemData = [
     { id: 1, img: '/img/newarrival.jpg', itemName: 'FUR', itemColor: 'cappuccino', itemPrice: '160,000' },
     {
       id: 2,
@@ -52,7 +55,7 @@ const NewArrivalContainer = () => {
 
   return (
     <div className="new-arrival-container">
-      <NewArrivalList NewArrivalItem={NewArrivalItem} />
+      <NewArrivalList ItemData={ItemData} />
     </div>
   );
 };

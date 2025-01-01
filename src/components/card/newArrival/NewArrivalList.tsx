@@ -1,7 +1,8 @@
-import NewArrivalCard from '@/components/card/newArrival/newArrivalCard';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
+import NewArrivalCard from '@/components/card/newArrival/NewArrivalCard';
 
 interface IProps {
   id: number;
@@ -12,16 +13,25 @@ interface IProps {
 }
 
 interface INewArrivalListProps {
-  NewArrivalItem: IProps[];
+  ItemData: IProps[];
 }
 
-const NewArrivalList = ({ NewArrivalItem }: INewArrivalListProps) => {
+/**
+ * @description 신상품 리스트 컴포넌트
+ *
+ * @param id - 상품 아이디
+ * @param img - 상품 대표이미지
+ * @param itemName - 상품 이름
+ * @param itemColor - 상품 컬러
+ * @param itemPrice - 상품 가격
+ */
+const NewArrivalList = ({ ItemData }: INewArrivalListProps) => {
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
   const itemsPerPage = 12; // 페이지당 아이템 개수
-  const totalPages = Math.ceil(NewArrivalItem.length / itemsPerPage); // 현재 총 페이지 수
+  const totalPages = Math.ceil(ItemData.length / itemsPerPage); // 현재 총 페이지 수
 
   // 현재 페이지에 해당하는 아이템만 잘라서 보여주는 함수
-  const currentItems = NewArrivalItem.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const currentItems = ItemData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   // 이전 페이지로 이동시켜주는 함수
   const handlePrevPage = () => {
