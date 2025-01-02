@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 
 import { useRouter } from 'next/router';
 
@@ -14,41 +14,47 @@ interface IShopNavbarProps {
  * @param closeShopNavBar - 네비바 닫아주는 함수
  */
 const ShopNavbar = ({ isOpenShopNavBar, closeShopNavBar }: IShopNavbarProps) => {
-  const categoryRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
 
-  // 현재 페이지 이름 추출
-  const pageName = router.pathname.replace('/', '').toLowerCase();
+  // 현재 경로를 기본값으로 저장
+  const [activeTab, setActiveTab] = useState(router.pathname);
 
-  // 클릭한 네비바 카테고리명 추출
-  const category = categoryRef.current?.textContent?.toLowerCase().split(' ').join('');
+  // 네비바에 들어갈 카테고리 목록과 경로
+  const navbarCategorys = [
+    {
+      title: 'NEW ARRIVAL',
+      path: '/newarrival',
+    },
+    {
+      title: 'ALL ITEMS',
+      path: '/allitems',
+    },
+    {
+      title: 'TWIN BAG',
+      path: '/twin',
+    },
+    {
+      title: 'REMOOD BAG',
+      path: '/remood',
+    },
+    {
+      title: 'CLO BAG',
+      path: '/clo',
+    },
+    {
+      title: 'MINIMAL BAG',
+      path: '/minimal',
+    },
+    {
+      title: 'ACCESSORY',
+      path: '/accessory',
+    },
+  ];
 
-  // 현재 페이지와 카테고리명 비교
-  const isActive = pageName === category;
-
-  // 클릭 시 New Arrival 페이지로 이동하는 함수
-  const handleClickNewArrival = () => {
-    router.push('/newarrival');
-  };
-
-  // 클릭 시 All Items 페이지로 이동하는 함수
-  const handleClickAllItems = () => {
-    router.push('/allitems');
-  };
-
-  // 클릭 시 twin bag 페이지로 이동하는 함수
-  const handleClickTwinBag = () => {
-    router.push('/twin');
-  };
-
-  // 클릭 시 remood bag 페이지로 이동하는 함수
-  const handleClickRemoodBag = () => {
-    router.push('/remood');
-  };
-
-  // 클릭 시 clo bag 페이지로 이동하는 함수
-  const handleClickCloBag = () => {
-    router.push('/clo');
+  // 카테고리 클릭 시, 카테고리의 경로를 업데이트하고, 해당 카테고리로 페이지 이동 시켜주는 함수
+  const handleClickCategory = (categoryPath: string) => {
+    setActiveTab(categoryPath);
+    router.push(categoryPath);
   };
 
   return (
@@ -56,15 +62,17 @@ const ShopNavbar = ({ isOpenShopNavBar, closeShopNavBar }: IShopNavbarProps) => 
       <div className={`navbar-overlay ${isOpenShopNavBar ? 'show' : ''}`} onClick={closeShopNavBar} />
       <nav className={`navbar-wrapper ${isOpenShopNavBar ? 'open' : ''}`}>
         <p>SHOP</p>
-        <button className={isActive ? 'highlight-category' : ''} ref={categoryRef} onClick={handleClickNewArrival}>
-          NEW ARRIVAL
-        </button>
-        <button onClick={handleClickAllItems}>ALL ITEMS</button>
-        <button onClick={handleClickTwinBag}>TWIN BAG</button>
-        <button onClick={handleClickRemoodBag}>REMOOD BAG</button>
-        <button onClick={handleClickCloBag}>CLO BAG</button>
-        <button>MINIMAL BAG</button>
-        <button>ACCESSORY</button>
+        {navbarCategorys.map(category => {
+          return (
+            <button
+              className={activeTab === category.path ? 'highlight-category' : ''}
+              onClick={() => handleClickCategory(category.path)}
+              key={`category_${category.title}`}
+            >
+              {category.title}
+            </button>
+          );
+        })}
       </nav>
     </div>
   );

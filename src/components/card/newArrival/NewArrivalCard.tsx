@@ -1,12 +1,13 @@
+import Image from 'next/image';
+
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Image from 'next/image';
 
 interface INewArrivalCardProps {
   img: string;
   itemName: string;
-  itemColor: string;
-  itemPrice: string;
+  itemColor?: string;
+  itemPrice: number;
 }
 
 /**
@@ -27,7 +28,7 @@ const NewArrivalCard = ({ img, itemName, itemColor, itemPrice }: INewArrivalCard
 
       <div className="item-info">
         <div className="name">{itemName}</div>
-        <div className="color">{itemColor}</div>
+        {itemColor && <div className="color">{itemColor}</div>}
         <div className="price">{itemPrice}</div>
       </div>
     </div>

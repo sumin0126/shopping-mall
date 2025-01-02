@@ -1,7 +1,9 @@
-import LookBookList from '@/components/card/lookbook/LookBookList';
-import { headerOpaqueState } from '@/stores/header';
 import { useEffect } from 'react';
+
 import { useRecoilState } from 'recoil';
+
+import LookBookList from '@/components/card/lookBook/LookBookList';
+import { headerOpaqueState } from '@/stores/header';
 
 /**
  * @description 룩북 컨테이너

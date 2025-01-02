@@ -1,17 +1,20 @@
-import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
+
+import { useRouter } from 'next/router';
+
 import classNames from 'classnames';
+import { useRecoilValue } from 'recoil';
 
 import AboutNavbar from '@/components/layout/navbar/AboutNavbar';
 import ShopNavbar from '@/components/layout/navbar/ShopNavbar';
+import { PATHNAME } from '@/constants/pathname';
 import { headerOpaqueState } from '@/stores/header';
 
 /**
  * @description 헤더 컴포넌트
  */
 const Header = () => {
-  const [countItemsInCart, setCountItemsInCart] = useState(0);
+  const [countItemsInCart] = useState(0);
   const [isOpenShopNavBar, setIsOpenShopNavBar] = useState(false);
   const [isOpenAboutNavBar, setIsOpenAboutNavBar] = useState(false);
 
@@ -20,17 +23,17 @@ const Header = () => {
 
   // 클릭 시 로그인 페이지로 이동하는 함수
   const handleClickLogin = () => {
-    router.push('/login');
+    router.push(PATHNAME.LOGIN);
   };
 
   // 클릭 시 메인 페이지로 이동하는 함수
   const handleClickLogo = () => {
-    router.push('/');
+    router.push(PATHNAME.MAIN);
   };
 
   // 클릭 시 룩북 페이지로 이동하는 함수
   const handleClickLookBook = () => {
-    router.push('/lookbook');
+    router.push(PATHNAME.LOOKBOOK);
   };
 
   // 클릭 시 shop navbar 열어주는 함수

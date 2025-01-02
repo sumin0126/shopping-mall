@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
+
+import { useRecoilState } from 'recoil';
+
 import BrandStoryInfo from '@/components/card/brandStory/BrandStoryInfo';
 import BrandStorySlider from '@/components/card/brandStory/BrandStorySlider';
 import { headerOpaqueState } from '@/stores/header';
-import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
 
 /**
  * @description 브랜드 스토리 컨테이너
