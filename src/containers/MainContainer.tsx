@@ -3,10 +3,10 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import router from 'next/router';
 
-import axios from 'axios';
 import { useRecoilState } from 'recoil';
 
 import MainProductList from '@/components/card/mainProduct/MainProductList';
+import { PATHNAME } from '@/constants/pathname';
 import { headerOpaqueState } from '@/stores/header';
 
 /**
@@ -16,12 +16,6 @@ const MainContainer = () => {
   const [, setIsOpaque] = useRecoilState(headerOpaqueState);
 
   const imageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    axios.get('http://43.201.96.112/products?category=ACCESSORY').then(res => {
-      console.log(res);
-    });
-  }, []);
 
   // 임시 데이터
   const BestProducts = [
@@ -87,7 +81,7 @@ const MainContainer = () => {
 
   // 클릭 시 룩북 페이지로 이동하는 함수
   const handleClickLookBook = () => {
-    router.push('/lookbook');
+    router.push(PATHNAME.LOOKBOOK);
   };
 
   return (

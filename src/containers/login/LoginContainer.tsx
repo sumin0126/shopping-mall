@@ -1,5 +1,7 @@
-import Image from 'next/image';
 import { useEffect } from 'react';
+
+import Image from 'next/image';
+
 import { useRecoilState } from 'recoil';
 
 import { headerOpaqueState } from '@/stores/header';

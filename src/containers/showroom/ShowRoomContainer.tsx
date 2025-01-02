@@ -1,4 +1,4 @@
-import ShowRoomList from '@/components/card/showroom/ShowRoomList';
+import ShowRoomList from '@/components/card/showRoom/ShowRoomList';
 
 /**
  * @description 쇼룸 컨테이너
@@ -8,7 +8,7 @@ const ShowRoomContainer = () => {
   const ShowRoomInfos = [
     {
       id: 1,
-      title: 'HANNAM FLAGSHIP STORE',
+      title: 'HANNAM SHOWROOM',
       firstImg: '/img/showroom1-1.png',
       miniImg: '/img/showroom1-2.png',
       secondImg: '/img/showroom1-3.png',
@@ -18,7 +18,7 @@ const ShowRoomContainer = () => {
     },
     {
       id: 2,
-      title: 'SEONGSU STORE',
+      title: 'SEONGSU SHOWROOM',
       firstImg: '/img/showroom2-1.png',
       miniImg: '/img/showroom2-2.png',
       secondImg: '/img/showroom2-3.png',
@@ -28,7 +28,7 @@ const ShowRoomContainer = () => {
     },
     {
       id: 3,
-      title: 'SHINSEGAE CENTUM',
+      title: 'SHINSEGAE SHOWROOM',
       firstImg: '/img/showroom3-1.png',
       miniImg: '/img/showroom3-2.png',
       secondImg: '/img/showroom3-3.png',
@@ -38,7 +38,7 @@ const ShowRoomContainer = () => {
     },
     {
       id: 4,
-      title: 'TOKYO STORE',
+      title: 'TOKYO SHOWROOM',
       firstImg: '/img/showroom4-1.png',
       miniImg: '/img/showroom4-2.png',
       secondImg: '/img/showroom4-3.png',

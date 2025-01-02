@@ -5,16 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import NewArrivalCard from '@/components/card/newArrival/NewArrivalCard';
 
-interface IProps {
-  id: number;
-  img: string;
-  itemName: string;
-  itemColor: string;
-  itemPrice: string;
-}
+import type { IProduct } from '@/apis/products/type';
 
 interface INewArrivalListProps {
-  ItemData: IProps[];
+  products: IProduct[];
 }
 
 /**
@@ -26,13 +20,13 @@ interface INewArrivalListProps {
  * @param itemColor - 상품 컬러
  * @param itemPrice - 상품 가격
  */
-const NewArrivalList = ({ ItemData }: INewArrivalListProps) => {
+const NewArrivalList = ({ products }: INewArrivalListProps) => {
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
   const itemsPerPage = 12; // 페이지당 아이템 개수
-  const totalPages = Math.ceil(ItemData.length / itemsPerPage); // 현재 총 페이지 수
+  const totalPages = Math.ceil(products.length / itemsPerPage); // 현재 총 페이지 수
 
   // 현재 페이지에 해당하는 아이템만 잘라서 보여주는 함수
-  const currentItems = ItemData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const currentItems = products.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   // 이전 페이지로 이동시켜주는 함수
   const handlePrevPage = () => {
@@ -57,10 +51,10 @@ const NewArrivalList = ({ ItemData }: INewArrivalListProps) => {
         {currentItems.map(item => (
           <NewArrivalCard
             key={item.id}
-            img={item.img}
-            itemName={item.itemName}
-            itemColor={item.itemColor}
-            itemPrice={item.itemPrice}
+            img={item.image_url}
+            itemName={item.name}
+            itemColor={item.color}
+            itemPrice={item.price}
           />
         ))}
       </div>
