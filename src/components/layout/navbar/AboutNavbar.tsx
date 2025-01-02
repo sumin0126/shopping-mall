@@ -1,4 +1,6 @@
-import { MouseEvent, useEffect, useRef } from 'react';
+import type { MouseEvent } from 'react';
+import { useEffect, useRef } from 'react';
+
 import router from 'next/router';
 
 interface IAboutNavbarProps {

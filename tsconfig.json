@@ -31,7 +31,7 @@
     /* include: 컴파일에 포함할 디렉토리/파일 경로 */
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "next.config.js"  ],
   "extends": "./tsconfig.paths.json" /* extends: 다른 tsconfig 파일을 상속 */,
   "exclude": [/* exclude: 컴파일에서 제외할 디렉토리/파일 경로 */ "node_modules"]
 }

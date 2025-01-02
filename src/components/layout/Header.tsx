@@ -87,7 +87,7 @@ const Header = () => {
         </button>
       </div>
 
-      {isOpenShopNavBar && <ShopNavbar isOpenShopNavBar={isOpenShopNavBar} closeShopNavBar={closeShopNavBar} />}
+      <ShopNavbar isOpenShopNavBar={isOpenShopNavBar} closeShopNavBar={closeShopNavBar} />
       {isOpenAboutNavBar && <AboutNavbar isOpenAboutNavBar={isOpenAboutNavBar} closeAboutNavBar={closeAboutNavBar} />}
     </div>
   );

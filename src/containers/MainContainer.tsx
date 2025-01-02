@@ -1,7 +1,10 @@
+import { useEffect, useRef } from 'react';
+
 import Image from 'next/image';
 import router from 'next/router';
+
+import axios from 'axios';
 import { useRecoilState } from 'recoil';
-import { useEffect, useRef } from 'react';
 
 import MainProductList from '@/components/card/mainProduct/MainProductList';
 import { headerOpaqueState } from '@/stores/header';
@@ -10,42 +13,49 @@ import { headerOpaqueState } from '@/stores/header';
  * @description 메인 컨테이너
  */
 const MainContainer = () => {
-  const [isOpaque, setIsOpaque] = useRecoilState(headerOpaqueState);
+  const [, setIsOpaque] = useRecoilState(headerOpaqueState);
+
   const imageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    axios.get('http://43.201.96.112/products?category=ACCESSORY').then(res => {
+      console.log(res);
+    });
+  }, []);
 
   // 임시 데이터
   const BestProducts = [
-    { id: 1, img: '/img/bestItem.png', itemName: 'FUR', itemColor: 'cappuccino' },
-    { id: 2, img: '/img/bestItem2.png', itemName: 'FUR', itemColor: 'shakerato' },
-    { id: 3, img: '/img/bestItem3.png', itemName: 'clo pouch keyring', itemColor: 'wine' },
-    { id: 4, img: '/img/bestItem4.png', itemName: 'clo soft', itemColor: 'black bell' },
+    { id: 1, img: '/img/bestItem/bestItem.png', itemName: 'FUR', itemColor: 'cappuccino' },
+    { id: 2, img: '/img/bestItem/bestItem2.png', itemName: 'FUR', itemColor: 'shakerato' },
+    { id: 3, img: '/img/bestItem/bestItem3.png', itemName: 'clo pouch keyring', itemColor: 'wine' },
+    { id: 4, img: '/img/bestItem/bestItem4.png', itemName: 'clo soft', itemColor: 'black bell' },
   ];
 
   // 임시 데이터
   const NewProducts = [
-    { id: 1, img: '/img/newarrival.jpg', itemName: 'FUR', itemColor: 'cappuccino' },
+    { id: 1, img: '/img/newarrival/newarrival.jpg', itemName: 'FUR', itemColor: 'cappuccino' },
     {
       id: 2,
-      img: '/img/newarrival2.jpg',
+      img: '/img/newarrival/newarrival2.jpg',
       itemName: 'FUR Large',
       itemColor: 'shakerato (LIMITED)',
     },
     {
       id: 3,
-      img: '/img/newarrival3.jpg',
+      img: '/img/newarrival/newarrival3.jpg',
       itemName: 'clo circle',
       itemColor: 'snow blue (LIMITED)',
     },
     {
       id: 4,
-      img: '/img/newarrival4.jpg',
+      img: '/img/newarrival/newarrival4.jpg',
       itemName: 'clo circle',
       itemColor: 'butter cream (LIMITED)',
     },
-    { id: 5, img: '/img/newarrival5.jpg', itemName: 'FUR', itemColor: 'shakerato' },
-    { id: 6, img: '/img/newarrival6.jpg', itemName: 'tobo L', itemColor: 'sand' },
-    { id: 7, img: '/img/newarrival7.jpg', itemName: 'tobo bag', itemColor: 'brick' },
-    { id: 8, img: '/img/newarrival8.jpg', itemName: 'tobo L', itemColor: 'brick' },
+    { id: 5, img: '/img/newarrival/newarrival5.jpg', itemName: 'FUR', itemColor: 'shakerato' },
+    { id: 6, img: '/img/newarrival/newarrival6.jpg', itemName: 'tobo L', itemColor: 'sand' },
+    { id: 7, img: '/img/newarrival/newarrival7.jpg', itemName: 'tobo bag', itemColor: 'brick' },
+    { id: 8, img: '/img/newarrival/newarrival8.jpg', itemName: 'tobo L', itemColor: 'brick' },
   ];
 
   // 첫 렌더링 시에 isOpaque의 상태를 업데이트해주는 함수
@@ -83,7 +93,7 @@ const MainContainer = () => {
   return (
     <div className="main-container">
       <div className="main-img" ref={imageRef}>
-        <Image src="/img/brandstory2.png" alt="mainImg" fill style={{ objectFit: 'cover' }} />
+        <Image src="/img/brandstory/brandstory2.png" alt="mainImg" fill style={{ objectFit: 'cover' }} />
       </div>
 
       <MainProductList MainProducts={BestProducts} category="Best" isSlider={true} />
@@ -91,7 +101,7 @@ const MainContainer = () => {
 
       <div className="lookBook-wrapper">
         <div className="lookBook-banner-img">
-          <Image src="/img/brandstory4.png" alt="lookBookImg" fill style={{ objectFit: 'cover' }} priority />
+          <Image src="/img/brandstory/brandstory4.png" alt="lookBookImg" fill style={{ objectFit: 'cover' }} priority />
         </div>
         <button onClick={handleClickLookBook}>LOOK BOOK</button>
       </div>
