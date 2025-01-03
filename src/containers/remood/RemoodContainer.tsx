@@ -5,46 +5,46 @@ import NewArrivalList from '@/components/card/newArrival/NewArrivalList';
  */
 const RemoodContainer = () => {
   // 임시 데이터
-  const ItemData = [
-    { id: 1, img: '/img/remood/remood1.jpg', itemName: 'remood L', itemColor: 'low gray', itemPrice: '460,000' },
-    { id: 2, img: '/img/remood/remood2.jpg', itemName: 'remood L', itemColor: 'black', itemPrice: '460,000' },
-    { id: 3, img: '/img/remood/remood3.jpg', itemName: 'remood L', itemColor: 'deep pink', itemPrice: '460,000' },
-    { id: 4, img: '/img/remood/remood4.jpg', itemName: 'remood L', itemColor: 'beige', itemPrice: '460,000' },
-    { id: 5, img: '/img/remood/remood5.jpg', itemName: 'remood L', itemColor: 'brown', itemPrice: '460,000' },
-    { id: 6, img: '/img/remood/remood6.jpg', itemName: 'remood L', itemColor: 'silver', itemPrice: '460,000' },
+  const products = [
+    { id: 1, image_url: '/img/remood/remood1.jpg', name: 'remood L', color: 'low gray', price: 460000 },
+    { id: 2, image_url: '/img/remood/remood2.jpg', name: 'remood L', color: 'black', price: 460000 },
+    { id: 3, image_url: '/img/remood/remood3.jpg', name: 'remood L', color: 'deep pink', price: 460000 },
+    { id: 4, image_url: '/img/remood/remood4.jpg', name: 'remood L', color: 'beige', price: 460000 },
+    { id: 5, image_url: '/img/remood/remood5.jpg', name: 'remood L', color: 'brown', price: 460000 },
+    { id: 6, image_url: '/img/remood/remood6.jpg', name: 'remood L', color: 'silver', price: 460000 },
     {
       id: 7,
-      img: '/img/remood/remood7.jpg',
-      itemName: 'remood mini',
-      itemColor: 'champagne gold',
-      itemPrice: '290,000',
+      image_url: '/img/remood/remood7.jpg',
+      name: 'remood mini',
+      color: 'champagne gold',
+      price: 290000,
     },
-    { id: 8, img: '/img/remood/remood8.jpg', itemName: 'remood mini', itemColor: 'black', itemPrice: '260,000' },
-    { id: 9, img: '/img/remood/remood9.jpg', itemName: 'remood mini', itemColor: 'deep pink', itemPrice: '260,000' },
+    { id: 8, image_url: '/img/remood/remood8.jpg', name: 'remood mini', color: 'black', price: 260000 },
+    { id: 9, image_url: '/img/remood/remood9.jpg', name: 'remood mini', color: 'deep pink', price: 260000 },
     {
       id: 10,
-      img: '/img/remood/remood10.jpg',
-      itemName: 'remood mini',
-      itemColor: 'silver',
-      itemPrice: '260,000',
+      image_url: '/img/remood/remood10.jpg',
+      name: 'remood mini',
+      color: 'silver',
+      price: 260000,
     },
     {
       id: 11,
-      img: '/img/remood/remood11.jpg',
-      itemName: '3 way remood M',
-      itemColor: 'deep pink',
-      itemPrice: '340,000',
+      image_url: '/img/remood/remood11.jpg',
+      name: '3 way remood M',
+      color: 'deep pink',
+      price: 340000,
     },
-    { id: 12, img: '/img/remood/remood12.jpg', itemName: '3 way remood M', itemColor: 'brown', itemPrice: '340,000' },
-    { id: 13, img: '/img/remood/remood13.jpg', itemName: '3 way remood M', itemColor: 'beige', itemPrice: '340,000' },
-    { id: 14, img: '/img/remood/remood14.jpg', itemName: '3 way remood M', itemColor: 'white', itemPrice: '340,000' },
-    { id: 15, img: '/img/remood/remood15.jpg', itemName: 'remood mini', itemColor: 'brown', itemPrice: '260,000' },
-    { id: 16, img: '/img/remood/remood16.jpg', itemName: '3 way remood M', itemColor: 'black', itemPrice: '340,000' },
+    { id: 12, image_url: '/img/remood/remood12.jpg', name: '3 way remood M', color: 'brown', price: 340000 },
+    { id: 13, image_url: '/img/remood/remood13.jpg', name: '3 way remood M', color: 'beige', price: 340000 },
+    { id: 14, image_url: '/img/remood/remood14.jpg', name: '3 way remood M', color: 'white', price: 340000 },
+    { id: 15, image_url: '/img/remood/remood15.jpg', name: 'remood mini', color: 'brown', price: 260000 },
+    { id: 16, image_url: '/img/remood/remood16.jpg', name: '3 way remood M', color: 'black', price: 340000 },
   ];
 
   return (
     <div>
-      <NewArrivalList ItemData={ItemData} />
+      <NewArrivalList products={products} />
     </div>
   );
 };

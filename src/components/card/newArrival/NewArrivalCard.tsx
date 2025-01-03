@@ -29,7 +29,7 @@ const NewArrivalCard = ({ img, itemName, itemColor, itemPrice }: INewArrivalCard
       <div className="item-info">
         <div className="name">{itemName}</div>
         {itemColor && <div className="color">{itemColor}</div>}
-        <div className="price">{itemPrice}</div>
+        <div className="price">{itemPrice.toLocaleString('ko-KR')}</div>
       </div>
     </div>
   );

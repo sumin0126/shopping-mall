@@ -1,10 +1,10 @@
 import LayoutContainer from '@/containers/layout/LayoutContainer';
-import LookBookContainer from '@/containers/lookBook/LookBookContainer';
+import MinimalContainer from '@/containers/minimal/MinimalContainer';
 
 const index = () => {
   return (
     <LayoutContainer>
-      <LookBookContainer />
+      <MinimalContainer />
     </LayoutContainer>
   );
 };
