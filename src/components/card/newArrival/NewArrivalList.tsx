@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -41,6 +41,11 @@ const NewArrivalList = ({ products }: INewArrivalListProps) => {
       setCurrentPage(currentPage + 1);
     }
   };
+
+  // 페이지네이션에서 페이지 이동 시 화면 상단으로 스크롤해주는 함수
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
 
   // totalPages의 길이만큼 빈배열 생성
   const pages = Array.from({ length: totalPages });

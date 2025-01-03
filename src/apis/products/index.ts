@@ -7,4 +7,8 @@ export const productApi = {
   getProducts: (params?: IProductRequest) => {
     return axios.get<IProductResponse>('http://43.201.96.112/products', { params }).then(res => res.data);
   },
+
+  getNewProducts: (params?: IProductRequest) => {
+    return axios.get<IProductResponse>('http://43.201.96.112/products/new', { params }).then(res => res.data);
+  },
 };
