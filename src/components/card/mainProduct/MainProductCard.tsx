@@ -3,7 +3,7 @@ import Image from 'next/image';
 interface IMainProductCardProps {
   img: string;
   itemName: string;
-  itemColor: string;
+  itemColor?: string;
 }
 
 /**
