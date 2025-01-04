@@ -1,56 +1,66 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Image from 'next/image';
 import router from 'next/router';
 
 import { useRecoilState } from 'recoil';
 
+import { productApi } from '@/apis/products';
 import MainProductList from '@/components/card/mainProduct/MainProductList';
 import { PATHNAME } from '@/constants/pathname';
 import { headerOpaqueState } from '@/stores/header';
+
+import type { IProductResponse } from '@/apis/products/type';
 
 /**
  * @description 메인 컨테이너
  */
 const MainContainer = () => {
   const [, setIsOpaque] = useRecoilState(headerOpaqueState);
+  const [products, setProducts] = useState<IProductResponse>();
 
   const imageRef = useRef<HTMLDivElement>(null);
 
-  // 임시 데이터
-  const BestProducts = [
-    { id: 1, img: '/img/bestItem/bestItem.png', itemName: 'FUR', itemColor: 'cappuccino' },
-    { id: 2, img: '/img/bestItem/bestItem2.png', itemName: 'FUR', itemColor: 'shakerato' },
-    { id: 3, img: '/img/bestItem/bestItem3.png', itemName: 'clo pouch keyring', itemColor: 'wine' },
-    { id: 4, img: '/img/bestItem/bestItem4.png', itemName: 'clo soft', itemColor: 'black bell' },
-  ];
+  useEffect(() => {
+    productApi.getBestProducts().then(res => {
+      setProducts(res);
+    });
+  }, []);
 
   // 임시 데이터
-  const NewProducts = [
-    { id: 1, img: '/img/newarrival/newarrival.jpg', itemName: 'FUR', itemColor: 'cappuccino' },
-    {
-      id: 2,
-      img: '/img/newarrival/newarrival2.jpg',
-      itemName: 'FUR Large',
-      itemColor: 'shakerato (LIMITED)',
-    },
-    {
-      id: 3,
-      img: '/img/newarrival/newarrival3.jpg',
-      itemName: 'clo circle',
-      itemColor: 'snow blue (LIMITED)',
-    },
-    {
-      id: 4,
-      img: '/img/newarrival/newarrival4.jpg',
-      itemName: 'clo circle',
-      itemColor: 'butter cream (LIMITED)',
-    },
-    { id: 5, img: '/img/newarrival/newarrival5.jpg', itemName: 'FUR', itemColor: 'shakerato' },
-    { id: 6, img: '/img/newarrival/newarrival6.jpg', itemName: 'tobo L', itemColor: 'sand' },
-    { id: 7, img: '/img/newarrival/newarrival7.jpg', itemName: 'tobo bag', itemColor: 'brick' },
-    { id: 8, img: '/img/newarrival/newarrival8.jpg', itemName: 'tobo L', itemColor: 'brick' },
-  ];
+  // const BestProducts = [
+  //   { id: 1, img: '/img/bestItem/bestItem.png', itemName: 'FUR', itemColor: 'cappuccino' },
+  //   { id: 2, img: '/img/bestItem/bestItem2.png', itemName: 'FUR', itemColor: 'shakerato' },
+  //   { id: 3, img: '/img/bestItem/bestItem3.png', itemName: 'clo pouch keyring', itemColor: 'wine' },
+  //   { id: 4, img: '/img/bestItem/bestItem4.png', itemName: 'clo soft', itemColor: 'black bell' },
+  // ];
+
+  // 임시 데이터
+  // const NewProducts = [
+  //   { id: 1, img: '/img/newarrival/newarrival.jpg', itemName: 'FUR', itemColor: 'cappuccino' },
+  //   {
+  //     id: 2,
+  //     img: '/img/newarrival/newarrival2.jpg',
+  //     itemName: 'FUR Large',
+  //     itemColor: 'shakerato (LIMITED)',
+  //   },
+  //   {
+  //     id: 3,
+  //     img: '/img/newarrival/newarrival3.jpg',
+  //     itemName: 'clo circle',
+  //     itemColor: 'snow blue (LIMITED)',
+  //   },
+  //   {
+  //     id: 4,
+  //     img: '/img/newarrival/newarrival4.jpg',
+  //     itemName: 'clo circle',
+  //     itemColor: 'butter cream (LIMITED)',
+  //   },
+  //   { id: 5, img: '/img/newarrival/newarrival5.jpg', itemName: 'FUR', itemColor: 'shakerato' },
+  //   { id: 6, img: '/img/newarrival/newarrival6.jpg', itemName: 'tobo L', itemColor: 'sand' },
+  //   { id: 7, img: '/img/newarrival/newarrival7.jpg', itemName: 'tobo bag', itemColor: 'brick' },
+  //   { id: 8, img: '/img/newarrival/newarrival8.jpg', itemName: 'tobo L', itemColor: 'brick' },
+  // ];
 
   // 첫 렌더링 시에 isOpaque의 상태를 업데이트해주는 함수
   useEffect(() => {
@@ -84,14 +94,18 @@ const MainContainer = () => {
     router.push(PATHNAME.LOOKBOOK);
   };
 
+  if (!products || !products.data) {
+    return;
+  }
+
   return (
     <div className="main-container">
       <div className="main-img" ref={imageRef}>
         <Image src="/img/brandstory/brandstory2.png" alt="mainImg" fill style={{ objectFit: 'cover' }} />
       </div>
 
-      <MainProductList MainProducts={BestProducts} category="Best" isSlider={true} />
-      <MainProductList MainProducts={NewProducts} category="New" isSlider={false} />
+      <MainProductList products={products.data} category="Best" isSlider={true} />
+      <MainProductList products={products.data} category="New" isSlider={false} />
 
       <div className="lookBook-wrapper">
         <div className="lookBook-banner-img">

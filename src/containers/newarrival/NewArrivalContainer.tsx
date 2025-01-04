@@ -17,7 +17,7 @@ const NewArrivalContainer = () => {
     });
   }, []);
 
-  if (!products || products.data) {
+  if (!products || !products.data) {
     return;
   }
 

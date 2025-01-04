@@ -1,15 +1,10 @@
 import MainProductCard from '@/components/card/mainProduct/MainProductCard';
 import MainProductSlider from '@/components/card/mainProduct/MainProductSlider';
 
-interface IProduct {
-  id: number;
-  img: string;
-  itemName: string;
-  itemColor: string;
-}
+import type { IProduct } from '@/apis/products/type';
 
 interface IMainProductListProps {
-  MainProducts: IProduct[];
+  products: IProduct[];
   category: string;
   isSlider?: boolean;
 }
@@ -24,21 +19,21 @@ interface IMainProductListProps {
  * @param category - 상품 카테고리
  * @param isSlider - 상품 이미지슬라이더 상태
  */
-const MainProductList = ({ MainProducts, category, isSlider }: IMainProductListProps) => {
+const MainProductList = ({ products, category, isSlider }: IMainProductListProps) => {
   return (
     <div className="product-list-container">
       <p className="category">{category}</p>
 
       <div className="product-list">
         {isSlider ? (
-          <MainProductSlider MainProducts={MainProducts} />
+          <MainProductSlider products={products} />
         ) : (
-          MainProducts.map(product => (
+          products.map(product => (
             <MainProductCard
               key={product.id}
-              img={product.img}
-              itemName={product.itemName}
-              itemColor={product.itemColor}
+              img={product.image_url}
+              itemName={product.name}
+              itemColor={product.color}
             />
           ))
         )}
