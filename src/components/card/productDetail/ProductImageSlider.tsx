@@ -10,7 +10,9 @@ interface IImagesProps {
 }
 
 /**
- * @description 상품 이미지슬라이더 컴포넌트
+ * @description 상품 대표이미지 슬라이더 컴포넌트
+ *
+ * @param images - 대표이미지 URL들을 담은 배열
  */
 const ProductImageSlider = ({ images }: IImagesProps) => {
   const settings = {

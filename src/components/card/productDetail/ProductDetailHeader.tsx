@@ -17,6 +17,8 @@ interface IProductDetailHeaderProps {
 
 /**
  * @description 상품 상세 헤더 컴포넌트
+ *
+ * @param products - 상품 상세 정보
  */
 const ProductDetailHeader = ({ products }: IProductDetailHeaderProps) => {
   return (

@@ -1,37 +1,21 @@
 import Image from 'next/image';
 
-const ProductDetailMain = () => {
+interface IProductDetailMainProps {
+  ProductImage: string[];
+}
+
+/**
+ * @description 상품 메인 이미지 컴포넌트
+ *
+ * @param ProductImage - 이미지 URL들
+ */
+const ProductDetailMain = ({ ProductImage }: IProductDetailMainProps) => {
   return (
     <div className="product-detail-main-container">
       <div className="image-wrapper">
-        <Image
-          src="/img/productdetail/productdetailmain1.jpg"
-          alt="img"
-          width={800}
-          height={1000}
-          style={{ objectFit: 'cover' }}
-        />
-        <Image
-          src="/img/productdetail/productdetailmain1-2.jpg"
-          alt="img"
-          width={800}
-          height={1000}
-          style={{ objectFit: 'cover' }}
-        />
-        <Image
-          src="/img/productdetail/productdetailmain1-3.jpg"
-          alt="img"
-          width={800}
-          height={1000}
-          style={{ objectFit: 'cover' }}
-        />
-        <Image
-          src="/img/productdetail/productdetailmain1-4.jpg"
-          alt="img"
-          width={800}
-          height={1000}
-          style={{ objectFit: 'cover' }}
-        />
+        {ProductImage.map(src => (
+          <Image key={src} src={src} alt="img" width={800} height={1000} style={{ objectFit: 'cover' }} />
+        ))}
       </div>
     </div>
   );
