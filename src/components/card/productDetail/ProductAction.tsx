@@ -1,5 +1,5 @@
 /**
- * @description 상품 상세 버튼 컴포넌트
+ * @description 상품 상세페이지 버튼 컴포넌트
  */
 const ProductAction = () => {
   return (

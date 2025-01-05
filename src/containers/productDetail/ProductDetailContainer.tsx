@@ -1,19 +1,21 @@
 import { useState } from 'react';
 
 import ProductDetailHeader from '@/components/card/productDetail/ProductDetailHeader';
+import ProductDetailInfo from '@/components/card/productDetail/ProductDetailInfo';
+import ProductDetailMain from '@/components/card/productDetail/ProductDetailMain';
 
 /**
  * @description 상품 상세 컨테이너
  */
 const ProductDetailContainer = () => {
-  const [activeButton, setActiveButton] = useState<string | null>(null);
+  const [activeButton, setActiveButton] = useState<string | null>('DETAIL');
 
   // 버튼 클릭 시 버튼의 상태를 업데이트 해주는 함수
   const handleClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     setActiveButton(e.currentTarget.textContent);
   };
 
-  // 임시 데이터
+  // 상품 정보 데이터
   const products = [
     {
       image_url: ['/img/productdetail/productdetail1.jpg', '/img/productdetail/productdetail1-2.jpg'],
@@ -26,10 +28,28 @@ const ProductDetailContainer = () => {
     },
   ];
 
+  // 상품 메인이미지 데이터
+  const ProductImage = [
+    '/img/productdetail/productdetailmain1.jpg',
+    '/img/productdetail/productdetailmain1-2.jpg',
+    '/img/productdetail/productdetailmain1-3.jpg',
+    '/img/productdetail/productdetailmain1-4.jpg',
+  ];
+
+  // 상품 사이즈 데이터
+  const ProductSize = {
+    width: 54,
+    height: 30,
+    strap: 60,
+    weight: 505,
+  };
+
   return (
     <div className="product-detail-container">
+      {/* 상품 정보 */}
       <ProductDetailHeader products={products} />
 
+      {/* 상품 이미지와 정보를 나눠주는 버튼들 */}
       <div className="main-button">
         <button className={`detail ${activeButton === 'DETAIL' ? 'active' : ''}`} onClick={handleClickButton}>
           DETAIL
@@ -38,6 +58,12 @@ const ProductDetailContainer = () => {
           INFO
         </button>
       </div>
+
+      {/* 상품 메인 이미지들 */}
+      {activeButton === 'DETAIL' && <ProductDetailMain ProductImage={ProductImage} />}
+
+      {/* 상품 상세 정보 */}
+      {activeButton === 'INFO' && <ProductDetailInfo ProductSize={ProductSize} />}
     </div>
   );
 };

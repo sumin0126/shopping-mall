@@ -8,10 +8,17 @@ interface IProductInfo {
 
 /**
  * @description 상품 정보 컴포넌트
+ *
+ * @param name - 상품 이름
+ * @param color - 상품 색상
+ * @param price - 상품 가격
+ * @param texture - 상품 소재
+ * @param description - 상품 소개
+ *
  */
 const ProductInfo = ({ name, color, price, texture, description }: IProductInfo) => {
   return (
-    <div className="product-detail-info-container">
+    <div className="product-info-container">
       <div className="name">{name}</div>
       <div className="color">{color}</div>
       <div className="texture">{texture}</div>
