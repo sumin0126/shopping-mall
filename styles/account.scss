@@ -1,0 +1,42 @@
+.account-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 120px 200px;
+
+  .title {
+    font-size: 24px;
+    color: #222;
+    font-weight: 700;
+    text-align: left;
+    width: 70%;
+    margin-bottom: 60px;
+  }
+
+  .form-container {
+    width: 70%;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .name-input-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      input {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #555;
+      }
+    }
+  }
+}
