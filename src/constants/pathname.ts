@@ -1,6 +1,7 @@
 export const PATHNAME = {
   MAIN: '/',
   LOGIN: '/login',
+  ACCOUNT: '/account',
   SHOWROOM: '/showroom',
   BRANDSTORY: '/brandstory',
   LOOKBOOK: '/lookbook',

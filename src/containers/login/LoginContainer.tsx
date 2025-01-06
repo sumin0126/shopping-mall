@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import { useRecoilState } from 'recoil';
 
+import { PATHNAME } from '@/constants/pathname';
 import { headerOpaqueState } from '@/stores/header';
 
 /**
@@ -11,11 +13,17 @@ import { headerOpaqueState } from '@/stores/header';
  */
 const LoginContainer = () => {
   const [isOpaque, setIsOpaque] = useRecoilState(headerOpaqueState);
+  const router = useRouter();
 
   // 첫 렌더링 시에 isOpaque의 상태를 업데이트해주는 함수
   useEffect(() => {
     setIsOpaque(false);
   }, []);
+
+  // 클릭 시 회원가입 페이지로 이동하는 함수
+  const handleClickAccount = () => {
+    router.push(PATHNAME.ACCOUNT);
+  };
 
   return (
     <div className="login-container">
@@ -26,7 +34,9 @@ const LoginContainer = () => {
       <div className="login-wrapper">
         <div className="login-box-header">
           <p className="title">LOGIN</p>
-          <button className="account">CREATE ACCOUNT</button>
+          <button className="account" onClick={handleClickAccount}>
+            CREATE ACCOUNT
+          </button>
         </div>
 
         <div className="login-box-main">
