@@ -6,15 +6,18 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  padding: 120px 200px;
+  padding: 0 200px;
+  margin-bottom: 100px;
 
   .title {
     font-size: 24px;
     color: #222;
     font-weight: 700;
-    text-align: left;
+    text-align: center;
     width: 70%;
-    margin-bottom: 60px;
+    margin-bottom: 100px;
+    margin-top: 200px;
+    font-family: 'Playfair Display';
   }
 
   .form-container {
@@ -26,16 +29,155 @@
       justify-content: center;
       align-items: center;
 
-      .name-input-wrapper {
+      .name-input-wrapper,
+      .email-input-wrapper,
+      .mobil-input-wrapper,
+      .id-input-wrapper,
+      .ps-input-wrapper,
+      .comfirm-ps-input-wrapper {
         width: 100%;
         display: flex;
         flex-direction: column;
+        gap: 20px;
+
+        label {
+          color: #777;
+          font-family: 'Playfair Display';
+        }
+
+        .name-input,
+        .email-input,
+        .id-input,
+        .ps-input,
+        .confirm-ps-input {
+          height: 36px;
+          font-size: 18px;
+          color: #333;
+          margin-bottom: 60px;
+          font-family: 'Open Sans';
+
+          &:focus {
+            outline: none;
+          }
+
+          &::placeholder {
+            color: #c0c0c0;
+            font-weight: 300;
+            font-size: 18px;
+            font-family: 'Open Sans';
+          }
+        }
+
+        .mobile-number-wrapper {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 60px;
+
+          .mobile-first-input,
+          .mobile-mid-input,
+          .mobile-last-input {
+            width: calc(100% - 20px / 3);
+            height: 36px;
+            font-size: 20px;
+            color: #333;
+            font-family: 'Playfair Display';
+            text-align: left;
+            padding-left: 5px;
+            cursor: auto;
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          .mobile-first-input {
+            border: none;
+            border-bottom: 1px solid #555;
+          }
+        }
       }
 
       input {
         width: 100%;
         border: none;
         border-bottom: 1px solid #555;
+      }
+
+      .address-input-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .address-title {
+          color: #777;
+          margin-bottom: 20px;
+          font-family: 'Playfair Display';
+        }
+
+        .postal-code-input {
+          width: 20%;
+          height: 36px;
+          font-size: 20px;
+          color: #333;
+          margin-bottom: 30px;
+
+          &:focus {
+            outline: none;
+          }
+
+          &::placeholder {
+            color: #c0c0c0;
+            font-weight: 300;
+            font-size: 18px;
+            font-family: 'Open Sans';
+          }
+        }
+
+        .basic-address-input {
+          height: 36px;
+          font-size: 20px;
+          color: #333;
+          margin-bottom: 60px;
+
+          &:focus {
+            outline: none;
+          }
+
+          &::placeholder {
+            color: #c0c0c0;
+            font-weight: 300;
+            font-size: 18px;
+            font-family: 'Open Sans';
+          }
+        }
+      }
+    }
+  }
+
+  .button-wrapper {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      width: 50%;
+      border: 1px solid #222;
+      border-radius: 1.3rem;
+      height: 44px;
+      background-color: transparent;
+      cursor: pointer;
+      margin-bottom: 0.625rem;
+      font-size: 14px;
+      transition: background-color 0.8s ease;
+      font-family: 'Open Sans';
+
+      &:hover {
+        background-color: #222;
+        color: #fff;
+        border: none;
       }
     }
   }
