@@ -19,6 +19,11 @@ const Footer = () => {
     router.push(PATHNAME.SHOWROOM);
   };
 
+  // 클릭 시 회원가입 페이지로 이동하는 함수
+  const handleClickAccount = () => {
+    router.push(PATHNAME.ACCOUNT);
+  };
+
   // 버튼에 들어갈 쇼룸 title들
   const buttonTitles = ['HANNAM SHOWROOM', 'SEONGSU SHOWROOM', 'SHINSEGAE SHOWROOM', 'TOKYO SHOWROOM'];
 
@@ -27,7 +32,7 @@ const Footer = () => {
       <div className="footer-left">
         <p>CUSTOMER CARE</p>
         <ul>
-          <li>account</li>
+          <li onClick={handleClickAccount}>account</li>
           <li>notice</li>
           <li>FAQ</li>
           <li>terms of use</li>

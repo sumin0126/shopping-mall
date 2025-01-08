@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useRouter } from 'next/router';
 
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import { useRecoilValue } from 'recoil';
 
@@ -17,6 +19,8 @@ const Header = () => {
   const [countItemsInCart] = useState(0);
   const [isOpenShopNavBar, setIsOpenShopNavBar] = useState(false);
   const [isOpenAboutNavBar, setIsOpenAboutNavBar] = useState(false);
+  const [isOpenSearch, setIsOpenSearch] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const router = useRouter();
   const isOpaque = useRecoilValue(headerOpaqueState);
@@ -56,6 +60,23 @@ const Header = () => {
     setIsOpenAboutNavBar(false);
   };
 
+  // 클리 시 search bar 열어주는 함수
+  const handleClickSearch = () => {
+    setIsOpenSearch(true);
+  };
+
+  // 클릭 시 search bar 닫아주는 함수
+  const closeSearchBar = () => {
+    setIsOpenSearch(false);
+  };
+
+  // 검색창이 열릴때마다 검색창에 커서를 포커스해주는 함수
+  useEffect(() => {
+    if (isOpenSearch) {
+      searchInputRef.current?.focus();
+    }
+  }, [isOpenSearch]);
+
   // 상품을 찜하면 장바구니의 수가 + 1 늘어나는 함수
 
   return (
@@ -83,7 +104,22 @@ const Header = () => {
       </div>
 
       <div className="main-header-right">
-        <button className="search">SEARCH</button>
+        {isOpenSearch || (
+          <button className="search" onClick={handleClickSearch}>
+            SEARCH
+          </button>
+        )}
+
+        {isOpenSearch && (
+          <div className="search-bar-container">
+            <div className={`search-bar-overlay ${isOpenSearch ? 'show' : ''}`} onClick={closeSearchBar}></div>
+            <div className={`search-bar-wrapper ${isOpenSearch ? 'open' : ''}`}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
+              <input type="text" className="search-input" ref={searchInputRef} placeholder="검색어를 입력하세요..." />
+            </div>
+          </div>
+        )}
+
         <button className="cart">CART({countItemsInCart})</button>
         <button className="login" onClick={handleClickLogin}>
           LOGIN
@@ -91,7 +127,7 @@ const Header = () => {
       </div>
 
       <ShopNavbar isOpenShopNavBar={isOpenShopNavBar} closeShopNavBar={closeShopNavBar} />
-      {isOpenAboutNavBar && <AboutNavbar isOpenAboutNavBar={isOpenAboutNavBar} closeAboutNavBar={closeAboutNavBar} />}
+      <AboutNavbar isOpenAboutNavBar={isOpenAboutNavBar} closeAboutNavBar={closeAboutNavBar} />
     </div>
   );
 };

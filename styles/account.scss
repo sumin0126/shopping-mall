@@ -23,6 +23,11 @@
   .form-container {
     width: 70%;
 
+    .effect {
+      font-weight: 700;
+      color: rgb(0, 134, 229);
+    }
+
     form {
       display: flex;
       flex-direction: column;
