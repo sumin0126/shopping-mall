@@ -1,5 +1,8 @@
 import NewArrivalList from '@/components/card/newArrival/NewArrivalList';
 
+/**
+ * @description 악세서리 컨테이너
+ */
 const AccessoryContainer = () => {
   // 임시 데이터
   const products = [
