@@ -104,7 +104,7 @@ const Header = () => {
       </div>
 
       <div className="main-header-right">
-        {isOpenSearch || (
+        {!isOpenSearch && (
           <button className="search" onClick={handleClickSearch}>
             SEARCH
           </button>

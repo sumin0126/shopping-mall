@@ -1,10 +1,10 @@
-import AccountContainer from '@/containers/account/AccountContainer';
 import LayoutContainer from '@/containers/layout/LayoutContainer';
+import SignupContainer from '@/containers/signup/SignupContainer';
 
 const index = () => {
   return (
     <LayoutContainer>
-      <AccountContainer />
+      <SignupContainer />
     </LayoutContainer>
   );
 };
