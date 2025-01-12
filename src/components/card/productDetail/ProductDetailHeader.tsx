@@ -12,26 +12,26 @@ interface IProps {
 }
 
 interface IProductDetailHeaderProps {
-  products: IProps[];
+  product: IProps;
 }
 
 /**
  * @description 상품 상세 헤더 컴포넌트
  *
- * @param products - 상품 상세 정보
+ * @param product - 상품 상세 정보
  */
-const ProductDetailHeader = ({ products }: IProductDetailHeaderProps) => {
+const ProductDetailHeader = ({ product }: IProductDetailHeaderProps) => {
   return (
     <div className="product-detail-header">
-      <ProductImageSlider images={products[0].image_url} />
+      <ProductImageSlider images={product.image_url} />
 
       <div className="info-action-wrapper">
         <ProductInfo
-          name={products[0].name}
-          color={products[0].color}
-          price={products[0].price}
-          texture={products[0].texture}
-          description={products[0].description}
+          name={product.name}
+          color={product.color}
+          price={product.price}
+          texture={product.texture}
+          description={product.description}
         />
         <ProductAction />
       </div>

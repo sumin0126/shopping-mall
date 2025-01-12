@@ -3,7 +3,7 @@ import type { PRODUCT_CATEGORY } from '@/constants/products';
 export type TProductCategory = (typeof PRODUCT_CATEGORY)[keyof typeof PRODUCT_CATEGORY];
 
 /** 전체 상품 목록 조회 (카테고리 필터링 가능) Request */
-export interface IProductRequest {
+export interface IProductsRequest {
   category?: TProductCategory;
 }
 
@@ -13,6 +13,7 @@ export interface IProduct {
   name: string;
   price: number;
   image_url: string;
+  texture?: string;
   category_name?: TProductCategory;
   description?: string;
   color?: string;
@@ -23,4 +24,9 @@ export interface IProduct {
 /** 전체 상품 목록 조회 (카테고리 필터링 가능) Response */
 export interface IProductResponse {
   data: IProduct[];
+}
+
+/** 단일 상품 */
+export interface IProductRequest {
+  id: number;
 }

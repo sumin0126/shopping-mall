@@ -1,32 +1,42 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import { useParams } from 'next/navigation';
+
+import { productApi } from '@/apis/products';
 import ProductDetailHeader from '@/components/card/productDetail/ProductDetailHeader';
 import ProductDetailInfo from '@/components/card/productDetail/ProductDetailInfo';
 import ProductDetailMain from '@/components/card/productDetail/ProductDetailMain';
+
+import type { IProduct } from '@/apis/products/type';
+
+// 버튼 상태 텍스트
+const BUTTON_STATES = {
+  DETAIL: 'DETAIL',
+  INFO: 'INFO',
+};
 
 /**
  * @description 상품 상세 컨테이너
  */
 const ProductDetailContainer = () => {
-  const [activeButton, setActiveButton] = useState<string | null>('DETAIL');
+  const [product, setProduct] = useState<IProduct | null>(null);
+  const { id } = useParams();
+  const [activeButton, setActiveButton] = useState<string | null>(BUTTON_STATES.DETAIL);
+
+  // 서버로부터 해당 id의 데이터 가져오는 함수
+  useEffect(() => {
+    if (id) {
+      const numberId = Number(id); // id를 숫자로 변환
+      productApi.getProduct({ id: numberId }).then(res => {
+        setProduct(res);
+      });
+    }
+  }, [id]);
 
   // 버튼 클릭 시 버튼의 상태를 업데이트 해주는 함수
-  const handleClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setActiveButton(e.currentTarget.textContent);
+  const handleClickButton = (button: string) => {
+    setActiveButton(button);
   };
-
-  // 상품 정보 데이터
-  const products = [
-    {
-      image_url: ['/img/productdetail/productdetail1.jpg', '/img/productdetail/productdetail1-2.jpg'],
-      name: 'FUR LARGE',
-      color: 'SHAKERATO (LIMITED)',
-      price: 95000,
-      texture: 'ECO FUR',
-      description:
-        '미닛뮤트 퍼 라지 샤케라또 컬러입니다. 고중량 프리미엄 에코 퍼로 풍성함과 자연스러운 투톤이 매력적인 원단입니다. 타 원단에 비해 털빠짐이 적어 의류 소재에 구애받지 않고 편하게 사용 가능합니다. 군더더기 없이 미니멀한 디자인으로 노트북 포함 많은 짐이 들어가며, 추운 겨울 포근함을 극대화 시켜줍니다.',
-    },
-  ];
 
   // 상품 메인이미지 데이터
   const ProductImage = [
@@ -44,17 +54,37 @@ const ProductDetailContainer = () => {
     weight: 505,
   };
 
+  if (!product) {
+    return;
+  }
+
+  // IProps 타입으로 변환
+  const productData = {
+    image_url: Array.isArray(product.image_url) ? product.image_url : [product.image_url || ''],
+    name: product.name || '',
+    color: product.color || '',
+    price: product.price || 0,
+    texture: product.texture || '',
+    description: product.description || '',
+  };
+
   return (
     <div className="product-detail-container">
       {/* 상품 정보 */}
-      <ProductDetailHeader products={products} />
+      <ProductDetailHeader product={productData} />
 
       {/* 상품 이미지와 정보를 나눠주는 버튼들 */}
       <div className="main-button">
-        <button className={`detail ${activeButton === 'DETAIL' ? 'active' : ''}`} onClick={handleClickButton}>
+        <button
+          className={`detail ${activeButton === BUTTON_STATES.DETAIL ? 'active' : ''}`}
+          onClick={() => handleClickButton(BUTTON_STATES.DETAIL)}
+        >
           DETAIL
         </button>
-        <button className={`info ${activeButton === 'INFO' ? 'active' : ''}`} onClick={handleClickButton}>
+        <button
+          className={`info ${activeButton === BUTTON_STATES.INFO ? 'active' : ''}`}
+          onClick={() => handleClickButton(BUTTON_STATES.INFO)}
+        >
           INFO
         </button>
       </div>
