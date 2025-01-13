@@ -104,7 +104,7 @@
         .postal-code-input {
           width: 20%;
           height: 36px;
-          font-size: 20px;
+          font-size: 18px;
           color: #333;
           margin-bottom: 30px;
 
@@ -122,7 +122,7 @@
 
         .basic-address-input {
           height: 36px;
-          font-size: 20px;
+          font-size: 18px;
           color: #333;
           margin-bottom: 60px;
 
@@ -136,6 +136,17 @@
             font-size: 16px;
             font-family: 'Open Sans';
           }
+        }
+
+        .btn-postcode-search {
+          width: 100px;
+          height: 30px;
+          border-radius: 6px;
+          border: 1px solid #999;
+          margin-left: 5px;
+          cursor: pointer;
+          color: #555;
+          background-color: #f5f5f5;
         }
       }
     }

@@ -22,8 +22,8 @@ const RemoodContainer = () => {
       });
   }, []);
 
-  if (!products || !products.data) {
-    return;
+  if (!products || !products.data || products.data.length === 0) {
+    return <p>해당 데이터가 없습니다</p>;
   }
 
   // 임시 데이터
@@ -65,9 +65,9 @@ const RemoodContainer = () => {
   // ];
 
   return (
-    <div>
+    <>
       <NewArrivalList products={products.data} />
-    </div>
+    </>
   );
 };
 
