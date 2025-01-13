@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'; // react-hook-form 라이브러리에서 useForm 훅 가져오기
 
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 
 import { userApi } from '@/apis/users';
 import { PATHNAME } from '@/constants/pathname';
@@ -15,11 +16,12 @@ interface IForm extends ICreateUserRequest {}
 const SignupContainer = () => {
   const router = useRouter();
 
-  // useFrom 훅을 호출하여 여러 메서드 속성을 가져옴
+  // useFrom 훅 초기화
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<IForm>({ mode: 'onSubmit', shouldFocusError: true });
 
@@ -37,10 +39,28 @@ const SignupContainer = () => {
     });
   };
 
+  // 우편번호 찾기 버튼 클릭 후, 찾은 주소를 상태에 업데이트 해주는 함수
+  const searchAddress = () => {
+    if (window.daum && window.daum.Postcode) {
+      new window.daum.Postcode({
+        oncomplete: data => {
+          setValue('postCode', data.zonecode);
+          setValue('address', data.address);
+        },
+      }).open();
+    }
+  };
+
   return (
     <div className="account-container">
-      <p className="title">JOIN</p>
+      {/* 카카오 우편번호 API 스크립트 로드 */}
+      <Script
+        src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
+        strategy="beforeInteractive"
+        onError={() => console.error('카카오 우편번호 API 로드 실패')}
+      />
 
+      <p className="title">JOIN</p>
       <div className="form-container">
         {/* handleSubmit의 첫번째 인자는 폼 검증 성공 시 실행, 두번째 인자는 폼 검증 실패 시 실행 */}
         <form onSubmit={handleSubmit(handleSubmitForm)}>
@@ -74,6 +94,7 @@ const SignupContainer = () => {
                 },
               })}
               className="email-input"
+              placeholder="예시) email@test.com"
             />
             {errors.email && <p className="email-error-message">{errors.email.message}</p>}
           </div>
@@ -93,16 +114,35 @@ const SignupContainer = () => {
               })}
               type="text"
               className="phoneNumber-input"
-              placeholder="예시) 010-1234-5678"
+              placeholder="예시) 01012345678"
             />
             {errors.phoneNumber && <p className="phoneNumber-error-message">{errors.phoneNumber.message}</p>}
           </div>
 
           {/* 주소 */}
           <div className="address-input-wrapper">
-            <p className="address-title">ADDRESS</p>
-            <input {...register('postCode')} type="text" className="postal-code-input" placeholder="(우편번호)" />
-            <input {...register('address')} type="text" className="basic-address-input" placeholder="(기본주소)" />
+            <label className="address-title">ADDRESS</label>
+            {/* 우편번호 */}
+            <div className="address-wrapper">
+              <input
+                {...register('postCode')}
+                type="text"
+                className="postal-code-input"
+                placeholder="우편번호"
+                readOnly
+              />
+              <button type="button" className="btn-postcode-search" onClick={searchAddress}>
+                우편번호 찾기
+              </button>
+
+              {/* 기본주소 */}
+              <input
+                {...register('address')}
+                type="text"
+                className="basic-address-input"
+                placeholder="기본주소 및 추가주소 입력"
+              />
+            </div>
           </div>
 
           {/* 아이디 */}
