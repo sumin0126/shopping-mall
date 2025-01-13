@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 import { productApi } from '@/apis/products';
 import ProductDetailHeader from '@/components/card/productDetail/ProductDetailHeader';
@@ -20,8 +20,11 @@ const BUTTON_STATES = {
  */
 const ProductDetailContainer = () => {
   const [product, setProduct] = useState<IProduct | null>(null);
-  const { id } = useParams();
   const [activeButton, setActiveButton] = useState<string | null>(BUTTON_STATES.DETAIL);
+
+  const router = useRouter();
+
+  const { id } = router.query;
 
   // 서버로부터 해당 id의 데이터 가져오는 함수
   useEffect(() => {
@@ -60,7 +63,7 @@ const ProductDetailContainer = () => {
 
   // IProps 타입으로 변환
   const productData = {
-    image_url: Array.isArray(product.image_url) ? product.image_url : [product.image_url || ''],
+    imageUrl: Array.isArray(product.imageUrl) ? product.imageUrl : [product.imageUrl || ''],
     name: product.name || '',
     color: product.color || '',
     price: product.price || 0,

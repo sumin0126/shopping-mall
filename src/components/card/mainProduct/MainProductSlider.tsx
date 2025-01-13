@@ -34,7 +34,7 @@ const MainProductSlider = ({ products }: IMainProductSliderProps) => {
         {products.map(product => (
           <div key={product.id} className="slider-card-wrapper">
             <div className="img-box">
-              <Image src={product.image_url} alt="itemImg" width={300} height={300} style={{ objectFit: 'cover' }} />
+              <Image src={product.imageUrl} alt="itemImg" width={300} height={300} style={{ objectFit: 'cover' }} />
             </div>
             <div className="product-info">
               <p className="product-name">{product.name}</p>

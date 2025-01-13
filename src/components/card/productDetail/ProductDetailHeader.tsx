@@ -3,7 +3,7 @@ import ProductImageSlider from '@/components/card/productDetail/ProductImageSlid
 import ProductInfo from '@/components/card/productDetail/ProductInfo';
 
 interface IProps {
-  image_url: string[];
+  imageUrl: string[];
   name: string;
   color: string;
   price: number;
@@ -23,7 +23,7 @@ interface IProductDetailHeaderProps {
 const ProductDetailHeader = ({ product }: IProductDetailHeaderProps) => {
   return (
     <div className="product-detail-header">
-      <ProductImageSlider images={product.image_url} />
+      <ProductImageSlider images={product.imageUrl} />
 
       <div className="info-action-wrapper">
         <ProductInfo

@@ -1,20 +1,20 @@
 import { useForm } from 'react-hook-form'; // react-hook-form 라이브러리에서 useForm 훅 가져오기
 
-interface IForm {
-  name: string;
-  email: string;
-  mobile: string;
-  postalCode: string;
-  basicAddress: string;
-  id: string;
-  password: string;
-  confirmPassword: string;
-}
+import { useRouter } from 'next/router';
+
+import { userApi } from '@/apis/users';
+import { PATHNAME } from '@/constants/pathname';
+
+import type { ICreateUserRequest } from '@/apis/users/type';
+
+interface IForm extends ICreateUserRequest {}
 
 /**
  * @description 회원가입 컨테이너
  */
 const SignupContainer = () => {
+  const router = useRouter();
+
   // useFrom 훅을 호출하여 여러 메서드 속성을 가져옴
   const {
     register,
@@ -28,7 +28,14 @@ const SignupContainer = () => {
   const password = watch('password');
 
   // form 제출 시 실행될 함수
-  const handleSubmitForm = () => {};
+  const handleSubmitForm = (data: ICreateUserRequest) => {
+    userApi.postUserSignup(data).then(res => {
+      if (res.status === 201) {
+        // modal
+        router.push(PATHNAME.MAIN);
+      }
+    });
+  };
 
   return (
     <div className="account-container">
@@ -72,30 +79,30 @@ const SignupContainer = () => {
           </div>
 
           {/* 휴대폰 번호 */}
-          <div className="mobile-input-wrapper">
-            <label htmlFor="mobile">
+          <div className="phoneNumber-input-wrapper">
+            <label htmlFor="phoneNumber">
               MOBILE <span className="effect">*</span>
             </label>
             <input
-              {...register('mobile', {
+              {...register('phoneNumber', {
                 required: '휴대폰번호는 필수 입력사항입니다.',
                 pattern: {
-                  value: /^(010|011|016|017|018|019)-\d{3,4}-\d{3,4}$/,
-                  message: '휴대폰번호는 010-1234-5678 형식으로 입력해야 합니다.',
+                  value: /^(010|011|016|017|018|019)\d{3,4}\d{3,4}$/,
+                  message: '휴대폰번호는 01012345678 형식으로 입력해야 합니다.',
                 },
               })}
               type="text"
-              className="mobile-input"
+              className="phoneNumber-input"
               placeholder="예시) 010-1234-5678"
             />
-            {errors.mobile && <p className="mobile-error-message">{errors.mobile.message}</p>}
+            {errors.phoneNumber && <p className="phoneNumber-error-message">{errors.phoneNumber.message}</p>}
           </div>
 
           {/* 주소 */}
           <div className="address-input-wrapper">
             <p className="address-title">ADDRESS</p>
-            <input {...register('postalCode')} type="text" className="postal-code-input" placeholder="(우편번호)" />
-            <input {...register('basicAddress')} type="text" className="basic-address-input" placeholder="(기본주소)" />
+            <input {...register('postCode')} type="text" className="postal-code-input" placeholder="(우편번호)" />
+            <input {...register('address')} type="text" className="basic-address-input" placeholder="(기본주소)" />
           </div>
 
           {/* 아이디 */}
@@ -104,7 +111,7 @@ const SignupContainer = () => {
               ID <span className="effect">*</span>
             </label>
             <input
-              {...register('id', {
+              {...register('userId', {
                 required: '아이디는 필수 입력사항입니다',
                 pattern: {
                   value: /^(?=.*[a-z])(?=.*[0-9])[a-z0-9]{4,16}$/,
@@ -115,7 +122,7 @@ const SignupContainer = () => {
               className="id-input"
               placeholder="영문 소문자와 숫자로 이루어진 4~16자이어야 합니다."
             />
-            {errors.id && <p className="id-error-message">{errors.id.message}</p>}
+            {errors.userId && <p className="id-error-message">{errors.userId.message}</p>}
           </div>
 
           {/* 비밀번호 */}
@@ -147,7 +154,9 @@ const SignupContainer = () => {
               {...register('confirmPassword', {
                 required: '비밀번호는 필수 입력사항입니다',
                 validate: value => {
-                  return value !== password && '비밀번호가 다릅니다.';
+                  if (value !== password) {
+                    return '비밀번호가 다릅니다.';
+                  }
                 },
               })}
               type="password"

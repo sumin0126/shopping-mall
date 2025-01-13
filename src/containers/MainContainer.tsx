@@ -17,13 +17,22 @@ import type { IProductResponse } from '@/apis/products/type';
  */
 const MainContainer = () => {
   const [, setIsOpaque] = useRecoilState(headerOpaqueState);
-  const [products, setProducts] = useState<IProductResponse>();
+  const [bestProducts, setBestProducts] = useState<IProductResponse>();
+  const [newProducts, setNewProducts] = useState<IProductResponse>();
 
   const imageRef = useRef<HTMLDivElement>(null);
 
+  // api 호출을 통해 best 상품 데이터만 가져오는 함수
   useEffect(() => {
     productApi.getBestProducts().then(res => {
-      setProducts(res);
+      setBestProducts(res);
+    });
+  }, []);
+
+  // api 호출을 통해 new 상품 데이터만 가져오는 함수
+  useEffect(() => {
+    productApi.getNewProducts().then(res => {
+      setNewProducts(res);
     });
   }, []);
 
@@ -94,7 +103,11 @@ const MainContainer = () => {
     router.push(PATHNAME.LOOKBOOK);
   };
 
-  if (!products || !products.data) {
+  if (!bestProducts || !bestProducts.data) {
+    return;
+  }
+
+  if (!newProducts || !newProducts.data) {
     return;
   }
 
@@ -104,8 +117,8 @@ const MainContainer = () => {
         <Image src="/img/brandstory/brandstory2.png" alt="mainImg" fill style={{ objectFit: 'cover' }} />
       </div>
 
-      <MainProductList products={products.data} category="Best" isSlider={true} />
-      <MainProductList products={products.data} category="New" isSlider={false} />
+      <MainProductList products={bestProducts.data} category="Best" isSlider={true} />
+      <MainProductList products={newProducts.data} category="New" isSlider={false} />
 
       <div className="lookBook-wrapper">
         <div className="lookBook-banner-img">

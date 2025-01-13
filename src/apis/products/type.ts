@@ -4,7 +4,7 @@ export type TProductCategory = (typeof PRODUCT_CATEGORY)[keyof typeof PRODUCT_CA
 
 /** 전체 상품 목록 조회 (카테고리 필터링 가능) Request */
 export interface IProductsRequest {
-  category?: TProductCategory;
+  categoryCode?: TProductCategory;
 }
 
 export interface IProduct {
@@ -12,13 +12,12 @@ export interface IProduct {
   id: number;
   name: string;
   price: number;
-  image_url: string;
-  texture?: string;
-  category_name?: TProductCategory;
+  imageUrl: string;
+  category: TProductCategory;
+  isNew: boolean;
+  isBest: boolean;
   description?: string;
   color?: string;
-  is_new?: boolean;
-  is_best?: boolean;
 }
 
 /** 전체 상품 목록 조회 (카테고리 필터링 가능) Response */
