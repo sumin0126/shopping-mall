@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -9,13 +10,14 @@ import { userApi } from '@/apis/users';
 import { PATHNAME } from '@/constants/pathname';
 import { headerOpaqueState } from '@/stores/header';
 
+import type { ILoginRequest } from '@/apis/users/type';
+
+interface IForm extends ILoginRequest {}
+
 /**
  * @description 로그인 컨테이너
  */
 const LoginContainer = () => {
-  const [userId, setUserId] = useState('');
-  const [password, setPassword] = useState('');
-
   const [isOpaque, setIsOpaque] = useRecoilState(headerOpaqueState);
   const router = useRouter();
 
@@ -29,16 +31,23 @@ const LoginContainer = () => {
     router.push(PATHNAME.ACCOUNT);
   };
 
-  const handleClickLogin = () => {
-    userApi
-      .postUsersLogin({
-        userId,
-        password,
-      })
-      .then(res => {
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('isLogin', 'true');
-      });
+  // useFrom 훅 초기화
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IForm>({ mode: 'onSubmit' });
+
+  // 로그인 버튼 클릭 시 실행될 함수
+  const handleSubmitForm = (data: ILoginRequest) => {
+    // 로그인 버튼 클릭 시 api 호출을 통해 유저 정보를 서버에 전달하여 로그인 요청,
+    userApi.postUsersLogin(data).then(res => {
+      // 서버로부터 받은 res(응답)에서 token 값과 isLogin 상태를 로컬스토리지에 저장
+      localStorage.setItem('token', res.token);
+      localStorage.setItem('isLogin', 'true');
+      // 로그인 성공 모달 띄우기
+      router.push(PATHNAME.MAIN);
+    });
   };
 
   return (
@@ -55,38 +64,45 @@ const LoginContainer = () => {
           </button>
         </div>
 
-        <div className="login-box-main">
+        <form className="login-box-main" onSubmit={handleSubmit(handleSubmitForm)}>
+          {/* 아이디 */}
           <div className="id-box">
             <p>ID</p>
             <input
+              {...register('userId', {
+                required: '아이디는 필수 입력사항입니다.',
+              })}
               type="text"
-              onChange={e => {
-                setUserId(e.target.value);
-              }}
             />
+            {errors.userId && <p className="userId-error-message">{errors.userId.message}</p>}
           </div>
+
+          {/* 비밀번호 */}
           <div className="ps-box">
             <p>PASSWORD</p>
             <input
+              {...register('password', {
+                required: '비밀번호는 필수 입력사항입니다.',
+              })}
               type="password"
-              onChange={e => {
-                setPassword(e.target.value);
-              }}
             />
-          </div>
-        </div>
-
-        <div className="login-box-bottom">
-          <div className="find-box">
-            <button className="id">FIND ID</button>
-            <p> | </p>
-            <button className="ps">FIND PASSWORD</button>
+            {errors.password && <p className="password-error-message">{errors.password.message}</p>}
           </div>
 
-          <button className="login-btn" onClick={handleClickLogin}>
-            LOGIN
-          </button>
-        </div>
+          {/* 로그인 버튼 */}
+          <div className="login-box-bottom">
+            <div className="find-box">
+              <button className="id" type="button">
+                FIND ID
+              </button>
+              <p> | </p>
+              <button className="ps" type="button">
+                FIND PASSWORD
+              </button>
+            </div>
+            <button className="login-btn">LOGIN</button>
+          </div>
+        </form>
       </div>
     </div>
   );

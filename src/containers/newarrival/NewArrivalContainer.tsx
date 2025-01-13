@@ -11,6 +11,7 @@ import type { IProductResponse } from '@/apis/products/type';
 const NewArrivalContainer = () => {
   const [products, setProducts] = useState<IProductResponse>();
 
+  // api 호출을 통해 신상품 데이터만 가져오는 함수
   useEffect(() => {
     productApi.getNewProducts().then(res => {
       setProducts(res);

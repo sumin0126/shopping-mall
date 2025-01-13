@@ -1,9 +1,13 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { PATHNAME } from '@/constants/pathname';
+
 interface INewArrivalCardProps {
+  itemId: number;
   img: string;
   itemName: string;
   itemColor?: string;
@@ -18,9 +22,19 @@ interface INewArrivalCardProps {
  * @param itemColor - 상품 컬러
  * @param itemPrice - 상품 가격
  */
-const NewArrivalCard = ({ img, itemName, itemColor, itemPrice }: INewArrivalCardProps) => {
+const NewArrivalCard = ({ itemId, img, itemName, itemColor, itemPrice }: INewArrivalCardProps) => {
+  const router = useRouter();
+
+  // 상품 대표이미지 클릭 시 상품 상세페이지로 이동하는 함수
+  const handleClickProduct = () => {
+    router.push({
+      pathname: PATHNAME.PRODUCT_DETAIL,
+      query: { id: itemId },
+    });
+  };
+
   return (
-    <div className="new-arrival-card-container">
+    <div className="new-arrival-card-container" onClick={handleClickProduct}>
       <div className="img-box">
         <FontAwesomeIcon icon={faHeart} className="wish-icon" />
         <Image src={img} alt="itemImg" width={300} height={300} style={{ objectFit: 'cover' }} />

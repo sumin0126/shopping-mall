@@ -26,7 +26,7 @@ const ProductDetailContainer = () => {
 
   const { id } = router.query;
 
-  // 서버로부터 해당 id의 데이터 가져오는 함수
+  // api 호출을 통해 해당 id의 데이터 가져오는 함수
   useEffect(() => {
     if (id) {
       const numberId = Number(id); // id를 숫자로 변환
@@ -67,7 +67,7 @@ const ProductDetailContainer = () => {
     name: product.name || '',
     color: product.color || '',
     price: product.price || 0,
-    texture: product.texture || '',
+    // texture?: product.texture || '',
     description: product.description || '',
   };
 

@@ -84,6 +84,11 @@
       font-size: 1rem;
       color: #222;
     }
+
+    .userId-error-message,
+    .password-error-message {
+      color: rgb(222, 78, 42);
+    }
   }
 
   .login-box-bottom {
@@ -93,7 +98,7 @@
 
     .find-box {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 0.625rem;
 
       button,

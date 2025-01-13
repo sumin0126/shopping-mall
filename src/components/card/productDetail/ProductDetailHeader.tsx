@@ -7,7 +7,7 @@ interface IProps {
   name: string;
   color: string;
   price: number;
-  texture: string;
+  texture?: string;
   description: string;
 }
 
@@ -30,7 +30,7 @@ const ProductDetailHeader = ({ product }: IProductDetailHeaderProps) => {
           name={product.name}
           color={product.color}
           price={product.price}
-          texture={product.texture}
+          // texture={product.texture}
           description={product.description}
         />
         <ProductAction />
