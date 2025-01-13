@@ -9,7 +9,7 @@ import type {
 } from '@/apis/users/type';
 
 /**
- * @discription 사용자 관련 API 요청 함수들
+ * @description 사용자 관련 API 요청 함수들
  */
 export const userApi = {
   // 회원가입 정보를 보내는 함수

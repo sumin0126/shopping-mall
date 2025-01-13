@@ -13,13 +13,9 @@ const AllItemsContainer = () => {
 
   // api 호출을 통해 전체상품의 데이터를 가져오는 함수
   useEffect(() => {
-    productApi
-      .getProducts({
-        categoryCode: 'MINIMAL_BAG',
-      })
-      .then(res => {
-        setProducts(res);
-      });
+    productApi.getProducts().then(res => {
+      setProducts(res);
+    });
   }, []);
 
   if (!products || !products.data) {

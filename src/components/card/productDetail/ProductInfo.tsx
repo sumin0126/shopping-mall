@@ -2,7 +2,7 @@ interface IProductInfo {
   name: string;
   color: string;
   price: number;
-  texture: string;
+  texture?: string;
   description: string;
 }
 
@@ -16,12 +16,12 @@ interface IProductInfo {
  * @param description - 상품 소개
  *
  */
-const ProductInfo = ({ name, color, price, texture, description }: IProductInfo) => {
+const ProductInfo = ({ name, color, price, description }: IProductInfo) => {
   return (
     <div className="product-info-container">
       <div className="name">{name}</div>
       <div className="color">{color}</div>
-      <div className="texture">{texture}</div>
+      {/* <div className="texture">{texture}</div> */}
       <div className="price">{price.toLocaleString('ko-KR')}</div>
       <div className="description">{description}</div>
     </div>
