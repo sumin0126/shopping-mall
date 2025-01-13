@@ -11,11 +11,15 @@ import type { IProductResponse } from '@/apis/products/type';
 const AllItemsContainer = () => {
   const [products, setProducts] = useState<IProductResponse>();
 
-  // api로부터 상품의 데이터를 가져오는 함수
+  // api 호출을 통해 전체상품의 데이터를 가져오는 함수
   useEffect(() => {
-    productApi.getProducts().then(res => {
-      setProducts(res);
-    });
+    productApi
+      .getProducts({
+        categoryCode: 'MINIMAL_BAG',
+      })
+      .then(res => {
+        setProducts(res);
+      });
   }, []);
 
   if (!products || !products.data) {

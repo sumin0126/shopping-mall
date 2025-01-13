@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { useRecoilState } from 'recoil';
 
+import { userApi } from '@/apis/users';
 import { PATHNAME } from '@/constants/pathname';
 import { headerOpaqueState } from '@/stores/header';
 
@@ -12,6 +13,9 @@ import { headerOpaqueState } from '@/stores/header';
  * @description 로그인 컨테이너
  */
 const LoginContainer = () => {
+  const [userId, setUserId] = useState('');
+  const [password, setPassword] = useState('');
+
   const [isOpaque, setIsOpaque] = useRecoilState(headerOpaqueState);
   const router = useRouter();
 
@@ -23,6 +27,18 @@ const LoginContainer = () => {
   // 클릭 시 회원가입 페이지로 이동하는 함수
   const handleClickAccount = () => {
     router.push(PATHNAME.ACCOUNT);
+  };
+
+  const handleClickLogin = () => {
+    userApi
+      .postUsersLogin({
+        userId,
+        password,
+      })
+      .then(res => {
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('isLogin', 'true');
+      });
   };
 
   return (
@@ -42,11 +58,21 @@ const LoginContainer = () => {
         <div className="login-box-main">
           <div className="id-box">
             <p>ID</p>
-            <input type="text" />
+            <input
+              type="text"
+              onChange={e => {
+                setUserId(e.target.value);
+              }}
+            />
           </div>
           <div className="ps-box">
             <p>PASSWORD</p>
-            <input type="password" />
+            <input
+              type="password"
+              onChange={e => {
+                setPassword(e.target.value);
+              }}
+            />
           </div>
         </div>
 
@@ -57,7 +83,9 @@ const LoginContainer = () => {
             <button className="ps">FIND PASSWORD</button>
           </div>
 
-          <button className="login-btn">LOGIN</button>
+          <button className="login-btn" onClick={handleClickLogin}>
+            LOGIN
+          </button>
         </div>
       </div>
     </div>

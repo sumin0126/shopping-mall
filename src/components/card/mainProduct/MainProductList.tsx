@@ -31,7 +31,8 @@ const MainProductList = ({ products, category, isSlider }: IMainProductListProps
           products.map(product => (
             <MainProductCard
               key={product.id}
-              img={product.image_url}
+              productId={product.id}
+              img={product.imageUrl}
               itemName={product.name}
               itemColor={product.color}
             />

@@ -56,7 +56,7 @@ const NewArrivalList = ({ products }: INewArrivalListProps) => {
         {currentItems.map(item => (
           <NewArrivalCard
             key={item.id}
-            img={item.image_url}
+            img={item.imageUrl}
             itemName={item.name}
             itemColor={item.color}
             itemPrice={item.price}

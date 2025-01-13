@@ -10,4 +10,8 @@ export const PATHNAME = {
   TWIN: '/twin',
   REMOOD: '/remood',
   ALLITEMS: '/allitems',
+  PRODUCT_DETAIL: '/productdetail',
 } as const;
+
+// baseAxios에서 사용하는 기본 URL
+export const BASE_URL = 'http://43.201.96.112/api';
