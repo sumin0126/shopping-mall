@@ -1,10 +1,10 @@
+import CartContainer from '@/containers/cart/CartContainer';
 import LayoutContainer from '@/containers/layout/LayoutContainer';
-import ProductDetailContainer from '@/containers/productdetail/ProductDetailContainer';
 
 const index = () => {
   return (
     <LayoutContainer>
-      <ProductDetailContainer />
+      <CartContainer />
     </LayoutContainer>
   );
 };

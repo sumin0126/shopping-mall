@@ -1,4 +1,4 @@
-import ShowRoomList from '@/components/card/showRoom/ShowRoomList';
+import ShowRoomList from '@/components/list/ShowRoomList';
 
 /**
  * @description 쇼룸 컨테이너

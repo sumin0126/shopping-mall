@@ -40,7 +40,5 @@ export interface ICheckUserResponse {
   phoneNumber: string;
   postCode?: string;
   address?: string;
-  password: string;
-  confirmPassword: string;
   userId: string;
 }

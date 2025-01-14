@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { productApi } from '@/apis/products';
-import NewArrivalList from '@/components/card/newArrival/NewArrivalList';
+import NewArrivalList from '@/components/list/NewArrivalList';
 
 import type { IProductResponse } from '@/apis/products/type';
 

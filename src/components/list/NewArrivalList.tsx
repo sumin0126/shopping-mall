@@ -61,6 +61,10 @@ const NewArrivalList = ({ products }: INewArrivalListProps) => {
             itemName={item.name}
             itemColor={item.color}
             itemPrice={item.price}
+            category={item.category}
+            isNew={item.isNew}
+            isBest={item.isBest}
+            description={item.description}
           />
         ))}
       </div>

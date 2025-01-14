@@ -1,6 +1,6 @@
-import ProductAction from '@/components/card/productDetail/ProductAction';
-import ProductImageSlider from '@/components/card/productDetail/ProductImageSlider';
+import ProductAction from '@/components/button/ProductAction';
 import ProductInfo from '@/components/card/productDetail/ProductInfo';
+import ProductImageSlider from '@/components/slider/ProductImageSlider';
 
 interface IProps {
   imageUrl: string[];

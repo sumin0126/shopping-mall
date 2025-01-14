@@ -3,6 +3,7 @@ export const PATHNAME = {
   LOGIN: '/login',
   MYPAGE: '/mypage',
   ACCOUNT: '/account',
+  CART: '/cart',
   SHOWROOM: '/showroom',
   BRANDSTORY: '/brandstory',
   LOOKBOOK: '/lookbook',

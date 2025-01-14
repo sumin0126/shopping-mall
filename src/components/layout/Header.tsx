@@ -4,13 +4,10 @@ import { useRouter } from 'next/router';
 
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import { useRecoilValue } from 'recoil';
 
 import AboutNavbar from '@/components/layout/navbar/AboutNavbar';
 import ShopNavbar from '@/components/layout/navbar/ShopNavbar';
 import { PATHNAME } from '@/constants/pathname';
-import { headerOpaqueState } from '@/stores/header';
 
 /**
  * @description 헤더 컴포넌트
@@ -24,7 +21,6 @@ const Header = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const router = useRouter();
-  const isOpaque = useRecoilValue(headerOpaqueState);
 
   // 클릭 시 로그인 페이지로 이동하는 함수
   const handleClickLogin = () => {
@@ -44,6 +40,11 @@ const Header = () => {
   // 클릭 시 룩북 페이지로 이동하는 함수
   const handleClickLookBook = () => {
     router.push(PATHNAME.LOOKBOOK);
+  };
+
+  // 클릭 시 장바구니 페이지로 이동하는 함수
+  const handleClickCart = () => {
+    router.push(PATHNAME.CART);
   };
 
   // 클릭 시 shop navbar 열어주는 함수
@@ -101,11 +102,7 @@ const Header = () => {
   // 상품을 찜하면 장바구니의 수가 + 1 늘어나는 함수
 
   return (
-    <div
-      className={classNames('main-header-container', {
-        active: !isOpaque,
-      })}
-    >
+    <div className="main-header-container">
       <div className="main-header-left">
         <button className="shop" onClick={handleClickShop}>
           SHOP
@@ -141,7 +138,9 @@ const Header = () => {
           </div>
         )}
 
-        <button className="cart">CART({countItemsInCart})</button>
+        <button className="cart" onClick={handleClickCart}>
+          CART({countItemsInCart})
+        </button>
         <button className="login" onClick={isLogin ? handleClickMypage : handleClickLogin}>
           {isLogin ? 'MY PAGE' : 'LOGIN'}
         </button>
