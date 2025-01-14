@@ -75,6 +75,14 @@
     }
   }
 
+  .wish-icon {
+    font-size: 18px;
+
+    &.active {
+      color: rgb(255, 90, 214);
+    }
+  }
+
   .item-info {
     font-family: 'Playfair Display';
     display: flex;
