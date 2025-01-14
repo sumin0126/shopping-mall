@@ -1,0 +1,173 @@
+.cart-container {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 180px 0;
+  padding: 0 160px;
+  position: relative;
+}
+
+.cart-main {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cart-product-list-container {
+  width: 60%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .cart-header {
+    width: 100%;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+    font-family: 'Playfair Display';
+    letter-spacing: 0.5px;
+  }
+
+  .wish-list-info {
+    width: 100%;
+    text-align: center;
+    margin: 100px 0;
+    color: #222;
+    font-family: 'Open Sans';
+  }
+
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    button {
+      width: 200px;
+      border: 1px solid #222;
+      border-radius: 1.3rem;
+      height: 44px;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.8s ease;
+      font-family: 'Open Sans';
+      margin-top: 30px;
+
+      &:hover {
+        background-color: #222;
+        color: #fff;
+        border: none;
+      }
+    }
+  }
+}
+
+.cart-product-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #333;
+  position: relative;
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 18px;
+
+    p {
+      font-family: 'Playfair Display';
+      font-weight: 700;
+      color: #333;
+    }
+
+    .name-color {
+      font-size: 16px;
+    }
+
+    .price {
+      font-size: 18px;
+
+      span {
+        font-size: 16px;
+      }
+    }
+
+    button {
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid #666;
+      color: #666;
+      font-family: 'Playfair Display';
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+
+  .product-quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: 'Playfair Display';
+    }
+
+    p {
+      font-size: 16px;
+      font-family: 'Playfair Display';
+    }
+  }
+}
+
+.cart-summary-container {
+  width: 25%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-top: 1px solid #333;
+  position: absolute;
+  top: 40px;
+  right: 160px;
+
+  .shipping-price,
+  .product-price,
+  .total-price {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 1px solid #333;
+    padding: 20px 0;
+
+    .price {
+      font-family: 'Playfair Display';
+      font-size: 20px;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
+}

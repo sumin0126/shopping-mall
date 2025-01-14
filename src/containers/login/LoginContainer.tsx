@@ -1,14 +1,10 @@
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import { useRecoilState } from 'recoil';
-
 import { userApi } from '@/apis/users';
 import { PATHNAME } from '@/constants/pathname';
-import { headerOpaqueState } from '@/stores/header';
 
 import type { ILoginRequest } from '@/apis/users/type';
 
@@ -18,13 +14,7 @@ interface IForm extends ILoginRequest {}
  * @description 로그인 컨테이너
  */
 const LoginContainer = () => {
-  const [isOpaque, setIsOpaque] = useRecoilState(headerOpaqueState);
   const router = useRouter();
-
-  // 첫 렌더링 시에 isOpaque의 상태를 업데이트해주는 함수
-  useEffect(() => {
-    setIsOpaque(false);
-  }, []);
 
   // 클릭 시 회원가입 페이지로 이동하는 함수
   const handleClickAccount = () => {

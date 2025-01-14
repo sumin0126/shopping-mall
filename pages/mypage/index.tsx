@@ -1,10 +1,10 @@
 import LayoutContainer from '@/containers/layout/LayoutContainer';
-import ProductDetailContainer from '@/containers/productdetail/ProductDetailContainer';
+import MypageContainer from '@/containers/mypage/MypageContainer';
 
 const index = () => {
   return (
     <LayoutContainer>
-      <ProductDetailContainer />
+      <MypageContainer></MypageContainer>
     </LayoutContainer>
   );
 };

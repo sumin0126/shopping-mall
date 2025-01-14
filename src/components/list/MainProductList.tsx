@@ -1,5 +1,5 @@
 import MainProductCard from '@/components/card/mainProduct/MainProductCard';
-import MainProductSlider from '@/components/card/mainProduct/MainProductSlider';
+import MainProductSlider from '@/components/slider/MainProductSlider';
 
 import type { IProduct } from '@/apis/products/type';
 

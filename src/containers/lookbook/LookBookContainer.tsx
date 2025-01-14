@@ -1,16 +1,9 @@
-import { useEffect } from 'react';
-
-import { useRecoilState } from 'recoil';
-
-import LookBookList from '@/components/card/lookBook/LookBookList';
-import { headerOpaqueState } from '@/stores/header';
+import LookBookList from '@/components/list/LookBookList';
 
 /**
  * @description 룩북 컨테이너
  */
 const LookBookContainer = () => {
-  const [isOpaque, setIsOpaque] = useRecoilState(headerOpaqueState);
-
   // 임시 데이터
   const LookBookImages = [
     { id: 1, img: '/img/lookbook/lookbook1.jpg' },
@@ -29,11 +22,6 @@ const LookBookContainer = () => {
     { id: 14, img: '/img/lookbook/lookbook14.png' },
     { id: 15, img: '/img/lookbook/lookbook15.jpg' },
   ];
-
-  // 첫 렌더링 시에 isOpaque의 상태를 업데이트해주는 함수
-  useEffect(() => {
-    setIsOpaque(true);
-  }, []);
 
   return (
     <div className="look-book-container">

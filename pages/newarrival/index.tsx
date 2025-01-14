@@ -1,5 +1,5 @@
 import LayoutContainer from '@/containers/layout/LayoutContainer';
-import NewArrivalContainer from '@/containers/newArrival/NewArrivalContainer';
+import NewArrivalContainer from '@/containers/newarrival/NewArrivalContainer';
 
 const index = () => {
   return (
