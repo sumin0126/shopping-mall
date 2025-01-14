@@ -19,6 +19,7 @@ const Header = () => {
   const [countItemsInCart] = useState(0);
   const [isOpenShopNavBar, setIsOpenShopNavBar] = useState(false);
   const [isOpenAboutNavBar, setIsOpenAboutNavBar] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -28,6 +29,11 @@ const Header = () => {
   // 클릭 시 로그인 페이지로 이동하는 함수
   const handleClickLogin = () => {
     router.push(PATHNAME.LOGIN);
+  };
+
+  // 클릭 시 마이페이지로 이동하는 함수
+  const handleClickMypage = () => {
+    router.push(PATHNAME.MYPAGE);
   };
 
   // 클릭 시 메인 페이지로 이동하는 함수
@@ -77,6 +83,21 @@ const Header = () => {
     }
   }, [isOpenSearch]);
 
+  // 로컬스토리지에서 isLogin 상태 가져오기
+  useEffect(() => {
+    const loginStatus = localStorage.getItem('isLogin');
+    setIsLogin(loginStatus === 'true');
+  }, []);
+
+  // 로그아웃 버튼 클릭 시, 로컬스토리지에 저장된 토큰 삭제, isLogin 상태 변경 해주는 함수
+  const handleClickLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.setItem('isLogin', 'false');
+    setIsLogin(false);
+    alert('로그아웃 되었습니다!');
+    router.push(PATHNAME.MAIN);
+  };
+
   // 상품을 찜하면 장바구니의 수가 + 1 늘어나는 함수
 
   return (
@@ -121,9 +142,16 @@ const Header = () => {
         )}
 
         <button className="cart">CART({countItemsInCart})</button>
-        <button className="login" onClick={handleClickLogin}>
-          LOGIN
+        <button className="login" onClick={isLogin ? handleClickMypage : handleClickLogin}>
+          {isLogin ? 'MY PAGE' : 'LOGIN'}
         </button>
+
+        {/* 로그인 상태일때만 로그아웃 버튼 활성화 */}
+        {isLogin && (
+          <button className="logout" onClick={handleClickLogout}>
+            LOGOUT
+          </button>
+        )}
       </div>
 
       <ShopNavbar isOpenShopNavBar={isOpenShopNavBar} closeShopNavBar={closeShopNavBar} />

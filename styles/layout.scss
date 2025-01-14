@@ -23,11 +23,11 @@
   }
 
   .main-header-left {
-    width: 20%;
+    width: 30%;
     display: flex;
     justify-content: left;
     align-items: center;
-    gap: 14%;
+    gap: 10%;
 
     .shop,
     .about,
@@ -38,7 +38,7 @@
   }
 
   .main-header-center {
-    width: calc(100% - 40%);
+    width: calc(100% - 60%);
     text-align: center;
 
     .logo {
@@ -50,15 +50,16 @@
   }
 
   .main-header-right {
-    width: 20%;
+    width: 30%;
     display: flex;
     justify-content: right;
     align-items: center;
-    gap: 14%;
+    gap: 10%;
 
     .search,
     .cart,
-    .login {
+    .login,
+    .logout {
       font-family: 'Playfair Display';
       font-weight: 600;
     }
@@ -132,7 +133,8 @@
   .look-book,
   .search,
   .cart,
-  .login {
+  .login,
+  .logout {
     position: relative;
 
     &::after {
