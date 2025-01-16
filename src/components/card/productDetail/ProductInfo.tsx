@@ -1,13 +1,13 @@
 interface IProductInfo {
   name: string;
-  color: string;
+  color?: string;
   price: number;
   texture?: string;
-  description: string;
+  description?: string;
 }
 
 /**
- * @description 상품 정보 컴포넌트
+ * @description 상품 기본 정보 컴포넌트
  *
  * @param name - 상품 이름
  * @param color - 상품 색상

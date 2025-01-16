@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import Image from 'next/image';
@@ -14,6 +15,8 @@ interface IForm extends ILoginRequest {}
  * @description 로그인 컨테이너
  */
 const LoginContainer = () => {
+  const [errorMessage, setErrorMessage] = useState('');
+
   const router = useRouter();
 
   // 클릭 시 회원가입 페이지로 이동하는 함수
@@ -29,15 +32,22 @@ const LoginContainer = () => {
   } = useForm<IForm>({ mode: 'onSubmit' });
 
   // 로그인 버튼 클릭 시 실행될 함수
-  const handleSubmitForm = (data: ILoginRequest) => {
-    // 로그인 버튼 클릭 시 api 호출을 통해 유저 정보를 서버에 전달하여 로그인 요청,
-    userApi.postUsersLogin(data).then(res => {
+  const handleSubmitForm = async (data: ILoginRequest) => {
+    try {
+      // 로그인 버튼 클릭 시 api 호출을 통해 유저 정보를 서버에 전달하여 로그인 요청,
+      const res = await userApi.postUsersLogin(data);
       // 서버로부터 받은 res(응답)에서 token 값과 isLogin 상태를 로컬스토리지에 저장
       localStorage.setItem('token', res.token);
       localStorage.setItem('isLogin', 'true');
       // 로그인 성공 모달 띄우기
       router.push(PATHNAME.MAIN);
-    });
+    } catch (err) {
+      if (err instanceof Error) {
+        setErrorMessage(err.message);
+      } else {
+        setErrorMessage('An unknown error occurred.');
+      }
+    }
   };
 
   return (
@@ -76,6 +86,7 @@ const LoginContainer = () => {
               })}
               type="password"
             />
+            {errorMessage && <p className="password-error-message">{errorMessage}</p>}
             {errors.password && <p className="password-error-message">{errors.password.message}</p>}
           </div>
 
