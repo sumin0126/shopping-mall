@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -46,6 +46,7 @@ const NewArrivalCard = ({
 }: INewArrivalCardProps) => {
   const [wishList, setWishList] = useRecoilState(wishProductState);
   const [isLikeProduct, setIsLikeProduct] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
 
   // 상품 대표이미지 클릭 시 상품 상세페이지로 이동하는 함수
@@ -56,9 +57,22 @@ const NewArrivalCard = ({
     });
   };
 
-  // 하트 아이콘 클릭 시, recoil 상태에 클릭한 상품의 데이터가 업데이트되는 함수
+  // 로컬스토리지에서 isLogin 상태 가져오기
+  useEffect(() => {
+    const loginStatus = localStorage.getItem('isLogin');
+    setIsLogin(loginStatus === 'true');
+  }, []);
+
+  // 하트 아이콘 클릭 시, 클릭한 상품의 데이터가 recoil 상태에 업데이트되는 함수
   const handleClickLikeProduct = (e: React.MouseEvent) => {
     e.stopPropagation();
+
+    if (!isLogin) {
+      // alert -> 모달로 바꾸기
+      alert('로그인 후 이용해주세요!');
+      router.push(PATHNAME.LOGIN);
+      return;
+    }
 
     const product = {
       id: itemId,
@@ -92,7 +106,7 @@ const NewArrivalCard = ({
           className={`wish-icon ${isLikeProduct ? 'active' : ''}`}
           onClick={handleClickLikeProduct}
         />
-        <Image src={img} alt="itemImg" width={300} height={300} style={{ objectFit: 'cover' }} />
+        <Image src={img} alt={img} width={300} height={300} style={{ objectFit: 'cover' }} />
       </div>
 
       <div className="item-info">

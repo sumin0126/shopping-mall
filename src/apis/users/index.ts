@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import { baseAxios } from '@/utils/axiosInstance';
 
 import type {
@@ -18,8 +20,18 @@ export const userApi = {
   },
 
   // 로그인 정보를 보내는 함수
-  postUsersLogin: (params: ILoginRequest) => {
-    return baseAxios.post<ILoginResponse>('/users/login', params).then(res => res.data);
+  postUsersLogin: async (params: ILoginRequest) => {
+    try {
+      const res = await baseAxios.post<ILoginResponse>('/users/login', params);
+      return res.data;
+    } catch (err) {
+      // err를 AxiosError 타입으로 단언
+      if (axios.isAxiosError(err)) {
+        throw new Error(err.response?.data?.message || 'An unexpected error occurred.');
+      } else {
+        throw new Error('An unexpected error occurred.');
+      }
+    }
   },
 
   // 유저 정보를 가져오는 함수

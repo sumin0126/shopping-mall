@@ -26,7 +26,7 @@ const ProductDetailContainer = () => {
 
   const { id } = router.query;
 
-  // api 호출을 통해 해당 id의 데이터 가져오는 함수
+  // api 호출을 통해 해당 id의 상품 데이터 가져오는 함수
   useEffect(() => {
     if (id) {
       const numberId = Number(id); // id를 숫자로 변환
@@ -61,20 +61,10 @@ const ProductDetailContainer = () => {
     return;
   }
 
-  // IProps 타입으로 변환
-  const productData = {
-    imageUrl: Array.isArray(product.imageUrl) ? product.imageUrl : [product.imageUrl || ''],
-    name: product.name || '',
-    color: product.color || '',
-    price: product.price || 0,
-    // texture?: product.texture || '',
-    description: product.description || '',
-  };
-
   return (
     <div className="product-detail-container">
       {/* 상품 정보 */}
-      <ProductDetailHeader product={productData} />
+      <ProductDetailHeader product={product} />
 
       {/* 상품 이미지와 정보를 나눠주는 버튼들 */}
       <div className="main-button">

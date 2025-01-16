@@ -10,7 +10,7 @@ interface IProductDetailInfoProps {
 }
 
 /**
- * @description 상품 상세정보 컴포넌트
+ * @description 상품 추가 정보 컴포넌트
  *
  * @param width - 상품 가로 사이즈
  * @param height - 상품 세로 사이즈
