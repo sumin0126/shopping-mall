@@ -1,17 +1,16 @@
-import { useState } from 'react';
-
 import Image from 'next/image';
 
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
 import { wishProductState } from '@/stores/wishProduct';
+import { wishProductCountState } from '@/stores/wishProductCount';
 
 interface ICartProduct {
+  id: number;
   name: string;
   color: string;
   price: number;
   imageUrl: string;
-  id: number;
 }
 
 /**
@@ -24,17 +23,26 @@ interface ICartProduct {
  * @param imageUrl - 상품이미지
  */
 const CartProduct = ({ name, color, price, imageUrl, id }: ICartProduct) => {
-  const [productCount, setProductCount] = useState(1);
   const setWishList = useSetRecoilState(wishProductState);
+  const [productCounts, setProductCounts] = useRecoilState(wishProductCountState);
+
+  // 현재 상품의 수량 가져오기 (기본값 : 1)
+  const productCount = productCounts[id] || 1;
 
   // 빼기 버튼 클릭 시, 수량을 1씩 빼주는 함수
   const minusProductCount = () => {
-    productCount > 1 ? setProductCount(productCount - 1) : setProductCount(1);
+    setProductCounts(prev => ({
+      ...prev,
+      [id]: productCount > 1 ? productCount - 1 : 1,
+    }));
   };
 
   // 더하기 버튼 클릭 시, 수량을 1씩 더해주는 함수
   const plusProductCount = () => {
-    setProductCount(productCount + 1);
+    setProductCounts(prev => ({
+      ...prev,
+      [id]: productCount + 1,
+    }));
   };
 
   // remove 버튼 클릭 시, 장바구니에서 상품을 삭제하는 함수

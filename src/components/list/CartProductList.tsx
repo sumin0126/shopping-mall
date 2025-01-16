@@ -15,25 +15,25 @@ interface IProducts {
 }
 
 interface ICartProductList {
-  products: IProducts[];
+  wishList: IProducts[];
 }
 
 /**
  * @description 장바구니 아이템 목록 컴포넌트
  *
- * @param products - 장바구니에 담긴 모든 상품의 배열
+ * @param wishList - 장바구니에 담긴 모든 상품의 배열
  */
-const CartProductList = ({ products }: ICartProductList) => {
+const CartProductList = ({ wishList }: ICartProductList) => {
   return (
     <div className="cart-product-list-container">
       {/* 헤더 */}
       <div className="cart-header">
-        <p>CART({products.length})</p>
+        <p>CART({wishList.length})</p>
       </div>
 
       {/* 상품 목록 */}
-      {products.length > 0 ? (
-        products.map(product => (
+      {wishList.length > 0 ? (
+        wishList.map(product => (
           <CartProduct
             key={product.id}
             id={product.id}
@@ -48,7 +48,7 @@ const CartProductList = ({ products }: ICartProductList) => {
       )}
 
       {/* 버튼 */}
-      {products.length > 0 && (
+      {wishList.length > 0 && (
         <div className="button-container">
           <button>선택상품주문</button>
           <button>전체상품주문</button>
