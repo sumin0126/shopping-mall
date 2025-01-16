@@ -1,5 +1,5 @@
-import LayoutContainer from '@/containers/layout/LayoutContainer';
 import MainContainer from '@/containers/MainContainer';
+import LayoutContainer from '@/containers/layout/LayoutContainer';
 
 const index = () => {
   return (

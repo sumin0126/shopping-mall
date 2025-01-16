@@ -1,6 +1,9 @@
-import Image from 'next/image';
 import Slider from 'react-slick';
+
+import Image from 'next/image';
+
 import 'slick-carousel/slick/slick.css';
+// eslint-disable-next-line import/order
 import 'slick-carousel/slick/slick-theme.css';
 
 interface IProps {

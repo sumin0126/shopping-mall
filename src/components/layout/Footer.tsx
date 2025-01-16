@@ -9,7 +9,7 @@ import { footerShowRoomState } from '@/stores/footer';
  * @description 푸터 컴포넌트
  */
 const Footer = () => {
-  const [showRoom, setShowRoom] = useRecoilState(footerShowRoomState);
+  const [, setShowRoom] = useRecoilState(footerShowRoomState);
   const router = useRouter();
 
   // 쇼룸 버튼 클릭 시, 버튼에 있는 텍스트를 리코일 상태에 업데이트하고,
