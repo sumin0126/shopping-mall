@@ -1,22 +1,33 @@
+import { useRecoilValue } from 'recoil';
+
+import { wishProductCountState } from '@/stores/wishProductCount';
+
 interface IProducts {
+  id: number;
   price: number;
 }
 
 interface ICartSummary {
-  products: IProducts[];
+  wishList: IProducts[];
 }
 
 /**
  * @description 장바구니 합계금액 컴포넌트
  *
- * @param products - 장바구니에 담긴 모든 상품의 배열
+ * @param wishList - 장바구니에 담긴 모든 상품의 배열
  */
-const CartSummary = ({ products }: ICartSummary) => {
+const CartSummary = ({ wishList }: ICartSummary) => {
+  // 모든 상품의 수량이 담겨있는 객체
+  const productCounts = useRecoilValue(wishProductCountState);
+
   // 장바구니에 담겨있는 총 상품금액
-  const productPrice = products.reduce((sum, product) => sum + product.price, 0);
+  const productPrice = wishList.reduce((sum, product) => {
+    const count = productCounts[product.id] || 1;
+    return sum + product.price * count;
+  }, 0);
 
   // 상품금액에 따른 배송비 (5만원 이상 무료배송)
-  const shippingPrice = products.length > 0 ? (productPrice >= 50000 ? 0 : 3000) : 0;
+  const shippingPrice = wishList.length > 0 ? (productPrice >= 50000 ? 0 : 3000) : 0;
 
   // 총 합계금액
   const totalProductPrice = shippingPrice + productPrice;

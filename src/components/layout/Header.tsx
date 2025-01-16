@@ -4,20 +4,24 @@ import { useRouter } from 'next/router';
 
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRecoilValue } from 'recoil';
 
 import AboutNavbar from '@/components/layout/navbar/AboutNavbar';
 import ShopNavbar from '@/components/layout/navbar/ShopNavbar';
 import { PATHNAME } from '@/constants/pathname';
+import { wishProductState } from '@/stores/wishProduct';
 
 /**
  * @description 헤더 컴포넌트
  */
 const Header = () => {
-  const [countItemsInCart] = useState(0);
   const [isOpenShopNavBar, setIsOpenShopNavBar] = useState(false);
   const [isOpenAboutNavBar, setIsOpenAboutNavBar] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
+
+  const wishList = useRecoilValue(wishProductState);
+
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const router = useRouter();
@@ -99,8 +103,6 @@ const Header = () => {
     router.push(PATHNAME.MAIN);
   };
 
-  // 상품을 찜하면 장바구니의 수가 + 1 늘어나는 함수
-
   return (
     <div className="main-header-container">
       <div className="main-header-left">
@@ -139,7 +141,7 @@ const Header = () => {
         )}
 
         <button className="cart" onClick={handleClickCart}>
-          CART({countItemsInCart})
+          CART({wishList.length})
         </button>
         <button className="login" onClick={isLogin ? handleClickMypage : handleClickLogin}>
           {isLogin ? 'MY PAGE' : 'LOGIN'}

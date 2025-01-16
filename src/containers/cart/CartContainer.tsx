@@ -15,8 +15,8 @@ const CartContainer = () => {
     <div className="cart-container">
       {/* 상품목록과 총 금액 */}
       <div className="cart-main">
-        <CartProductList products={wishList} />
-        <CartSummary products={wishList} />
+        <CartProductList wishList={wishList} />
+        <CartSummary wishList={wishList} />
       </div>
     </div>
   );
