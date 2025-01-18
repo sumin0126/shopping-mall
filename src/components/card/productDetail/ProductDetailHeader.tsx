@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import ProductAction from '@/components/button/ProductAction';
+import ProductAction from '@/components/button/productDetail/ProductAction';
 import ProductInfo from '@/components/card/productDetail/ProductInfo';
 
 import type { IProduct } from '@/apis/products/type';

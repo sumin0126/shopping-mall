@@ -141,7 +141,7 @@ const Header = () => {
         )}
 
         <button className="cart" onClick={handleClickCart}>
-          CART({wishList.length})
+          CART{wishList.length > 0 ? `(${wishList.length})` : ''}
         </button>
         <button className="login" onClick={isLogin ? handleClickMypage : handleClickLogin}>
           {isLogin ? 'MY PAGE' : 'LOGIN'}

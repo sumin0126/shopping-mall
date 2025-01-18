@@ -13,23 +13,26 @@ import UserInfoContainer from '@/containers/mypage/parts/UserInfoContainer';
 const MypageContainer = () => {
   const router = useRouter();
 
-  const tab = router.query.tab;
+  // 현재 URL의 tab 가져오기
+  const currentTab = router.query.tab;
 
+  // 기본 tab 설정
   useEffect(() => {
-    if (!tab) {
+    if (!currentTab) {
       router.push({
         pathname: PATHNAME.MYPAGE,
         query: { tab: 'userInfo' },
       });
     }
-  }, [tab]);
+  }, [currentTab]);
 
   return (
     <div className="mypage-container">
-      {/* <p className="title">MY PAGE</p> */}
+      {/* 네비바 */}
       <Lnb />
-      {tab === 'userInfo' && <UserInfoContainer />}
-      {tab === 'orderHistory' && <OrderHistoryContainer />}
+
+      {currentTab === 'userInfo' && <UserInfoContainer />}
+      {currentTab === 'orderHistory' && <OrderHistoryContainer />}
     </div>
   );
 };

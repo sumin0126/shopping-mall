@@ -41,4 +41,5 @@ export interface ICheckUserResponse {
   postCode?: string;
   address?: string;
   userId: string;
+  createdAt: string;
 }

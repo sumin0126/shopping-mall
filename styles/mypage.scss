@@ -1,36 +1,39 @@
+// 마이페이지 컨테이너
 .mypage-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 120px;
+  background-color: #f5f5f5;
+  padding: 30px 200px;
+  position: relative;
+}
+
+// 회원정보 컨테이너
+.user-info-container {
+  width: 75%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   gap: 100px;
-  padding: 0 200px;
-  margin: 120px 0;
+  padding: 60px 60px;
+  background-color: #ffffff;
+  border-radius: 15px;
 
-  .title {
-    font-size: 24px;
-    color: #222;
-    font-weight: 700;
-    text-align: center;
-    width: 70%;
-    margin-top: 80px;
-    font-family: 'Playfair Display';
-  }
-
-  .profile,
-  .delivery-address,
-  .account-info {
-    width: 70%;
+  .user-data-list-container {
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
 
-    .profile-title,
-    .delivery-address-title,
-    .account-info-title {
+    .user-data-list-title {
       width: 100%;
       font-size: 20px;
       color: #333;
@@ -40,12 +43,7 @@
       font-family: 'Open Sans';
     }
 
-    .email,
-    .phone-number,
-    .name,
-    .address,
-    .post-code,
-    .createdAt {
+    .user-data-card-container {
       width: 100%;
       display: flex;
       justify-content: flex-start;
@@ -53,22 +51,201 @@
       gap: 14px;
       padding-top: 20px;
 
-      .email-icon,
-      .phone-icon,
-      .user-icon,
-      .address-icon,
-      .post-code-icon,
-      .createdAt-icon {
-        font-size: 18px;
-        color: #bcbcbc;
-      }
+      .user-data-card {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 14px;
 
-      p {
-        font-size: 16px;
+        .email-icon,
+        .phone-icon,
+        .user-icon,
+        .address-icon,
+        .post-code-icon,
+        .createdAt-icon {
+          font-size: 18px;
+          color: #bcbcbc;
+        }
+
+        p {
+          font-size: 16px;
+          color: #333;
+          font-weight: 400;
+          font-family: 'Open Sans';
+        }
+      }
+    }
+  }
+
+  .info-edit-btn {
+    width: 80px;
+    border: 1px solid #222;
+    border-radius: 20px;
+    height: 32px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.8s ease;
+    font-family: 'Open Sans';
+
+    &:hover {
+      background-color: #222;
+      color: #fff;
+      border: none;
+    }
+  }
+}
+
+// 주문내역 컨테이너
+.order-history-container {
+  width: 75%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 60px 60px;
+  background-color: #ffffff;
+  border-radius: 15px;
+
+  .title {
+    width: 100%;
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+    border-bottom: 1px solid #bcbcbc;
+    padding-bottom: 18px;
+    font-family: 'Open Sans';
+  }
+
+  .order-history-list-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .order-history-card-container {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 16px;
+      padding-top: 20px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #bcbcbc;
+
+      .shipping {
+        font-size: 18px;
+        font-weight: 500;
         color: #333;
-        font-weight: 400;
         font-family: 'Open Sans';
       }
+
+      .order-history-product-info-container {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .image-wrapper {
+          width: 150px;
+          height: 150px;
+        }
+
+        .product-info-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          gap: 10px;
+
+          .order-date {
+            color: #999;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Open Sans';
+          }
+
+          .product-name-color {
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: 'Playfair Display';
+          }
+
+          .product-price {
+            color: #333;
+            font-size: 20px;
+            font-weight: 500;
+            font-family: 'Playfair Display';
+          }
+        }
+      }
+
+      .order-history-action-container {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        button {
+          width: 50%;
+          border: 1px solid #222;
+          border-radius: 1.3rem;
+          height: 44px;
+          background-color: transparent;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background-color 0.8s ease;
+          font-family: 'Open Sans';
+
+          &:hover {
+            background-color: #222;
+            color: #fff;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 네비바
+.mypage-navbar-container {
+  width: 25%;
+  min-height: 610px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 60px 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+
+  p {
+    width: 100%;
+    font-size: 16px;
+    color: #999;
+    font-weight: 500;
+    border-bottom: 1px solid #bcbcbc;
+    padding-bottom: 20px;
+    font-family: 'Open Sans';
+    cursor: pointer;
+
+    &:hover {
+      color: #333;
+    }
+
+    &.active {
+      color: #333;
     }
   }
 }

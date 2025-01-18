@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form'; // react-hook-form 라이브러리에서 useForm 훅 가져오기
 
 import { useRouter } from 'next/router';
@@ -15,6 +16,7 @@ interface IForm extends ICreateUserRequest {}
  */
 const SignupContainer = () => {
   const router = useRouter();
+  const { query } = router;
 
   // useFrom 훅 초기화
   const {
@@ -24,6 +26,17 @@ const SignupContainer = () => {
     setValue,
     formState: { errors },
   } = useForm<IForm>({ mode: 'onSubmit', shouldFocusError: true });
+
+  // query 값이 존재할경우, 필드를 query 값으로 채워주는 함수
+  useEffect(() => {
+    if (query) {
+      setValue('name', query.name as string);
+      setValue('email', query.email as string);
+      setValue('phoneNumber', query.phoneNumber as string);
+      setValue('address', query.address as string);
+      setValue('postCode', query.postCode as string);
+    }
+  }, [query, setValue]);
 
   // watch를 사용해서 password 필드 값을 실시간으로 추적함
   // 비밀번호 확인때 사용됨
