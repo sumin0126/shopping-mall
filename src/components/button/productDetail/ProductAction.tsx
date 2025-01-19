@@ -37,30 +37,32 @@ const ProductAction = ({ product }: IProductAction) => {
       return;
     }
 
-    const item = {
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      imageUrl: product.imageUrl,
-      color: product.color,
-      category: product.category,
-      isNew: product.isNew,
-      isBest: product.isBest,
-      description: product.description,
-    };
-
     // 장바구니에 담으려는 상품이 중복됐는지 확인하는 함수
-    const isDuplicate = wishList.some(product => product.id === item.id);
+    const isDuplicate = wishList.some(item => item.id === product.id);
 
     // 중복된 상품이 아니라면 장바구니에 해당 상품의 데이터를 업데이트
     if (!isDuplicate) {
-      setWishList([...wishList, item]);
+      setWishList([...wishList, product]);
     }
+  };
+
+  // buy 버튼 클릭 시, 결제 페이지로 이동하는 함수
+  const handleClickPayment = () => {
+    // 로그인 유/무 확인
+    if (!isLogin) {
+      alert('로그인 후 이용해주세요!');
+      router.push(PATHNAME.LOGIN);
+      return;
+    }
+
+    router.push(PATHNAME.PAYMENT);
   };
 
   return (
     <div className="product-action-container">
-      <button className="buy">BUY NOW</button>
+      <button className="buy" onClick={handleClickPayment}>
+        BUY NOW
+      </button>
       <button className="cart" onClick={handleClickLikeProduct}>
         CART
       </button>

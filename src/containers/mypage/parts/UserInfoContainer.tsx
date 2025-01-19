@@ -31,6 +31,21 @@ const UserInfoContainer = () => {
     return;
   }
 
+  // 핸드폰 번호에 하이픈 추가해주는 함수
+  const formatPhoneNumber = (phoneNumber: string) => {
+    return phoneNumber.replace(/(\d{3})(\d{3,4})(\d{4})/, '$1-$2-$3');
+  };
+
+  // 날짜 설정 함수
+  const formatDate = (createdAt: string) => {
+    const date = new Date(createdAt);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+
+    return `${year}년 ${month}월 ${day}일`;
+  };
+
   // 수정 버튼 클릭 시, 회원가입 페이지로 이동하는 함수
   const handleClickInfoEdit = () => {
     router.push({
@@ -49,7 +64,11 @@ const UserInfoContainer = () => {
     <div className="user-info-container">
       <UserDataList title="프로필 정보">
         <UserDataCard icon={faUser} text={userInfo.name} className="user-icon" />
-        <UserDataCard icon={faMobileScreenButton} text={userInfo.phoneNumber} className="phone-icon" />
+        <UserDataCard
+          icon={faMobileScreenButton}
+          text={userInfo.phoneNumber ? formatPhoneNumber(userInfo.phoneNumber) : ''}
+          className="phone-icon"
+        />
         <UserDataCard icon={faEnvelope} text={userInfo.email} className="email-icon" />
       </UserDataList>
 
@@ -63,7 +82,11 @@ const UserInfoContainer = () => {
       </UserDataList>
 
       <UserDataList title="계정 정보">
-        <UserDataCard icon={faCalendarPlus} text={`${userInfo.createdAt} (가입 날짜)`} className="createdAt-icon" />
+        <UserDataCard
+          icon={faCalendarPlus}
+          text={`(가입 날짜) ${formatDate(userInfo.createdAt)}`}
+          className="createdAt-icon"
+        />
       </UserDataList>
 
       <button className="info-edit-btn" onClick={handleClickInfoEdit}>
