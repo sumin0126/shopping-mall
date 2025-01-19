@@ -8,11 +8,9 @@ export const PATHNAME = {
   BRANDSTORY: '/brandstory',
   LOOKBOOK: '/lookbook',
   NEWARRIVAL: '/newarrival',
-  CLO: '/clo',
-  TWIN: '/twin',
-  REMOOD: '/remood',
   ALLITEMS: '/allitems',
   PRODUCT_DETAIL: '/productdetail',
+  PRODUCTS: '/products',
 } as const;
 
 // baseAxios에서 사용하는 기본 URL

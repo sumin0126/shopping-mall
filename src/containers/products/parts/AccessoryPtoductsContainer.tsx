@@ -6,10 +6,10 @@ import NewArrivalList from '@/components/list/NewArrivalList';
 import type { IProductResponse } from '@/apis/products/type';
 
 /**
- * @description 악세서리 컨테이너
+ * @description 상품 - 악세서리 컨테이너
  */
-const AccessoryContainer = () => {
-  const [products, setProducts] = useState<IProductResponse>();
+const AccessoryPtoductsContainer = () => {
+  const [accessoryProducts, setAccessoryProducts] = useState<IProductResponse>();
 
   // api 호출을 통해 카테고리가 accessory인 데이터만 가져오는 함수
   useEffect(() => {
@@ -18,19 +18,18 @@ const AccessoryContainer = () => {
         categoryCode: 'ACCESSORY',
       })
       .then(res => {
-        setProducts(res);
+        setAccessoryProducts(res);
       });
   }, []);
 
-  if (!products || !products.data) {
+  if (!accessoryProducts || !accessoryProducts.data) {
     return;
   }
-
   return (
     <>
-      <NewArrivalList products={products.data} />
+      <NewArrivalList products={accessoryProducts.data} />
     </>
   );
 };
 
-export default AccessoryContainer;
+export default AccessoryPtoductsContainer;

@@ -1,4 +1,4 @@
-import OrderHistoryList from '@/components/list/\bOrderHistoryList';
+import OrderHistoryList from '@/components/list/OrderHistoryList';
 
 /**
  * @description 마이페이지 - 주문내역 컨테이너
