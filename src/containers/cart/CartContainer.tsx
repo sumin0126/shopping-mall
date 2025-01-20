@@ -8,7 +8,7 @@ import { wishProductState } from '@/stores/wishProduct';
  * @description 장바구니 컨테이너
  */
 const CartContainer = () => {
-  // 장바구니에 담긴 모든 상품의 배열
+  // 장바구니에 담긴 상품 목록들
   const wishList = useRecoilValue(wishProductState);
 
   return (
