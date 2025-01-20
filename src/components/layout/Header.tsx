@@ -8,6 +8,7 @@ import { useRecoilValue } from 'recoil';
 
 import AboutNavbar from '@/components/layout/navbar/AboutNavbar';
 import ShopNavbar from '@/components/layout/navbar/ShopNavbar';
+import AlertModal from '@/components/modal/AlertModal';
 import { PATHNAME } from '@/constants/pathname';
 import { wishProductState } from '@/stores/wishProduct';
 
@@ -19,6 +20,7 @@ const Header = () => {
   const [isOpenAboutNavBar, setIsOpenAboutNavBar] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const wishList = useRecoilValue(wishProductState);
 
@@ -99,8 +101,7 @@ const Header = () => {
     localStorage.removeItem('token');
     localStorage.setItem('isLogin', 'false');
     setIsLogin(false);
-    alert('로그아웃 되었습니다!');
-    router.push(PATHNAME.MAIN);
+    setIsOpenModal(true);
   };
 
   return (
@@ -152,6 +153,16 @@ const Header = () => {
           <button className="logout" onClick={handleClickLogout}>
             LOGOUT
           </button>
+        )}
+        {/* 로그아웃 버튼 클릭 시, 모달 활성화 */}
+        {isOpenModal && (
+          <AlertModal
+            modalTitle="로그아웃 되었습니다 !"
+            handleClickConfirm={() => {
+              setIsOpenModal(false);
+              router.push(PATHNAME.MAIN);
+            }}
+          />
         )}
       </div>
 

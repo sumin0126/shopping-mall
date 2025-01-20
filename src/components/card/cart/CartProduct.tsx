@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Image from 'next/image';
 
 import { useRecoilState, useSetRecoilState } from 'recoil';
@@ -25,6 +27,7 @@ interface ICartProduct {
 const CartProduct = ({ name, color, price, imageUrl, id }: ICartProduct) => {
   const setWishList = useSetRecoilState(wishProductState);
   const [productCounts, setProductCounts] = useRecoilState(wishProductCountState);
+  const [isChecked, setIsChecked] = useState(true);
 
   // 현재 상품의 수량 가져오기 (기본값 : 1)
   const productCount = productCounts[id] || 1;
@@ -50,10 +53,15 @@ const CartProduct = ({ name, color, price, imageUrl, id }: ICartProduct) => {
     setWishList(wishList => wishList.filter(product => product.id !== id));
   };
 
+  // 체크박스 클릭 시, 상태 업데이트
+  const handleClickCheckBox = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <div className="cart-product-container">
       {/* 체크 박스 */}
-      <input type="checkbox" className="check-box" />
+      <input type="checkbox" className="check-box" onClick={handleClickCheckBox} />
 
       {/* 상품 이미지 */}
       <Image src={imageUrl} alt="cartImg" width={220} height={220} style={{ objectFit: 'cover' }} />
