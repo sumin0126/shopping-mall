@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { userApi } from '@/apis/users';
+import AlertModal from '@/components/modal/AlertModal';
 import { PATHNAME } from '@/constants/pathname';
 
 import type { ILoginRequest } from '@/apis/users/type';
@@ -16,6 +17,7 @@ interface IForm extends ILoginRequest {}
  */
 const LoginContainer = () => {
   const [errorMessage, setErrorMessage] = useState('');
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const router = useRouter();
 
@@ -31,16 +33,18 @@ const LoginContainer = () => {
     formState: { errors },
   } = useForm<IForm>({ mode: 'onSubmit' });
 
-  // 로그인 버튼 클릭 시 실행될 함수
+  // 로그인 버튼 클릭 시, 실행되는 함수
   const handleSubmitForm = async (data: ILoginRequest) => {
     try {
       // 로그인 버튼 클릭 시 api 호출을 통해 유저 정보를 서버에 전달하여 로그인 요청,
       const res = await userApi.postUsersLogin(data);
+
       // 서버로부터 받은 res(응답)에서 token 값과 isLogin 상태를 로컬스토리지에 저장
       localStorage.setItem('token', res.token);
       localStorage.setItem('isLogin', 'true');
-      // 로그인 성공 모달 띄우기
-      router.push(PATHNAME.MAIN);
+
+      // 로그인 성공 모달
+      setIsOpenModal(true);
     } catch (err) {
       if (err instanceof Error) {
         setErrorMessage(err.message);
@@ -48,6 +52,11 @@ const LoginContainer = () => {
         setErrorMessage('An unknown error occurred.');
       }
     }
+  };
+
+  // 아이디 찾기 버튼 클릭 시, 실행되는 함수
+  const handleClickFindId = () => {
+    router.push(PATHNAME.FINDID);
   };
 
   return (
@@ -93,7 +102,7 @@ const LoginContainer = () => {
           {/* 로그인 버튼 */}
           <div className="login-box-bottom">
             <div className="find-box">
-              <button className="id" type="button">
+              <button className="id" type="button" onClick={handleClickFindId}>
                 FIND ID
               </button>
               <p> | </p>
@@ -105,6 +114,16 @@ const LoginContainer = () => {
           </div>
         </form>
       </div>
+      {/* 모달 */}
+      {isOpenModal && (
+        <AlertModal
+          modalTitle="로그인 되었습니다 !"
+          handleClickConfirm={() => {
+            setIsOpenModal(false);
+            router.push(PATHNAME.MAIN);
+          }}
+        />
+      )}
     </div>
   );
 };

@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form'; // react-hook-form 라이브러리에서 useForm 훅 가져오기
 
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 
 import { userApi } from '@/apis/users';
+import AlertModal from '@/components/modal/AlertModal';
 import { PATHNAME } from '@/constants/pathname';
 
 import type { ICreateUserRequest } from '@/apis/users/type';
@@ -15,6 +16,8 @@ interface IForm extends ICreateUserRequest {}
  * @description 회원가입 컨테이너
  */
 const SignupContainer = () => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
   const router = useRouter();
   const { query } = router;
 
@@ -46,8 +49,7 @@ const SignupContainer = () => {
   const handleSubmitForm = (data: ICreateUserRequest) => {
     userApi.postUserSignup(data).then(res => {
       if (res.status === 201) {
-        // modal
-        router.push(PATHNAME.MAIN);
+        setIsOpenModal(true);
       }
     });
   };
@@ -224,6 +226,17 @@ const SignupContainer = () => {
             <button type="submit" className="account-btn">
               회원가입
             </button>
+
+            {/* 모달 */}
+            {isOpenModal && (
+              <AlertModal
+                modalTitle="회원가입 되었습니다 !"
+                handleClickConfirm={() => {
+                  setIsOpenModal(false);
+                  router.push(PATHNAME.LOGIN);
+                }}
+              />
+            )}
           </div>
         </form>
       </div>

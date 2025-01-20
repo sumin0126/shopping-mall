@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 import { useRecoilState } from 'recoil';
 
+import AlertModal from '@/components/modal/AlertModal';
 import { PATHNAME } from '@/constants/pathname';
 import { wishProductState } from '@/stores/wishProduct';
 
@@ -18,6 +19,7 @@ interface IProductAction {
  */
 const ProductAction = ({ product }: IProductAction) => {
   const [isLogin, setIsLogin] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const [wishList, setWishList] = useRecoilState(wishProductState);
 
   const router = useRouter();
@@ -30,10 +32,9 @@ const ProductAction = ({ product }: IProductAction) => {
 
   // cart 버튼 클릭 시, 로그인 유무 확인 후 장바구니에 상품 담아주는 함수
   const handleClickLikeProduct = () => {
-    // 로그인 유/무 확인
+    // 로그인 상태 확인
     if (!isLogin) {
-      alert('로그인 후 이용해주세요!');
-      router.push(PATHNAME.LOGIN);
+      setIsOpenModal(true);
       return;
     }
 
@@ -48,10 +49,9 @@ const ProductAction = ({ product }: IProductAction) => {
 
   // buy 버튼 클릭 시, 결제 페이지로 이동하는 함수
   const handleClickPayment = () => {
-    // 로그인 유/무 확인
+    // 로그인 상태 확인
     if (!isLogin) {
-      alert('로그인 후 이용해주세요!');
-      router.push(PATHNAME.LOGIN);
+      setIsOpenModal(true);
       return;
     }
 
@@ -66,6 +66,17 @@ const ProductAction = ({ product }: IProductAction) => {
       <button className="cart" onClick={handleClickLikeProduct}>
         CART
       </button>
+
+      {/* 모달 */}
+      {isOpenModal && (
+        <AlertModal
+          modalTitle="로그인 후 이용해주세요 !"
+          handleClickConfirm={() => {
+            setIsOpenModal(false);
+            router.push(PATHNAME.LOGIN);
+          }}
+        />
+      )}
     </div>
   );
 };

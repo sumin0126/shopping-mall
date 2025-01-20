@@ -12,11 +12,11 @@ interface ILayoutContainerProps {
  */
 const LayoutContainer = ({ children }: ILayoutContainerProps) => {
   return (
-    <>
+    <div className="layout-container">
       <Header />
       {children}
       <Footer />
-    </>
+    </div>
   );
 };
 

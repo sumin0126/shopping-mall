@@ -1,24 +1,29 @@
 .show-room-container {
   width: 100vw;
-  height: auto;
+  min-height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  gap: 40px;
+  padding: 100px 0;
 
-  .show-room {
+  .title {
     font-family: 'Playfair Display';
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 1px;
     color: #222;
-    margin-top: 160px;
-    margin-bottom: 40px;
   }
 }
 
-.show-room-card-container {
+.show-room-list-container {
   width: 646px;
+  height: auto;
+}
+
+.show-room-card-container {
+  width: 100%;
   padding: 20px 0;
   border-top: 1px solid #333;
 

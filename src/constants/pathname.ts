@@ -12,6 +12,7 @@ export const PATHNAME = {
   PRODUCT_DETAIL: '/productdetail',
   PRODUCTS: '/products',
   PAYMENT: '/payment',
+  FINDID: './findid',
 } as const;
 
 // baseAxios에서 사용하는 기본 URL

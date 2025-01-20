@@ -1,0 +1,122 @@
+.find-id-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 180px;
+
+  .title {
+    width: 50%;
+    font-size: 24px;
+    color: #222;
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Playfair Display';
+    margin: 80px 0;
+  }
+
+  // 체크 박스
+  .find-id-check-box {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+
+    label {
+      color: #777;
+    }
+
+    input {
+      margin-right: 5px;
+      cursor: pointer;
+    }
+  }
+
+  // form
+  .form-container {
+    width: 50%;
+    height: auto;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #bebebe;
+      }
+
+      .name-input-wrapper,
+      .email-input-wrapper,
+      .phoneNumber-input-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 40px;
+
+        label {
+          color: #777;
+        }
+
+        .name-error-message,
+        .email-error-message,
+        .phoneNumber-error-message {
+          color: rgb(222, 78, 42);
+        }
+
+        .name-input,
+        .email-input,
+        .phoneNumber-input {
+          height: 36px;
+          font-size: 16px;
+          color: #333;
+          font-family: 'Open Sans';
+
+          &:focus {
+            outline: none;
+          }
+
+          &::placeholder {
+            color: #c0c0c0;
+            font-weight: 400;
+            font-size: 16px;
+            font-family: 'Open Sans';
+          }
+        }
+      }
+    }
+  }
+
+  // 버튼
+  .button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+    .confirm-btn {
+      width: 30%;
+      border: 1px solid #222;
+      border-radius: 1.3rem;
+      height: 40px;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.8s ease;
+      font-family: 'Open Sans';
+
+      &:hover {
+        background-color: #222;
+        color: #fff;
+        border: none;
+      }
+    }
+  }
+}

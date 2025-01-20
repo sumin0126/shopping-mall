@@ -6,6 +6,8 @@ import type {
   ICheckUserResponse,
   ICreateUserRequest,
   ICreateUserResponse,
+  IFindIdRequest,
+  IFindIdResponse,
   ILoginRequest,
   ILoginResponse,
 } from '@/apis/users/type';
@@ -37,5 +39,19 @@ export const userApi = {
   // 유저 정보를 가져오는 함수
   getUsersMe: () => {
     return baseAxios.get<ICheckUserResponse>('/users/me').then(res => res.data);
+  },
+
+  // 아이디를 찾기 위해 유저 정보를 보내는 함수
+  postFindId: async (params: IFindIdRequest) => {
+    try {
+      const res = await baseAxios.post<IFindIdResponse>('/users/find-id', params);
+      return res.data;
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        throw new Error(err.response?.data?.message || 'An unexpected error occurred.');
+      } else {
+        throw new Error('An unexpected error occurred.');
+      }
+    }
   },
 };

@@ -9,6 +9,18 @@ export interface ILoginResponse {
   token: string;
 }
 
+// 아이디 찾기 요청 시 데이터 타입
+export interface IFindIdRequest {
+  userName: string;
+  email?: string;
+  phoneNumber?: string;
+}
+
+// 아이디 찾기 성공(응답) 시 데이터 타입
+export interface IFindIdResponse {
+  userId: string;
+}
+
 // 회원가입 요청 시 데이터 타입
 export interface ICreateUserRequest {
   name: string;

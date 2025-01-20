@@ -1,19 +1,12 @@
-// Alert 모달
+// Alert 모달 (배경)
 .alert-modal-container {
   width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-
-  // 모달 배경
-  .modal-overlay {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 1;
-  }
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
 
   // 모달 팝업
   .modal-wrapper {
@@ -52,11 +45,12 @@
       font-size: 14px;
       color: #555;
       transition: background-color 0.8s ease;
+      border: none;
+      cursor: pointer;
 
       &:hover {
         background-color: #222;
         color: #fff;
-        border: none;
       }
     }
   }

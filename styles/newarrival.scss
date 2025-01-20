@@ -5,7 +5,7 @@
 
 .new-arrival-list-container {
   width: 100%;
-  height: auto;
+  min-height: calc(100vh - 120px - 375.88px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -18,7 +18,7 @@
     justify-content: left;
     align-items: center;
     flex-wrap: wrap;
-    padding: 80px 100px;
+    padding: 0 100px;
   }
 
   .page-nation {
@@ -56,8 +56,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
   cursor: pointer;
+  margin: 40px 0;
 
   .img-box {
     width: 100%;
