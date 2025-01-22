@@ -2,7 +2,6 @@
 .payment-container {
   width: 100vw;
   min-height: 100vh;
-  margin-top: 120px;
   background-color: #f5f5f5;
   padding: 60px 200px;
   display: flex;
@@ -133,6 +132,8 @@
           width: 100%;
           display: flex;
           flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
 
           .address-title {
             color: #777;
@@ -140,22 +141,42 @@
             font-family: 'Playfair Display';
           }
 
-          .postal-code-input {
-            width: 20%;
-            height: 36px;
-            font-size: 16px;
-            color: #333;
+          .address-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
             margin-bottom: 20px;
 
-            &:focus {
-              outline: none;
+            .postal-code-input {
+              width: 20%;
+              height: 36px;
+              font-size: 16px;
+              color: #333;
+
+              &:focus {
+                outline: none;
+              }
+
+              &::placeholder {
+                color: #c0c0c0;
+                font-weight: 400;
+                font-size: 16px;
+                font-family: 'Open Sans';
+              }
             }
 
-            &::placeholder {
-              color: #c0c0c0;
-              font-weight: 400;
-              font-size: 16px;
-              font-family: 'Open Sans';
+            .btn-postcode-search {
+              width: 100px;
+              height: 30px;
+              border-radius: 6px;
+              border: 1px solid #999;
+              margin-top: 0;
+              margin-left: 5px;
+              cursor: pointer;
+              color: #777;
+              background-color: #f5f5f5;
+              font-size: 14px;
             }
           }
 
@@ -175,17 +196,6 @@
               font-size: 16px;
               font-family: 'Open Sans';
             }
-          }
-
-          .btn-postcode-search {
-            width: 100px;
-            height: 30px;
-            border-radius: 6px;
-            border: 1px solid #999;
-            margin-left: 5px;
-            cursor: pointer;
-            color: #555;
-            background-color: #f5f5f5;
           }
         }
       }

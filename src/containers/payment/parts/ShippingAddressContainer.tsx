@@ -25,14 +25,32 @@ const ShippingAddressContainer = ({ userInfo }: { userInfo: ICheckUserResponse }
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
-  } = useForm<IShippingForm>({ mode: 'onSubmit', shouldFocusError: true });
+  } = useForm<IShippingForm>({
+    mode: 'onSubmit',
+    shouldFocusError: true,
+    defaultValues: {
+      name: userInfo.name || '',
+      email: userInfo.email || '',
+      phoneNumber: userInfo.phoneNumber || '',
+      postCode: userInfo.postCode || '',
+      address: userInfo.address || '',
+      isSameUserInfo: true,
+      isNewShippingAddress: false,
+    },
+  });
 
   // form 제출 시 실행될 함수
   const handleSubmitForm = () => {};
 
+  // 실시간으로 체크박스 상태 감지
+  const isSameUserInfo = watch('isSameUserInfo');
+  const isNewShippingAddress = watch('isNewShippingAddress');
+
   // "회원정보와 동일" 체크박스에 클릭 시, 필드에 기존 사용자 정보를 업데이트해주는 함수
   const handleClickSameUserInfo = () => {
+    setValue('isSameUserInfo', true);
     setValue('isNewShippingAddress', false);
     setValue('name', userInfo.name || '');
     setValue('email', userInfo.email || '');
@@ -43,6 +61,7 @@ const ShippingAddressContainer = ({ userInfo }: { userInfo: ICheckUserResponse }
 
   // "새로운 배송지" 체크박스에 클릭 시, 빈 필드로 만들어주는 함수
   const handleClickNewAddress = () => {
+    setValue('isNewShippingAddress', true);
     setValue('isSameUserInfo', false);
     setValue('name', '');
     setValue('email', '');
@@ -80,11 +99,21 @@ const ShippingAddressContainer = ({ userInfo }: { userInfo: ICheckUserResponse }
       {/* 배송지 선택 체크박스 */}
       <div className="shipping-choice-checkbox">
         <label>
-          <input type="checkbox" {...register('isSameUserInfo')} onClick={handleClickSameUserInfo} />
+          <input
+            type="checkbox"
+            {...register('isSameUserInfo')}
+            checked={isSameUserInfo}
+            onClick={handleClickSameUserInfo}
+          />
           회원정보와 동일
         </label>
         <label>
-          <input type="checkbox" {...register('isNewShippingAddress')} onClick={handleClickNewAddress} />
+          <input
+            type="checkbox"
+            {...register('isNewShippingAddress')}
+            checked={isNewShippingAddress}
+            onClick={handleClickNewAddress}
+          />
           새로운 배송지
         </label>
       </div>
@@ -103,7 +132,6 @@ const ShippingAddressContainer = ({ userInfo }: { userInfo: ICheckUserResponse }
               })}
               type="text"
               className="name-input"
-              // 기존에 있던 onchange와 ref는 리액트훅폼이 입력값과 상태를 관리함
             />
             {errors.name && <p className="name-error-message">{errors.name.message}</p>}
           </div>
@@ -164,15 +192,15 @@ const ShippingAddressContainer = ({ userInfo }: { userInfo: ICheckUserResponse }
               <button type="button" className="btn-postcode-search" onClick={searchAddress}>
                 우편번호 찾기
               </button>
-
-              {/* 기본주소 */}
-              <input
-                {...register('address')}
-                type="text"
-                className="basic-address-input"
-                placeholder="기본주소 및 추가주소 입력"
-              />
             </div>
+
+            {/* 기본주소 */}
+            <input
+              {...register('address')}
+              type="text"
+              className="basic-address-input"
+              placeholder="기본주소 및 추가주소 입력"
+            />
           </div>
 
           {/* 배송 메세지 */}

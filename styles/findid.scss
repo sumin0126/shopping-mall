@@ -1,9 +1,9 @@
 .find-id-container {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 0 180px;
 

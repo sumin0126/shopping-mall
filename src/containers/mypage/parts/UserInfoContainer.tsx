@@ -49,7 +49,7 @@ const UserInfoContainer = () => {
   // 수정 버튼 클릭 시, 회원가입 페이지로 이동하는 함수
   const handleClickInfoEdit = () => {
     router.push({
-      pathname: PATHNAME.ACCOUNT,
+      pathname: PATHNAME.SIGNUP,
       query: {
         name: userInfo.name,
         email: userInfo.email,

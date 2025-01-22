@@ -27,7 +27,7 @@ const MainProductSlider = ({ products }: IMainProductSliderProps) => {
     dots: true,
     infinite: true,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     autoplay: true,
     speed: 1000,
     autoplaySpeed: 3000,

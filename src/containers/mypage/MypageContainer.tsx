@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 import Lnb from '@/components/navigator/Lnb';
 import { PATHNAME } from '@/constants/pathname';
+import ExchangeContainer from '@/containers/mypage/parts/ExchangeHistoryContainer';
 import OrderHistoryContainer from '@/containers/mypage/parts/OrderHistoryContainer';
 import UserInfoContainer from '@/containers/mypage/parts/UserInfoContainer';
 
@@ -33,6 +34,7 @@ const MypageContainer = () => {
 
       {currentTab === 'userInfo' && <UserInfoContainer />}
       {currentTab === 'orderHistory' && <OrderHistoryContainer />}
+      {currentTab === 'exchangeHistory' && <ExchangeContainer />}
     </div>
   );
 };

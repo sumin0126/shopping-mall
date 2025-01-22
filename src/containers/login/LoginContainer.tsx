@@ -23,7 +23,7 @@ const LoginContainer = () => {
 
   // 클릭 시 회원가입 페이지로 이동하는 함수
   const handleClickAccount = () => {
-    router.push(PATHNAME.ACCOUNT);
+    router.push(PATHNAME.SIGNUP);
   };
 
   // useFrom 훅 초기화
