@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRecoilState } from 'recoil';
 
 import AlertModal from '@/components/modal/AlertModal';
+import ConfirmModal from '@/components/modal/ConfirmModal';
 import { PATHNAME } from '@/constants/pathname';
 import { wishProductState } from '@/stores/wishProduct';
 
@@ -48,7 +49,9 @@ const NewArrivalCard = ({
   const [wishList, setWishList] = useRecoilState(wishProductState);
   const [isLikeProduct, setIsLikeProduct] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isAlertOpenModal, setIsAlertOpenModal] = useState(false);
+  const [isConfirmOpenModal, setIsConfirmOpenModal] = useState(false);
+  const [isDuplicateModal, setIsDuplicateModal] = useState(false);
 
   const router = useRouter();
 
@@ -62,7 +65,7 @@ const NewArrivalCard = ({
   const handleClickLikeProduct = () => {
     // 로그인 상태 확인
     if (!isLogin) {
-      setIsOpenModal(true);
+      setIsAlertOpenModal(true);
       return;
     }
 
@@ -86,6 +89,9 @@ const NewArrivalCard = ({
     if (!isDuplicate) {
       setWishList([...wishList, newProduct]);
       setIsLikeProduct(true);
+      setIsConfirmOpenModal(true);
+    } else {
+      setIsDuplicateModal(false);
     }
   };
 
@@ -106,16 +112,42 @@ const NewArrivalCard = ({
           className={`wish-icon ${isLikeProduct ? 'active' : ''}`}
           onClick={handleClickLikeProduct}
         />
-        {/* 모달 */}
-        {isOpenModal && (
+
+        {/* 로그인 모달 */}
+        {isAlertOpenModal && (
           <AlertModal
             modalTitle="로그인 후 이용해주세요 !"
             handleClickConfirm={() => {
-              setIsOpenModal(false);
+              setIsAlertOpenModal(false);
               router.push(PATHNAME.LOGIN);
             }}
           />
         )}
+
+        {/* 장바구니 이동 모달 */}
+        {isConfirmOpenModal && (
+          <ConfirmModal
+            modalTitle="장바구니로 이동하시겠습니까?"
+            handleClickConfirm={() => {
+              setIsConfirmOpenModal(false);
+              router.push(PATHNAME.CART);
+            }}
+            handleClickCancel={() => {
+              setIsConfirmOpenModal(false);
+            }}
+          />
+        )}
+
+        {/* 장바구니 중복 상품 모달 */}
+        {isDuplicateModal && (
+          <AlertModal
+            modalTitle="이미 장바구니에 담긴 상품입니다 !"
+            handleClickConfirm={() => {
+              setIsDuplicateModal(false);
+            }}
+          />
+        )}
+
         {/* 대표이미지 */}
         <Image
           src={img}

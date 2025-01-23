@@ -5,3 +5,18 @@ declare namespace daum {
     open(): void;
   }
 }
+
+// // 아임포트 API 타입 정의 추가
+// declare global {
+//   interface Window {
+//     IMP?: {
+//       init: (userCode: string) => void;
+//       request_pay: (
+//         paymentData: Record<string unknown>,
+//         callback: (response: Record<string unknown>) => void
+//       ) => void;
+//     };
+//   }
+// }
+
+// // export {};

@@ -4,7 +4,7 @@ interface IAlertModalProps {
 }
 
 /**
- * @description 확인 모달 컴포넌트
+ * @description 알림 모달 컴포넌트
  *
  * @param modalTitle - 모달 타이틀
  * @param handleClickConfirm - 확인 버튼 클릭 시, 실행될 함수
