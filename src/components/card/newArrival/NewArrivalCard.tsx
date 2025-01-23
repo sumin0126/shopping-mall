@@ -13,38 +13,32 @@ import ConfirmModal from '@/components/modal/ConfirmModal';
 import { PATHNAME } from '@/constants/pathname';
 import { wishProductState } from '@/stores/wishProduct';
 
-import type { TProductCategory } from '@/apis/products/type';
+import type { IProduct } from '@/apis/products/type';
 
-interface INewArrivalCardProps {
-  itemId: number;
-  img: string;
-  itemName: string;
-  itemColor?: string;
-  itemPrice: number;
-  category: TProductCategory;
-  isNew: boolean;
-  isBest: boolean;
-  description?: string;
-}
+interface INewArrivalCardProps extends IProduct {}
 
 /**
  * @description 신상품 카드 컴포넌트
  *
- * @param img - 상품 대표이미지
- * @param itemName - 상품 이름
- * @param itemColor - 상품 컬러
- * @param itemPrice - 상품 가격
+ * @param imageUrl - 상품 대표이미지
+ * @param name - 상품 이름
+ * @param color - 상품 컬러
+ * @param price - 상품 가격
  */
 const NewArrivalCard = ({
-  itemId,
-  img,
-  itemName,
-  itemColor,
-  itemPrice,
+  id,
+  imageUrl,
+  name,
+  color,
+  price,
   category,
   isNew,
   isBest,
   description,
+  width,
+  height,
+  strapSize,
+  weight,
 }: INewArrivalCardProps) => {
   const [wishList, setWishList] = useRecoilState(wishProductState);
   const [isLikeProduct, setIsLikeProduct] = useState(false);
@@ -70,20 +64,24 @@ const NewArrivalCard = ({
     }
 
     const newProduct = {
-      id: itemId,
-      imageUrl: img,
-      name: itemName,
-      color: itemColor,
-      price: itemPrice,
+      id: id,
+      imageUrl: imageUrl,
+      name: name,
+      color: color,
+      price: price,
       category: category,
       isNew: isNew,
       isBest: isBest,
       description: description,
+      width,
+      height,
+      strapSize,
+      weight,
     };
 
     // 중복된 상품인지 확인하는 로직
     // 현재 장바구니에 담으려는 상품과 장바구니에 이미 담겨있는 상품이 같은건지 확인
-    const isDuplicate = wishList.some(product => product.id === itemId);
+    const isDuplicate = wishList.some(product => product.id === id);
 
     // 중복된 상품이 아니라면, 장바구니에 새상품 업데이트
     if (!isDuplicate) {
@@ -99,13 +97,13 @@ const NewArrivalCard = ({
   const handleClickProduct = () => {
     router.push({
       pathname: PATHNAME.PRODUCT_DETAIL,
-      query: { id: itemId },
+      query: { id: id },
     });
   };
 
   return (
     <div className="new-arrival-card-container">
-      <div className="img-box">
+      <div className="imageUrl-box">
         {/* 하트 아이콘 */}
         <FontAwesomeIcon
           icon={isLikeProduct ? faSolidHeart : faRegularHeart}
@@ -150,8 +148,8 @@ const NewArrivalCard = ({
 
         {/* 대표이미지 */}
         <Image
-          src={img}
-          alt={img}
+          src={imageUrl}
+          alt={imageUrl}
           width={300}
           height={300}
           style={{ objectFit: 'cover' }}
@@ -161,9 +159,9 @@ const NewArrivalCard = ({
 
       {/* 상품 정보 */}
       <div className="item-info" onClick={handleClickProduct}>
-        <div className="name">{itemName}</div>
-        {itemColor && <div className="color">{itemColor}</div>}
-        <div className="price">{itemPrice.toLocaleString('ko-KR')}</div>
+        <div className="name">{name}</div>
+        {color && <div className="color">{color}</div>}
+        <div className="price">{price.toLocaleString('ko-KR')}</div>
       </div>
     </div>
   );
