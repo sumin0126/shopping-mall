@@ -49,14 +49,6 @@ const ProductDetailContainer = () => {
     '/img/productdetail/productdetailmain1-4.jpg',
   ];
 
-  // 상품 사이즈 데이터
-  const ProductSize = {
-    width: 54,
-    height: 30,
-    strap: 60,
-    weight: 505,
-  };
-
   if (!product) {
     return;
   }
@@ -86,7 +78,7 @@ const ProductDetailContainer = () => {
       {activeButton === 'DETAIL' && <ProductDetailMain ProductImage={ProductImage} />}
 
       {/* 상품 상세 정보 */}
-      {activeButton === 'INFO' && <ProductDetailInfo ProductSize={ProductSize} />}
+      {activeButton === 'INFO' && <ProductDetailInfo product={product} />}
     </div>
   );
 };

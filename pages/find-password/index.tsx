@@ -1,10 +1,10 @@
+import FindPasswordContainer from '@/containers/findpassword/FindPasswordContainer';
 import LayoutContainer from '@/containers/layout/LayoutContainer';
-import ProductDetailContainer from '@/containers/productdetail/ProductDetailContainer';
 
 const index = () => {
   return (
     <LayoutContainer>
-      <ProductDetailContainer />
+      <FindPasswordContainer />
     </LayoutContainer>
   );
 };

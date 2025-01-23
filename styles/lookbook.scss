@@ -3,8 +3,9 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  margin-top: 40px;
 }
 
 .look-book-list-container {
@@ -15,5 +16,4 @@
   justify-content: center;
   align-items: center;
   gap: 3.75rem;
-  margin-top: 40px;
 }

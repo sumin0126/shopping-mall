@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { userApi } from '@/apis/users';
-
-import type { IFindIdRequest } from '@/apis/users/type';
-
 interface IForm {
   name: string;
   email?: string;
@@ -32,10 +28,13 @@ const FindIdContainer = () => {
   const checkedPhoneNumber = watch('checkedPhoneNumber');
 
   // 확인 버튼 클릭 시, 실행되는 함수
-  const handleSubmitForm = async (data: IFindIdRequest) => {
+  const handleSubmitForm = async () => {
     try {
       // 유저 정보를 api 호출을 통해 서버에 전달
-      const res = await userApi.postFindId(data);
+      // const res = await userApi.postFindId(data);
+      const res = {
+        userId: null,
+      };
 
       if (res.userId) {
         alert(`아이디는 ${res.userId} 입니다 !`);

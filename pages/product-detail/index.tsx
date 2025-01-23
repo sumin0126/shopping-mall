@@ -1,10 +1,9 @@
-import BrandStoryContainer from '@/containers/brandstory/BrandStoryContainer';
 import LayoutContainer from '@/containers/layout/LayoutContainer';
-
+import ProductDetailContainer from '@/containers/productdetail/ProductDetailContainer';
 const index = () => {
   return (
     <LayoutContainer>
-      <BrandStoryContainer />
+      <ProductDetailContainer />
     </LayoutContainer>
   );
 };

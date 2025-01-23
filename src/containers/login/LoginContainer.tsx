@@ -59,6 +59,11 @@ const LoginContainer = () => {
     router.push(PATHNAME.FINDID);
   };
 
+  // 비밀번호 찾기 버튼 클릭 시, 실행되는 함수
+  const handleClickFindPassword = () => {
+    router.push(PATHNAME.FINDPASSWORD);
+  };
+
   return (
     <div className="login-container">
       <div className="login-img">
@@ -106,7 +111,7 @@ const LoginContainer = () => {
                 FIND ID
               </button>
               <p> | </p>
-              <button className="ps" type="button">
+              <button className="ps" type="button" onClick={handleClickFindPassword}>
                 FIND PASSWORD
               </button>
             </div>

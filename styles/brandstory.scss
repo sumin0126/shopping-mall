@@ -1,18 +1,21 @@
 .brand-story-container {
+  width: 100%;
+  min-height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  gap: 100px;
+  margin-top: 40px;
 }
 
 .brand-info {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 16%;
-  margin-top: 30px;
 
   .text-wrapper {
     font-family: 'Open Sans';

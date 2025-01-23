@@ -13,6 +13,10 @@ export interface IProduct {
   name: string;
   price: number;
   imageUrl: string;
+  width: number;
+  height: number;
+  strapSize: number;
+  weight: number;
   category: TProductCategory;
   isNew: boolean;
   isBest: boolean;

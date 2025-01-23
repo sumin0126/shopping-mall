@@ -1,32 +1,23 @@
-interface IProps {
-  width: number;
-  height: number;
-  strap: number;
-  weight: number;
-}
+import type { IProduct } from '@/apis/products/type';
 
 interface IProductDetailInfoProps {
-  ProductSize: IProps;
+  product: IProduct;
 }
 
 /**
  * @description 상품 추가 정보 컴포넌트
  *
- * @param width - 상품 가로 사이즈
- * @param height - 상품 세로 사이즈
- * @param strap - 상품 스트랩 길이
- * @param weight - 상품 무게
+ * @param product - 상품 정보
  *
  */
-const ProductDetailInfo = ({ ProductSize }: IProductDetailInfoProps) => {
-  const { width, height, strap, weight } = ProductSize;
-
+const ProductDetailInfo = ({ product }: IProductDetailInfoProps) => {
   return (
     <div className="product-detail-info-container">
       <div className="size-guide">
         <p className="title">SIZE GUIDE</p>
         <p>
-          가로 {width}cm / 세로 {height}cm / 스트랩 {strap}cm / 무게 {weight}g
+          {product.width && `가로 ${product.width}cm`} / 세로 {product.height}cm / 스트랩 {product.strapSize}cm / 무게{' '}
+          {product.weight}g
         </p>
       </div>
 
