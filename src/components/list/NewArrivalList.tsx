@@ -54,18 +54,7 @@ const NewArrivalList = ({ products }: INewArrivalListProps) => {
     <div className="new-arrival-list-container">
       <div className="list-wrapper">
         {currentItems.map(item => (
-          <NewArrivalCard
-            key={item.id}
-            itemId={item.id}
-            img={item.imageUrl}
-            itemName={item.name}
-            itemColor={item.color}
-            itemPrice={item.price}
-            category={item.category}
-            isNew={item.isNew}
-            isBest={item.isBest}
-            description={item.description}
-          />
+          <NewArrivalCard key={item.id} {...item} />
         ))}
       </div>
 
