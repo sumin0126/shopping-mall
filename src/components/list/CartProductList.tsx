@@ -8,6 +8,7 @@ import { PATHNAME } from '@/constants/pathname';
 
 interface IProducts {
   id: number;
+  productId: number;
   name: string;
   price: number;
   imageUrl: string;
@@ -50,6 +51,14 @@ const CartProductList = ({ wishList, productCounts, updateProductCount }: ICartP
     }
   };
 
+  // 상품명, 썸네일 클릭 시
+  const handleClickProduct = (productId: number) => {
+    router.push({
+      pathname: PATHNAME.PRODUCT_DETAIL,
+      query: { id: productId },
+    });
+  };
+
   // 전체상품주문시 실행되는 함수
   const handleClickAllItems = () => {
     console.log(wishList);
@@ -69,6 +78,7 @@ const CartProductList = ({ wishList, productCounts, updateProductCount }: ICartP
           <CartProduct
             key={product.id}
             id={product.id}
+            productId={product.productId}
             name={product.name}
             color={product.color || ''}
             price={product.price}
@@ -76,6 +86,7 @@ const CartProductList = ({ wishList, productCounts, updateProductCount }: ICartP
             onChange={handleChangeCheckBox}
             count={productCounts[product.id] || 1}
             updateCount={updateProductCount}
+            onClickProduct={handleClickProduct}
           />
         ))
       ) : (

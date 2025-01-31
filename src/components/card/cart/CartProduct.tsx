@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 interface ICartProduct {
   id: number;
+  productId: number;
   name: string;
   color: string;
   price: number;
@@ -11,18 +12,32 @@ interface ICartProduct {
   onChange: (id: number, isChecked: boolean) => void;
   count: number;
   updateCount: (id: number, count: number) => void;
+  onClickProduct: (productId: number) => void;
 }
 
 /**
  * @description 장바구니 아이템 컴포넌트
  *
- * @param id - 상품아이디
+ * @param id - 장바구니 ID
+ * @param productId - 상품 ID
  * @param name - 상품명
  * @param color - 상품색상
  * @param price - 상품가격
  * @param imageUrl - 상품이미지
+ * @param onClickProduct - 상품 클릭 이벤트
  */
-const CartProduct = ({ name, color, price, imageUrl, id, onChange, count, updateCount }: ICartProduct) => {
+const CartProduct = ({
+  name,
+  color,
+  price,
+  imageUrl,
+  id,
+  productId,
+  onChange,
+  count,
+  updateCount,
+  onClickProduct,
+}: ICartProduct) => {
   const [isChecked, setIsChecked] = useState(false);
 
   // 빼기 버튼 클릭 시, 수량을 1씩 빼주는 함수
@@ -54,11 +69,19 @@ const CartProduct = ({ name, color, price, imageUrl, id, onChange, count, update
       <input type="checkbox" className="check-box" onClick={handleClickCheckBox} />
 
       {/* 상품 이미지 */}
-      <Image src={imageUrl} alt="cartImg" width={220} height={220} style={{ objectFit: 'cover' }} />
+      <Image
+        src={imageUrl}
+        className="product-img"
+        alt="cartImg"
+        width={220}
+        height={220}
+        style={{ objectFit: 'cover' }}
+        onClick={() => onClickProduct(productId)}
+      />
 
       {/* 상품 정보 */}
       <div className="product-info">
-        <p className="name-color">
+        <p className="name-color" onClick={() => onClickProduct(productId)}>
           {name} - {color}
         </p>
         <p className="price">

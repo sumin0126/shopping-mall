@@ -16,6 +16,7 @@ const CartContainer = () => {
   const wishList = [
     {
       id: 1,
+      productId: 1,
       name: 'clo soft',
       color: 'leopard',
       price: 190000,
@@ -23,6 +24,7 @@ const CartContainer = () => {
     },
     {
       id: 2,
+      productId: 2,
       name: 'strap flip flop',
       color: 'suede black',
       price: 230000,

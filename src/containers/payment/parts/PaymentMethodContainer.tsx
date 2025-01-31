@@ -9,8 +9,11 @@ const PaymentMethodContainer = () => {
   const {
     register,
     setValue,
+    watch,
     formState: { errors },
   } = useFormContext<IMethodForm>();
+
+  const selectedBank = watch('bankSelect');
 
   // 은행 선택 시, 선택한 은행으로 업데이트 해주는 함수
   const handleChangeBank = (bankName: string) => {
@@ -22,7 +25,7 @@ const PaymentMethodContainer = () => {
       {/* 은행 선택 */}
       <div className="bank-wrapper">
         <label htmlFor="bankSelect">은행</label>
-        <select {...register('bankSelect')} onChange={e => handleChangeBank(e.target.value)}>
+        <select {...register('bankSelect')} onChange={e => handleChangeBank(e.target.value)} value={selectedBank}>
           <option value="국민은행">국민은행</option>
           <option value="신한은행">신한은행</option>
           <option value="우리은행">우리은행</option>

@@ -29,7 +29,7 @@ const ProductDetailHeader = ({ product }: IProductDetailHeaderProps) => {
           // texture={product.texture}
           description={product.description}
         />
-        <ProductAction product={product} />
+        <ProductAction />
       </div>
     </div>
   );

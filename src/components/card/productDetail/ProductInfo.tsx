@@ -14,7 +14,6 @@ interface IProductInfo {
  * @param price - 상품 가격
  * @param texture - 상품 소재
  * @param description - 상품 소개
- *
  */
 const ProductInfo = ({ name, color, price, description }: IProductInfo) => {
   return (

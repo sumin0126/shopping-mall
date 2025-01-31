@@ -2,28 +2,18 @@ import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { useRecoilState } from 'recoil';
-
 import AlertModal from '@/components/modal/AlertModal';
 import ConfirmModal from '@/components/modal/ConfirmModal';
 import { PATHNAME } from '@/constants/pathname';
-import { wishProductState } from '@/stores/wishProduct';
-
-import type { IProduct } from '@/apis/products/type';
-
-interface IProductAction {
-  product: IProduct;
-}
 
 /**
  * @description 상품 상세페이지 버튼 컴포넌트
  */
-const ProductAction = ({ product }: IProductAction) => {
+const ProductAction = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [isAlertOpenModal, setIsAlertOpenModal] = useState(false);
   const [isConfirmOpenModal, setIsConfirmOpenModal] = useState(false);
   const [isDuplicateModal, setIsDuplicateModal] = useState(false);
-  const [wishList, setWishList] = useRecoilState(wishProductState);
 
   const router = useRouter();
 
@@ -39,17 +29,8 @@ const ProductAction = ({ product }: IProductAction) => {
     if (!isLogin) {
       setIsAlertOpenModal(true);
       return;
-    }
-
-    // 장바구니에 담으려는 상품이 중복됐는지 확인하는 함수
-    const isDuplicate = wishList.some(item => item.id === product.id);
-
-    // 중복된 상품이 아니라면 장바구니에 해당 상품의 데이터를 업데이트
-    if (!isDuplicate) {
-      setWishList([...wishList, product]);
-      setIsConfirmOpenModal(true);
     } else {
-      setIsDuplicateModal(true);
+      setIsConfirmOpenModal(true);
     }
   };
 

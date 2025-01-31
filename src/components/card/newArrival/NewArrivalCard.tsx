@@ -6,16 +6,10 @@ import { useRouter } from 'next/router';
 import { faHeart as faRegularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faSolidHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useRecoilState } from 'recoil';
 
 import AlertModal from '@/components/modal/AlertModal';
 import ConfirmModal from '@/components/modal/ConfirmModal';
 import { PATHNAME } from '@/constants/pathname';
-import { wishProductState } from '@/stores/wishProduct';
-
-import type { IProduct } from '@/apis/products/type';
-
-interface INewArrivalCardProps extends IProduct {}
 
 /**
  * @description 신상품 카드 컴포넌트
@@ -25,22 +19,7 @@ interface INewArrivalCardProps extends IProduct {}
  * @param color - 상품 컬러
  * @param price - 상품 가격
  */
-const NewArrivalCard = ({
-  id,
-  imageUrl,
-  name,
-  color,
-  price,
-  category,
-  isNew,
-  isBest,
-  description,
-  width,
-  height,
-  strapSize,
-  weight,
-}: INewArrivalCardProps) => {
-  const [wishList, setWishList] = useRecoilState(wishProductState);
+const NewArrivalCard = ({ id, imageUrl, name, color, price }) => {
   const [isLikeProduct, setIsLikeProduct] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isAlertOpenModal, setIsAlertOpenModal] = useState(false);
@@ -61,35 +40,8 @@ const NewArrivalCard = ({
     if (!isLogin) {
       setIsAlertOpenModal(true);
       return;
-    }
-
-    const newProduct = {
-      id: id,
-      imageUrl: imageUrl,
-      name: name,
-      color: color,
-      price: price,
-      category: category,
-      isNew: isNew,
-      isBest: isBest,
-      description: description,
-      width,
-      height,
-      strapSize,
-      weight,
-    };
-
-    // 중복된 상품인지 확인하는 로직
-    // 현재 장바구니에 담으려는 상품과 장바구니에 이미 담겨있는 상품이 같은건지 확인
-    const isDuplicate = wishList.some(product => product.id === id);
-
-    // 중복된 상품이 아니라면, 장바구니에 새상품 업데이트
-    if (!isDuplicate) {
-      setWishList([...wishList, newProduct]);
-      setIsLikeProduct(true);
-      setIsConfirmOpenModal(true);
     } else {
-      setIsDuplicateModal(false);
+      setIsConfirmOpenModal(true);
     }
   };
 

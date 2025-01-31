@@ -4,13 +4,11 @@ import { useRouter } from 'next/router';
 
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useRecoilValue } from 'recoil';
 
 import AboutNavbar from '@/components/layout/navbar/AboutNavbar';
 import ShopNavbar from '@/components/layout/navbar/ShopNavbar';
 import AlertModal from '@/components/modal/AlertModal';
 import { PATHNAME } from '@/constants/pathname';
-import { wishProductState } from '@/stores/wishProduct';
 
 /**
  * @description 헤더 컴포넌트
@@ -21,8 +19,6 @@ const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
-
-  const wishList = useRecoilValue(wishProductState);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -142,8 +138,9 @@ const Header = () => {
         )}
 
         <button className="cart" onClick={handleClickCart}>
-          CART{wishList.length > 0 ? `(${wishList.length})` : ''}
+          CART
         </button>
+
         <button className="login" onClick={isLogin ? handleClickMypage : handleClickLogin}>
           {isLogin ? 'MY PAGE' : 'LOGIN'}
         </button>

@@ -48,7 +48,7 @@ const PayMentContainer = () => {
       address: userInfo?.address || '',
       isSameUserInfo: true,
       isNewShippingAddress: false,
-      bankSelect: '',
+      bankSelect: '국민은행',
       accountNumber: '',
       depositorName: '',
     },
@@ -68,17 +68,11 @@ const PayMentContainer = () => {
   useEffect(() => {
     userApi.getUsersMe().then(res => {
       setUserInfo(res);
-
-      methods.setValue('isSameUserInfo', true);
-      methods.setValue('isNewShippingAddress', false);
       methods.setValue('name', res.name || '');
       methods.setValue('email', res.email || '');
       methods.setValue('phoneNumber', res.phoneNumber || '');
       methods.setValue('postCode', res.postCode || '');
       methods.setValue('address', res.address || '');
-      methods.setValue('bankSelect', '');
-      methods.setValue('accountNumber', '');
-      methods.setValue('depositorName', '');
     });
   }, []);
 
