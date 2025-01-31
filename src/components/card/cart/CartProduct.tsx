@@ -2,17 +2,15 @@ import { useState } from 'react';
 
 import Image from 'next/image';
 
-import { useRecoilState, useSetRecoilState } from 'recoil';
-
-import { wishProductState } from '@/stores/wishProduct';
-import { wishProductCountState } from '@/stores/wishProductCount';
-
 interface ICartProduct {
   id: number;
   name: string;
   color: string;
   price: number;
   imageUrl: string;
+  onChange: (id: number, isChecked: boolean) => void;
+  count: number;
+  updateCount: (id: number, count: number) => void;
 }
 
 /**
@@ -24,38 +22,30 @@ interface ICartProduct {
  * @param price - 상품가격
  * @param imageUrl - 상품이미지
  */
-const CartProduct = ({ name, color, price, imageUrl, id }: ICartProduct) => {
-  const setWishList = useSetRecoilState(wishProductState);
-  const [productCounts, setProductCounts] = useRecoilState(wishProductCountState);
-  const [isChecked, setIsChecked] = useState(true);
-
-  // 현재 상품의 수량 가져오기 (기본값 : 1)
-  const productCount = productCounts[id] || 1;
+const CartProduct = ({ name, color, price, imageUrl, id, onChange, count, updateCount }: ICartProduct) => {
+  const [isChecked, setIsChecked] = useState(false);
 
   // 빼기 버튼 클릭 시, 수량을 1씩 빼주는 함수
   const minusProductCount = () => {
-    setProductCounts(prev => ({
-      ...prev,
-      [id]: productCount > 1 ? productCount - 1 : 1,
-    }));
+    const newCount = count > 1 ? count - 1 : 1;
+    updateCount(id, newCount);
   };
 
   // 더하기 버튼 클릭 시, 수량을 1씩 더해주는 함수
   const plusProductCount = () => {
-    setProductCounts(prev => ({
-      ...prev,
-      [id]: productCount + 1,
-    }));
+    const newCount = count + 1;
+    updateCount(id, newCount);
   };
 
   // remove 버튼 클릭 시, 장바구니에서 상품을 삭제하는 함수
-  const handleClickDeleteProduct = () => {
-    setWishList(wishList => wishList.filter(product => product.id !== id));
-  };
+  // const handleClickDeleteProduct = () => {
+  //   setWishList(wishList => wishList.filter(product => product.id !== id));
+  // };
 
   // 체크박스 클릭 시, 상태 업데이트
   const handleClickCheckBox = () => {
     setIsChecked(!isChecked);
+    onChange(id, !isChecked);
   };
 
   return (
@@ -72,10 +62,10 @@ const CartProduct = ({ name, color, price, imageUrl, id }: ICartProduct) => {
           {name} - {color}
         </p>
         <p className="price">
-          {price.toLocaleString('ko-KR')}
+          {(price * count).toLocaleString('ko-KR')}
           <span>원</span>
         </p>
-        <button onClick={handleClickDeleteProduct}>remove</button>
+        <button>remove</button>
       </div>
 
       {/* 상품 수량 */}
@@ -83,7 +73,7 @@ const CartProduct = ({ name, color, price, imageUrl, id }: ICartProduct) => {
         <button className="minus-button" onClick={minusProductCount}>
           -
         </button>
-        <p>{productCount}</p>
+        <p>{count}</p>
         <button className="plus-button" onClick={plusProductCount}>
           +
         </button>

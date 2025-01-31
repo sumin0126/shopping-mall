@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import { userApi } from '@/apis/users';
 import OrderHistoryProductInfo from '@/components/card/myPage/orderHistory/OrderHistoryProductInfo';
+import AlertModal from '@/components/modal/AlertModal';
 import { PATHNAME } from '@/constants/pathname';
 import PaymentMethodContainer from '@/containers/payment/parts/PaymentMethodContainer';
 import ShippingAddressContainer from '@/containers/payment/parts/ShippingAddressContainer';
@@ -32,6 +33,7 @@ export interface IMethodForm {
  */
 const PayMentContainer = () => {
   const [userInfo, setUserInfo] = useState<ICheckUserResponse>();
+  const [isAlertOpenModal, setIsAlertOpenModal] = useState(false);
   const router = useRouter();
 
   // useFrom 호출하여 methods 객체 생성
@@ -84,23 +86,10 @@ const PayMentContainer = () => {
     return;
   }
 
-  // 장바구니 페이지 예시 (선택상품 / 전체상품 주문)
-  // const handleClick = () => {
-  //   console.log(['selectedId']);
-  // };
-
-  // const handleClickAll = () => {
-  //   console.log(['id1', 'id2']);
-  // };
-
   // 상품 결제 버튼 클릭 시, 실행되는 함수
   const handleClickPayment = (data: IMethodForm) => {
     console.log(data);
-
-    router.push({
-      pathname: PATHNAME.MYPAGE,
-      query: { tab: 'orderHistory' },
-    });
+    setIsAlertOpenModal(true);
   };
 
   return (
@@ -130,9 +119,23 @@ const PayMentContainer = () => {
           <TotalPriceContainer />
 
           {/* 결제 버튼 */}
-          <button>145,000원 결제하기</button>
+          <button className="payment-btn">145,000원 결제하기</button>
         </form>
       </FormProvider>
+
+      {/* 결제 완료 모달 */}
+      {isAlertOpenModal && (
+        <AlertModal
+          modalTitle="주문이 완료되었습니다 !"
+          handleClickConfirm={() => {
+            setIsAlertOpenModal(false);
+            router.push({
+              pathname: PATHNAME.MYPAGE,
+              query: { tab: 'orderHistory' },
+            });
+          }}
+        />
+      )}
     </div>
   );
 };
