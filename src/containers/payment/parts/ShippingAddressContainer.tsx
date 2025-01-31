@@ -1,48 +1,20 @@
-import { useForm } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 import Script from 'next/script';
 
 import type { ICheckUserResponse } from '@/apis/users/type';
-
-// 폼 데이터에 대한 타입
-interface IShippingForm {
-  name: string;
-  email: string;
-  phoneNumber: string;
-  postCode?: string;
-  address?: string;
-  isSameUserInfo: boolean;
-  isNewShippingAddress: boolean;
-  shippingMessage: string;
-}
+import type { IMethodForm } from '@/containers/payment/PayMentContainer';
 
 /**
  * @description 상품 결제 - 배송정보 컨테이너
  */
 const ShippingAddressContainer = ({ userInfo }: { userInfo: ICheckUserResponse }) => {
-  // useFrom 훅 초기화
   const {
     register,
-    handleSubmit,
-    setValue,
     watch,
+    setValue,
     formState: { errors },
-  } = useForm<IShippingForm>({
-    mode: 'onSubmit',
-    shouldFocusError: true,
-    defaultValues: {
-      name: userInfo.name || '',
-      email: userInfo.email || '',
-      phoneNumber: userInfo.phoneNumber || '',
-      postCode: userInfo.postCode || '',
-      address: userInfo.address || '',
-      isSameUserInfo: true,
-      isNewShippingAddress: false,
-    },
-  });
-
-  // form 제출 시 실행될 함수
-  const handleSubmitForm = () => {};
+  } = useFormContext<IMethodForm>();
 
   // 실시간으로 체크박스 상태 감지
   const isSameUserInfo = watch('isSameUserInfo');
@@ -118,101 +90,98 @@ const ShippingAddressContainer = ({ userInfo }: { userInfo: ICheckUserResponse }
         </label>
       </div>
 
-      {/* 배송 정보 폼 */}
       <div className="form-container">
-        <form onSubmit={handleSubmit(handleSubmitForm)}>
-          {/* 이름 */}
-          <div className="name-input-wrapper">
-            <label htmlFor="name">
-              받으시는 분 <span className="effect">*</span>
-            </label>
+        {/* 이름 */}
+        <div className="name-input-wrapper">
+          <label htmlFor="name">
+            받으시는 분 <span className="effect">*</span>
+          </label>
+          <input
+            {...register('name', {
+              required: '이름은 필수 입력사항입니다.',
+            })}
+            type="text"
+            className="name-input"
+          />
+          {errors.name && <p className="name-error-message">{errors.name.message}</p>}
+        </div>
+
+        {/* 이메일 */}
+        <div className="email-input-wrapper">
+          <label htmlFor="email">
+            이메일 <span className="effect">*</span>
+          </label>
+          <input
+            {...register('email', {
+              required: '이메일은 필수 입력사항입니다.',
+              pattern: {
+                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                message: '이메일은 email@test.com 형식으로 입력해야 합니다.',
+              },
+            })}
+            className="email-input"
+            placeholder="예시) email@test.com"
+          />
+          {errors.email && <p className="email-error-message">{errors.email.message}</p>}
+        </div>
+
+        {/* 휴대폰 번호 */}
+        <div className="phoneNumber-input-wrapper">
+          <label htmlFor="phoneNumber">
+            휴대전화 <span className="effect">*</span>
+          </label>
+          <input
+            {...register('phoneNumber', {
+              required: '휴대폰번호는 필수 입력사항입니다.',
+              pattern: {
+                value: /^(010|011|016|017|018|019)\d{3,4}\d{3,4}$/,
+                message: '휴대폰번호는 01012345678 형식으로 입력해야 합니다.',
+              },
+            })}
+            type="text"
+            className="phoneNumber-input"
+            placeholder="예시) 01012345678"
+          />
+          {errors.phoneNumber && <p className="phoneNumber-error-message">{errors.phoneNumber.message}</p>}
+        </div>
+
+        {/* 주소 */}
+        <div className="address-input-wrapper">
+          <label className="address-title">
+            주소 <span className="effect">*</span>
+          </label>
+          {/* 우편번호 */}
+          <div className="address-wrapper">
             <input
-              {...register('name', {
-                required: '이름은 필수 입력사항입니다.',
-              })}
+              {...register('postCode')}
               type="text"
-              className="name-input"
+              className="postal-code-input"
+              placeholder="우편번호"
+              readOnly
             />
-            {errors.name && <p className="name-error-message">{errors.name.message}</p>}
+            <button type="button" className="btn-postcode-search" onClick={searchAddress}>
+              우편번호 찾기
+            </button>
           </div>
 
-          {/* 이메일 */}
-          <div className="email-input-wrapper">
-            <label htmlFor="email">
-              이메일 <span className="effect">*</span>
-            </label>
-            <input
-              {...register('email', {
-                required: '이메일은 필수 입력사항입니다.',
-                pattern: {
-                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                  message: '이메일은 email@test.com 형식으로 입력해야 합니다.',
-                },
-              })}
-              className="email-input"
-              placeholder="예시) email@test.com"
-            />
-            {errors.email && <p className="email-error-message">{errors.email.message}</p>}
-          </div>
+          {/* 기본주소 */}
+          <input
+            {...register('address')}
+            type="text"
+            className="basic-address-input"
+            placeholder="기본주소 및 추가주소 입력"
+          />
+        </div>
 
-          {/* 휴대폰 번호 */}
-          <div className="phoneNumber-input-wrapper">
-            <label htmlFor="phoneNumber">
-              휴대전화 <span className="effect">*</span>
-            </label>
-            <input
-              {...register('phoneNumber', {
-                required: '휴대폰번호는 필수 입력사항입니다.',
-                pattern: {
-                  value: /^(010|011|016|017|018|019)\d{3,4}\d{3,4}$/,
-                  message: '휴대폰번호는 01012345678 형식으로 입력해야 합니다.',
-                },
-              })}
-              type="text"
-              className="phoneNumber-input"
-              placeholder="예시) 01012345678"
-            />
-            {errors.phoneNumber && <p className="phoneNumber-error-message">{errors.phoneNumber.message}</p>}
-          </div>
-
-          {/* 주소 */}
-          <div className="address-input-wrapper">
-            <label className="address-title">
-              주소 <span className="effect">*</span>
-            </label>
-            {/* 우편번호 */}
-            <div className="address-wrapper">
-              <input
-                {...register('postCode')}
-                type="text"
-                className="postal-code-input"
-                placeholder="우편번호"
-                readOnly
-              />
-              <button type="button" className="btn-postcode-search" onClick={searchAddress}>
-                우편번호 찾기
-              </button>
-            </div>
-
-            {/* 기본주소 */}
-            <input
-              {...register('address')}
-              type="text"
-              className="basic-address-input"
-              placeholder="기본주소 및 추가주소 입력"
-            />
-          </div>
-
-          {/* 배송 메세지 */}
-          <div className="shipping-message-wrapper">
-            <label htmlFor="shipping-message">배송 메세지</label>
-            <select {...register('shippingMessage')} onChange={e => handleChangeShippingMessage(e.target.value)}>
-              <option value="부재 시 연락 부탁드려요">부재 시 연락 부탁드려요</option>
-              <option value="배송 전 미리 연락 부탁드려요">배송 전 미리 연락 부탁드려요</option>
-              <option value="문 앞에 놓아주세요">문 앞에 놓아주세요</option>
-            </select>
-          </div>
-        </form>
+        {/* 배송 메세지 */}
+        <div className="shipping-message-wrapper">
+          <label htmlFor="shipping-message">배송 메세지</label>
+          <select {...register('shippingMessage')} onChange={e => handleChangeShippingMessage(e.target.value)}>
+            <option value="부재 시 연락 부탁드려요">부재 시 연락 부탁드려요</option>
+            <option value="배송 전 미리 연락 부탁드려요">배송 전 미리 연락 부탁드려요</option>
+            <option value="문 앞에 놓아주세요">문 앞에 놓아주세요</option>
+          </select>
+        </div>
       </div>
     </div>
   );

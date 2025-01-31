@@ -12,7 +12,7 @@ const OrderHistoryContainer = () => {
       orderDate: '2024.01.19',
       name: 'FUR Large',
       color: 'shakerato (LIMITED)',
-      price: 95000,
+      price: 145000,
     },
     {
       id: 2,
