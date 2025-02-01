@@ -31,7 +31,13 @@ const LoginContainer = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IForm>({ mode: 'onSubmit' });
+  } = useForm<IForm>({
+    mode: 'onSubmit',
+    defaultValues: {
+      userId: 'admin',
+      password: 'adminadmin1!',
+    },
+  });
 
   // 로그인 버튼 클릭 시, 실행되는 함수
   const handleSubmitForm = async (data: ILoginRequest) => {

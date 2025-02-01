@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import { useRouter } from 'next/router';
 
+import { PATHNAME } from '@/constants/pathname';
+
 interface IAboutNavbarProps {
   isOpenAboutNavBar: boolean;
   closeAboutNavBar: () => void;
@@ -23,15 +25,15 @@ const AboutNavbar = ({ isOpenAboutNavBar, closeAboutNavBar }: IAboutNavbarProps)
   const navbarCategorys = [
     {
       title: 'BRAND STORY',
-      path: '/brandstory',
+      path: PATHNAME.BRANDSTORY,
     },
     {
       title: 'LOOK BOOK',
-      path: '/lookbook',
+      path: PATHNAME.LOOKBOOK,
     },
     {
       title: 'SHOW ROOM',
-      path: '/showroom',
+      path: PATHNAME.SHOWROOM,
     },
   ];
 
