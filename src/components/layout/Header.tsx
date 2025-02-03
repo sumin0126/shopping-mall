@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import AboutNavbar from '@/components/layout/navbar/AboutNavbar';
 import ShopNavbar from '@/components/layout/navbar/ShopNavbar';
-import AlertModal from '@/components/modal/AlertModal';
+import ConfirmModal from '@/components/modal/ConfirmModal';
 import { PATHNAME } from '@/constants/pathname';
 
 /**
@@ -92,11 +92,8 @@ const Header = () => {
     setIsLogin(loginStatus === 'true');
   }, []);
 
-  // 로그아웃 버튼 클릭 시, 로컬스토리지에 저장된 토큰 삭제, isLogin 상태 변경 해주는 함수
+  // 로그아웃 버튼 클릭 시 실행되는 함수
   const handleClickLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.setItem('isLogin', 'false');
-    setIsLogin(false);
     setIsOpenModal(true);
   };
 
@@ -151,13 +148,19 @@ const Header = () => {
             LOGOUT
           </button>
         )}
+
         {/* 로그아웃 버튼 클릭 시, 모달 활성화 */}
         {isOpenModal && (
-          <AlertModal
-            modalTitle="로그아웃 되었습니다 !"
+          <ConfirmModal
+            modalTitle="로그아웃 하시겠습니까?"
             handleClickConfirm={() => {
               setIsOpenModal(false);
-              router.push(PATHNAME.MAIN);
+              localStorage.removeItem('token');
+              localStorage.setItem('isLogin', 'false');
+              setIsLogin(false);
+            }}
+            handleClickCancel={() => {
+              setIsOpenModal(false);
             }}
           />
         )}

@@ -11,6 +11,14 @@ import AlertModal from '@/components/modal/AlertModal';
 import ConfirmModal from '@/components/modal/ConfirmModal';
 import { PATHNAME } from '@/constants/pathname';
 
+interface INewArrivalCardProps {
+  id: number;
+  imageUrl: string;
+  name: string;
+  color: string;
+  price: number;
+}
+
 /**
  * @description 신상품 카드 컴포넌트
  *
@@ -19,7 +27,7 @@ import { PATHNAME } from '@/constants/pathname';
  * @param color - 상품 컬러
  * @param price - 상품 가격
  */
-const NewArrivalCard = ({ id, imageUrl, name, color, price }) => {
+const NewArrivalCard = ({ id, imageUrl, name, color, price }: INewArrivalCardProps) => {
   const [isLikeProduct, setIsLikeProduct] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isAlertOpenModal, setIsAlertOpenModal] = useState(false);
@@ -41,6 +49,7 @@ const NewArrivalCard = ({ id, imageUrl, name, color, price }) => {
       setIsAlertOpenModal(true);
       return;
     } else {
+      setIsLikeProduct(true);
       setIsConfirmOpenModal(true);
     }
   };
