@@ -2,14 +2,19 @@ import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/router';
 
+import { cartApi } from '@/apis/carts';
 import AlertModal from '@/components/modal/AlertModal';
 import ConfirmModal from '@/components/modal/ConfirmModal';
 import { PATHNAME } from '@/constants/pathname';
 
+interface IProductActionProps {
+  id: number;
+}
+
 /**
  * @description 상품 상세페이지 버튼 컴포넌트
  */
-const ProductAction = () => {
+const ProductAction = ({ id }: IProductActionProps) => {
   const [isLogin, setIsLogin] = useState(false);
   const [isAlertOpenModal, setIsAlertOpenModal] = useState(false);
   const [isConfirmOpenModal, setIsConfirmOpenModal] = useState(false);
@@ -29,9 +34,17 @@ const ProductAction = () => {
     if (!isLogin) {
       setIsAlertOpenModal(true);
       return;
-    } else {
-      setIsConfirmOpenModal(true);
     }
+
+    // 장바구니 API 요청 파라미터
+    const productId = id;
+    const quantity = 1;
+
+    // API 요청을 통해 장바구니에 상품 추가
+    cartApi.postCarts({ productId, quantity }).then(res => {
+      console.log('장바구니 추가 응답', res);
+      setIsConfirmOpenModal(true);
+    });
   };
 
   // buy 버튼 클릭 시, 결제 페이지로 이동하는 함수

@@ -2,7 +2,6 @@ import { baseAxios } from '@/utils/axiosInstance';
 
 import type { IProductsRequest, IProductResponse, IProductRequest, IProduct } from '@/apis/products/type';
 
-// 상품의 데이터를 가져오는 함수
 export const productApi = {
   // 전체상품 가져오는 함수
   getProducts: (params?: IProductsRequest) => {

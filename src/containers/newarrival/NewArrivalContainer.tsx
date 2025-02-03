@@ -18,13 +18,13 @@ const NewArrivalContainer = () => {
     });
   }, []);
 
-  // if (!products || !products.data) {
-  //   return console.log('상품이 없습니다');
-  // }
+  if (!products || !products.data) {
+    return;
+  }
 
   return (
     <div className="new-arrival-container">
-      {!products || !products.data ? <p>상품이 없습니다.</p> : <NewArrivalList products={products.data} />}
+      <NewArrivalList products={products.data} />
     </div>
   );
 };

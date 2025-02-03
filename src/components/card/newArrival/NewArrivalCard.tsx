@@ -7,6 +7,7 @@ import { faHeart as faRegularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faSolidHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { cartApi } from '@/apis/carts';
 import AlertModal from '@/components/modal/AlertModal';
 import ConfirmModal from '@/components/modal/ConfirmModal';
 import { PATHNAME } from '@/constants/pathname';
@@ -15,13 +16,14 @@ interface INewArrivalCardProps {
   id: number;
   imageUrl: string;
   name: string;
-  color: string;
+  color?: string;
   price: number;
 }
 
 /**
  * @description 신상품 카드 컴포넌트
  *
+ * @param id - 아이디
  * @param imageUrl - 상품 대표이미지
  * @param name - 상품 이름
  * @param color - 상품 컬러
@@ -42,16 +44,24 @@ const NewArrivalCard = ({ id, imageUrl, name, color, price }: INewArrivalCardPro
     setIsLogin(loginStatus === 'true');
   }, []);
 
-  // 하트 아이콘 클릭 시, 클릭한 상품의 데이터가 recoil 상태에 업데이트되는 함수
+  // 하트 아이콘 클릭 시 실행되는 함수
   const handleClickLikeProduct = () => {
     // 로그인 상태 확인
     if (!isLogin) {
       setIsAlertOpenModal(true);
       return;
-    } else {
-      setIsLikeProduct(true);
-      setIsConfirmOpenModal(true);
     }
+
+    // 장바구니 API 요청 파라미터
+    const productId = id;
+    const quantity = 1;
+
+    // API 요청을 통해 장바구니에 상품 추가
+    cartApi.postCarts({ productId, quantity }).then(res => {
+      console.log('장바구니 추가 응답:', res);
+      setIsLikeProduct(res);
+      setIsConfirmOpenModal(res);
+    });
   };
 
   // 상품 대표이미지 클릭 시 상품 상세페이지로 이동하는 함수
