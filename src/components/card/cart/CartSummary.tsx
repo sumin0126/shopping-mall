@@ -1,10 +1,7 @@
-interface IProducts {
-  id: number;
-  price: number;
-}
+import type { ICartResponse } from '@/apis/carts/type';
 
 interface ICartSummary {
-  wishList: IProducts[];
+  wishList: ICartResponse[];
   productCounts: { [id: number]: number };
 }
 
@@ -16,8 +13,8 @@ interface ICartSummary {
 const CartSummary = ({ wishList, productCounts }: ICartSummary) => {
   // 장바구니에 담겨있는 총 상품금액
   const productPrice = wishList.reduce((sum, product) => {
-    const count = productCounts[product.id] || 1;
-    return sum + product.price * count;
+    const count = productCounts[product.productId] || 1;
+    return sum + product.productPrice * count;
   }, 0);
 
   // 상품금액에 따른 배송비 (5만원 이상 무료배송)

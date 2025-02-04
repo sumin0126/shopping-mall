@@ -98,7 +98,7 @@
 // 주문/배송내역 컨테이너
 .order-history-container {
   width: 75%;
-  height: 100%;
+  min-height: 610px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -134,7 +134,7 @@
       align-items: flex-start;
       gap: 16px;
       padding-top: 20px;
-      padding-bottom: 30px;
+      padding-bottom: 20px;
       border-bottom: 1px solid #bcbcbc;
 
       .shipping {

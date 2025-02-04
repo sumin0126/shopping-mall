@@ -13,6 +13,7 @@ interface ICartProduct {
   count: number;
   updateCount: (id: number, count: number) => void;
   onClickProduct: (productId: number) => void;
+  deleteProduct: (productId: number) => void;
 }
 
 /**
@@ -37,6 +38,7 @@ const CartProduct = ({
   count,
   updateCount,
   onClickProduct,
+  deleteProduct,
 }: ICartProduct) => {
   const [isChecked, setIsChecked] = useState(false);
 
@@ -85,10 +87,10 @@ const CartProduct = ({
           {name} - {color}
         </p>
         <p className="price">
-          {(price * count).toLocaleString('ko-KR')}
+          {price.toLocaleString('ko-KR')}
           <span>원</span>
         </p>
-        <button>remove</button>
+        <button onClick={() => deleteProduct(productId)}>remove</button>
       </div>
 
       {/* 상품 수량 */}

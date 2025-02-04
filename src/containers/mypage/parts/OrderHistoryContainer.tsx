@@ -16,7 +16,7 @@ const OrderHistoryContainer = () => {
     },
     {
       id: 2,
-      imageUrl: '/img/accessory/accessory3.jpg',
+      imageUrl: '/img/accessory/accessory12.jpg',
       orderDate: '2024.01.19',
       name: 'FUR Large',
       color: 'shakerato (LIMITED)',

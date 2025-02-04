@@ -6,19 +6,13 @@ import CartProduct from '@/components/card/cart/CartProduct';
 import AlertModal from '@/components/modal/AlertModal';
 import { PATHNAME } from '@/constants/pathname';
 
-interface IProducts {
-  id: number;
-  productId: number;
-  name: string;
-  price: number;
-  imageUrl: string;
-  color?: string;
-}
+import type { ICartResponse } from '@/apis/carts/type';
 
 interface ICartProductList {
-  wishList: IProducts[];
+  wishList: ICartResponse[];
   productCounts: { [id: number]: number };
   updateProductCount: (id: number, count: number) => void;
+  handleClickDeleteProduct: (productId: number) => void;
 }
 
 /**
@@ -26,7 +20,12 @@ interface ICartProductList {
  *
  * @param wishList - 장바구니에 담긴 모든 상품의 배열
  */
-const CartProductList = ({ wishList, productCounts, updateProductCount }: ICartProductList) => {
+const CartProductList = ({
+  wishList,
+  productCounts,
+  updateProductCount,
+  handleClickDeleteProduct,
+}: ICartProductList) => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [isAlertOpenModal, setIsAlertOpenModal] = useState(false);
 
@@ -44,7 +43,7 @@ const CartProductList = ({ wishList, productCounts, updateProductCount }: ICartP
     if (selectedItems.length === 0) {
       setIsAlertOpenModal(true);
     } else {
-      const selectedProducts = wishList.filter(product => selectedItems.includes(product.id));
+      const selectedProducts = wishList.filter(product => selectedItems.includes(product.productId));
       console.log(selectedProducts);
 
       router.push(PATHNAME.PAYMENT);
@@ -76,17 +75,18 @@ const CartProductList = ({ wishList, productCounts, updateProductCount }: ICartP
       {wishList.length > 0 ? (
         wishList.map(product => (
           <CartProduct
-            key={product.id}
-            id={product.id}
+            key={product.productId}
+            id={product.productId}
             productId={product.productId}
-            name={product.name}
-            color={product.color || ''}
-            price={product.price}
-            imageUrl={product.imageUrl}
+            name={product.productName}
+            color={product.productColor || ''}
+            price={product.productPrice}
+            imageUrl={product.productImageUrl}
             onChange={handleChangeCheckBox}
-            count={productCounts[product.id] || 1}
+            count={productCounts[product.productId] || 1}
             updateCount={updateProductCount}
             onClickProduct={handleClickProduct}
+            deleteProduct={handleClickDeleteProduct}
           />
         ))
       ) : (
