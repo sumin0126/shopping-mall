@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import AboutNavbar from '@/components/layout/navbar/AboutNavbar';
@@ -21,7 +21,6 @@ const Header = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
-
   const router = useRouter();
 
   // 클릭 시 로그인 페이지로 이동하는 함수
@@ -64,14 +63,14 @@ const Header = () => {
     setIsOpenAboutNavBar(true);
   };
 
+  // 클릭 시 search bar 열어주는 함수
+  const handleClickSearch = () => {
+    setIsOpenSearch(true);
+  };
+
   // 클릭 시 about navbar 닫아주는 함수
   const closeAboutNavBar = () => {
     setIsOpenAboutNavBar(false);
-  };
-
-  // 클리 시 search bar 열어주는 함수
-  const handleClickSearch = () => {
-    setIsOpenSearch(true);
   };
 
   // 클릭 시 search bar 닫아주는 함수
@@ -99,31 +98,55 @@ const Header = () => {
 
   return (
     <div className="main-header-container">
+      {/* 왼쪽 */}
       <div className="main-header-left">
-        <button className="shop" onClick={handleClickShop}>
-          SHOP
+        {/* 모바일 왼쪽 : 햄버거 아이콘 버튼 */}
+        <button className="mobile-header-left" onClick={handleClickShop}>
+          <FontAwesomeIcon icon={faBars} className="hamburger-icon" />
         </button>
-        <button className="about" onClick={handleClickAbout}>
-          ABOUT
-        </button>
-        <button className="look-book" onClick={handleClickLookBook}>
-          LOOK BOOK
-        </button>
+
+        {/* PC 왼쪽 : 텍스트 버튼들  */}
+        <div className="desktop-header-left">
+          <button className="shop" onClick={handleClickShop}>
+            SHOP
+          </button>
+          <button className="about" onClick={handleClickAbout}>
+            ABOUT
+          </button>
+          <button className="look-book" onClick={handleClickLookBook}>
+            LOOK BOOK
+          </button>
+        </div>
       </div>
 
+      {/* 가운데 */}
       <div className="main-header-center">
         <button className="logo" onClick={handleClickLogo}>
           minitmute
         </button>
       </div>
 
+      {/* 오른쪽 */}
       <div className="main-header-right">
-        {!isOpenSearch && (
+        {/* 모바일 오른쪽 : 돋보기 아이콘 버튼 */}
+        <button className="mobile-header-right" onClick={handleClickSearch}>
+          <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
+        </button>
+
+        {/* PC 오른쪽 : 텍스트 버튼들 */}
+        <div className="desktop-header-right">
           <button className="search" onClick={handleClickSearch}>
             SEARCH
           </button>
-        )}
+          <button className="cart" onClick={handleClickCart}>
+            CART
+          </button>
+          <button className="login" onClick={isLogin ? handleClickMypage : handleClickLogin}>
+            {isLogin ? 'MY PAGE' : 'LOGIN'}
+          </button>
+        </div>
 
+        {/* SEARCH 클릭 시, 열리는 검색바 */}
         {isOpenSearch && (
           <div className="search-bar-container">
             <div className={`search-bar-overlay ${isOpenSearch ? 'show' : ''}`} onClick={closeSearchBar}></div>
@@ -134,22 +157,14 @@ const Header = () => {
           </div>
         )}
 
-        <button className="cart" onClick={handleClickCart}>
-          CART
-        </button>
-
-        <button className="login" onClick={isLogin ? handleClickMypage : handleClickLogin}>
-          {isLogin ? 'MY PAGE' : 'LOGIN'}
-        </button>
-
-        {/* 로그인 상태일때만 로그아웃 버튼 활성화 */}
+        {/* 로그인 상태시, 로그아웃 버튼 활성화 */}
         {isLogin && (
           <button className="logout" onClick={handleClickLogout}>
             LOGOUT
           </button>
         )}
 
-        {/* 로그아웃 버튼 클릭 시, 모달 활성화 */}
+        {/* 로그아웃 모달 */}
         {isOpenModal && (
           <ConfirmModal
             modalTitle="로그아웃 하시겠습니까?"

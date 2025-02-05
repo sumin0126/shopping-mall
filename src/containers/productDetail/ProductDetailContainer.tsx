@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/router';
 
+import classNames from 'classnames';
+
 import { productApi } from '@/apis/products';
 import ProductDetailHeader from '@/components/card/productDetail/ProductDetailHeader';
 import ProductDetailInfo from '@/components/card/productDetail/ProductDetailInfo';
@@ -61,7 +63,9 @@ const ProductDetailContainer = () => {
       {/* 상품 이미지와 정보를 나눠주는 버튼들 */}
       <div className="main-button">
         <button
-          className={`detail ${activeButton === BUTTON_STATES.DETAIL ? 'active' : ''}`}
+          className={classNames('detail', {
+            active: activeButton === BUTTON_STATES.DETAIL,
+          })}
           onClick={() => handleClickButton(BUTTON_STATES.DETAIL)}
         >
           DETAIL

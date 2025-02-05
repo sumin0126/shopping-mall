@@ -1,4 +1,4 @@
-import FindPasswordContainer from '@/containers/findpassword/FindPasswordContainer';
+import FindPasswordContainer from '@/containers/findPassword/FindPasswordContainer';
 import LayoutContainer from '@/containers/layout/LayoutContainer';
 
 const index = () => {

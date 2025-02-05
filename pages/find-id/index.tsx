@@ -1,4 +1,4 @@
-import FindIdContainer from '@/containers/findid/FindIdContainer';
+import FindIdContainer from '@/containers/findId/FindIdContainer';
 import LayoutContainer from '@/containers/layout/LayoutContainer';
 
 const index = () => {

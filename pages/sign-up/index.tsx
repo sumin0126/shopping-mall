@@ -1,5 +1,5 @@
 import LayoutContainer from '@/containers/layout/LayoutContainer';
-import SignupContainer from '@/containers/signup/SignupContainer';
+import SignupContainer from '@/containers/signUp/SignupContainer';
 
 const index = () => {
   return (

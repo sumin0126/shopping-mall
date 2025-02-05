@@ -1,4 +1,4 @@
-import AllItemsContainer from '@/containers/allitems/AllItemsContainer';
+import AllItemsContainer from '@/containers/allItems/AllItemsContainer';
 import LayoutContainer from '@/containers/layout/LayoutContainer';
 
 const index = () => {

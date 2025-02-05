@@ -32,6 +32,15 @@ const MainProductSlider = ({ products }: IMainProductSliderProps) => {
     speed: 1000,
     autoplaySpeed: 3000,
     cssEase: 'linear',
+    responsive: [
+      {
+        breakpoint: 768, // 태블릿 이하의 화면
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   // 상품 대표이미지 클릭 시 상품 상세페이지로 이동하는 함수

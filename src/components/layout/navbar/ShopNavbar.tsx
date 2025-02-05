@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router';
 
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { PATHNAME } from '@/constants/pathname';
 
 interface IShopNavbarProps {
@@ -59,6 +62,11 @@ const ShopNavbar = ({ isOpenShopNavBar, closeShopNavBar }: IShopNavbarProps) => 
     <div className="navbar-container">
       <div className={`navbar-overlay ${isOpenShopNavBar ? 'show' : ''}`} onClick={closeShopNavBar} />
       <nav className={`navbar-wrapper ${isOpenShopNavBar ? 'open' : ''}`}>
+        {/* 모바일 X 버튼 */}
+        <button className="close-icon" onClick={closeShopNavBar}>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
+
         <p>SHOP</p>
         <button
           onClick={() => {

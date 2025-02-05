@@ -25,23 +25,41 @@
     color: #222;
   }
 
+  // 헤더 왼쪽
   .main-header-left {
     width: 30%;
     display: flex;
     justify-content: left;
     align-items: center;
-    gap: 10%;
 
-    .shop,
-    .about,
-    .look-book {
-      font-family: 'Playfair Display';
-      font-weight: 600;
+    // PC 메뉴
+    .desktop-header-left {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      gap: 10%;
+
+      .shop,
+      .about,
+      .look-book {
+        font-family: 'Playfair Display';
+        font-weight: 600;
+      }
+    }
+
+    // 모바일 메뉴
+    .mobile-header-left {
+      display: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #222;
     }
   }
 
+  // 헤더 가운데
   .main-header-center {
-    width: calc(100% - 60%);
+    width: 40%;
     text-align: center;
 
     .logo {
@@ -52,19 +70,36 @@
     }
   }
 
+  // 헤더 오른쪽
   .main-header-right {
     width: 30%;
     display: flex;
     justify-content: right;
     align-items: center;
-    gap: 10%;
 
-    .search,
-    .cart,
-    .login,
-    .logout {
-      font-family: 'Playfair Display';
-      font-weight: 600;
+    // PC 메뉴
+    .desktop-header-right {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      gap: 10%;
+
+      .search,
+      .cart,
+      .login,
+      .logout {
+        font-family: 'Playfair Display';
+        font-weight: 600;
+      }
+    }
+
+    // 모바일 메뉴
+    .mobile-header-right {
+      display: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #222;
     }
 
     .search-bar-container {
@@ -127,6 +162,44 @@
             color: #444;
           }
         }
+      }
+    }
+  }
+
+  // 반응형
+  @media (max-width: 768px) {
+    .main-header-container {
+      height: 80px;
+    }
+
+    // 왼쪽
+    .main-header-left {
+      width: 15%;
+
+      .desktop-header-left {
+        display: none;
+      }
+
+      .mobile-header-left {
+        display: block;
+      }
+    }
+
+    // 가운데
+    .main-header-center {
+      width: 70%;
+    }
+
+    // 오른쪽
+    .main-header-right {
+      width: 15%;
+
+      .desktop-header-right {
+        display: none;
+      }
+
+      .mobile-header-right {
+        display: block;
       }
     }
   }

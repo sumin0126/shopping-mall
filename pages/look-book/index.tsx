@@ -1,5 +1,5 @@
 import LayoutContainer from '@/containers/layout/LayoutContainer';
-import LookBookContainer from '@/containers/lookbook/LookBookContainer';
+import LookBookContainer from '@/containers/lookBook/LookBookContainer';
 
 const index = () => {
   return (

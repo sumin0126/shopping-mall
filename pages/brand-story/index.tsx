@@ -1,4 +1,4 @@
-import BrandStoryContainer from '@/containers/brandstory/BrandStoryContainer';
+import BrandStoryContainer from '@/containers/brandStory/BrandStoryContainer';
 import LayoutContainer from '@/containers/layout/LayoutContainer';
 
 const index = () => {
