@@ -10,14 +10,14 @@ import AlertModal from '@/components/modal/AlertModal';
 
 import type { ICheckUserResponse } from '@/apis/users/type';
 
-interface IUpdateUserRequest {
-  name: string;
-  phoneNumber: string;
-  email: string;
-  address: string;
-  postCode: string;
-  userId: string;
-}
+// interface IUpdateUserRequest {
+//   name: string;
+//   phoneNumber: string;
+//   email: string;
+//   address: string;
+//   postCode: string;
+//   userId: string;
+// }
 
 /**
  * @description 마이페이지 - 회원정보 컨테이너
@@ -84,31 +84,30 @@ const UserInfoContainer = () => {
 
   // 수정된 정보를 api 호출을 통해 전송해주는 함수
   const saveChangeUserInfo = () => {
-    const updateDate: IUpdateUserRequest = {
-      // 여기에 이름, 비번, 비번확인, 아이디도 들어가야함
-      // 그러려면 회원정보 수정 API를 하나 추가하거나,
-      // 정보 조회 API에 위에 항목들도 추가해줘야함
-      name: editUserInfo.name,
-      phoneNumber: editUserInfo.phoneNumber,
-      email: editUserInfo.email,
-      address: editUserInfo.address,
-      postCode: editUserInfo.postCode,
-      userId: editUserInfo.userId,
-    };
-
-    userApi.postUserSignup(updateDate).then(res => {
-      if (res.status === 201) {
-        setUserInfo({
-          ...userInfo,
-          phoneNumber: editUserInfo.phoneNumber,
-          email: editUserInfo.email,
-          address: editUserInfo.address,
-          postCode: editUserInfo.postCode,
-        });
-        setIsOpenModal(true);
-        setEditMode(false);
-      }
-    });
+    // const updateDate: IUpdateUserRequest = {
+    //   // 여기에 이름, 비번, 비번확인, 아이디도 들어가야함
+    //   // 그러려면 회원정보 수정 API를 하나 추가하거나,
+    //   // 정보 조회 API에 위에 항목들도 추가해줘야함
+    //   name: editUserInfo.name,
+    //   phoneNumber: editUserInfo.phoneNumber,
+    //   email: editUserInfo.email,
+    //   address: editUserInfo.address,
+    //   postCode: editUserInfo.postCode,
+    //   userId: editUserInfo.userId,
+    // };
+    // userApi.postUserSignup(updateDate).then(res => {
+    //   if (res.status === 201) {
+    //     setUserInfo({
+    //       ...userInfo,
+    //       phoneNumber: editUserInfo.phoneNumber,
+    //       email: editUserInfo.email,
+    //       address: editUserInfo.address,
+    //       postCode: editUserInfo.postCode,
+    //     });
+    //     setIsOpenModal(true);
+    //     setEditMode(false);
+    //   }
+    // });
   };
 
   return (
