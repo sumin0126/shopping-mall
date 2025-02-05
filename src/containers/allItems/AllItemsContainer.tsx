@@ -6,7 +6,7 @@ import NewArrivalList from '@/components/list/NewArrivalList';
 import type { IProductResponse } from '@/apis/products/type';
 
 /**
- * @description 전체상품 컨테이너
+ * @description 전체상품 컨테이너!
  */
 const AllItemsContainer = () => {
   const [products, setProducts] = useState<IProductResponse>();
