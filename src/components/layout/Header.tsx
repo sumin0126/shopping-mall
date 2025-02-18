@@ -173,6 +173,7 @@ const Header = () => {
               localStorage.removeItem('token');
               localStorage.setItem('isLogin', 'false');
               setIsLogin(false);
+              router.push(PATHNAME.MAIN);
             }}
             handleClickCancel={() => {
               setIsOpenModal(false);
