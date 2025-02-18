@@ -12,17 +12,19 @@ import ProductDetailMain from '@/components/card/productDetail/ProductDetailMain
 import type { IProduct } from '@/apis/products/type';
 
 // 버튼 상태 텍스트
-const BUTTON_STATES = {
+const TAB = {
   DETAIL: 'DETAIL',
   INFO: 'INFO',
-};
+} as const;
+
+type TTabType = (typeof TAB)[keyof typeof TAB];
 
 /**
  * @description 상품 상세 컨테이너
  */
 const ProductDetailContainer = () => {
   const [product, setProduct] = useState<IProduct | null>(null);
-  const [activeButton, setActiveButton] = useState<string | null>(BUTTON_STATES.DETAIL);
+  const [currentTab, setCurrentTab] = useState<TTabType | null>(TAB.DETAIL);
 
   const router = useRouter();
 
@@ -39,8 +41,8 @@ const ProductDetailContainer = () => {
   }, [id]);
 
   // 버튼 클릭 시 버튼의 상태를 업데이트 해주는 함수
-  const handleClickButton = (button: string) => {
-    setActiveButton(button);
+  const handleClickButton = (tab: TTabType) => {
+    setCurrentTab(tab);
   };
 
   // 상품 메인이미지 데이터
@@ -64,25 +66,24 @@ const ProductDetailContainer = () => {
       <div className="main-button">
         <button
           className={classNames('detail', {
-            active: activeButton === BUTTON_STATES.DETAIL,
+            active: currentTab === TAB.DETAIL,
           })}
-          onClick={() => handleClickButton(BUTTON_STATES.DETAIL)}
+          onClick={() => handleClickButton(TAB.DETAIL)}
         >
           DETAIL
         </button>
         <button
-          className={`info ${activeButton === BUTTON_STATES.INFO ? 'active' : ''}`}
-          onClick={() => handleClickButton(BUTTON_STATES.INFO)}
+          className={`info ${currentTab === TAB.INFO ? 'active' : ''}`}
+          onClick={() => handleClickButton(TAB.INFO)}
         >
           INFO
         </button>
       </div>
 
       {/* 상품 메인 이미지들 */}
-      {activeButton === 'DETAIL' && <ProductDetailMain ProductImage={ProductImage} />}
-
+      {currentTab === TAB.DETAIL && <ProductDetailMain ProductImage={ProductImage} />}
       {/* 상품 상세 정보 */}
-      {activeButton === 'INFO' && <ProductDetailInfo product={product} />}
+      {currentTab === TAB.INFO && <ProductDetailInfo product={product} />}
     </div>
   );
 };
