@@ -1,8 +1,12 @@
-const TotalPriceContainer = () => {
+type TTotalPriceContainerProps = {
+  price: number;
+};
+
+const TotalPriceContainer = ({ price }: TTotalPriceContainerProps) => {
   return (
     <div className="total-price-container">
       <p>
-        상품금액 <span>145,000원</span>
+        상품금액 <span>{price.toLocaleString()}원</span>
       </p>
       <p>+</p>
       <p>
@@ -10,7 +14,7 @@ const TotalPriceContainer = () => {
       </p>
       <p>=</p>
       <p>
-        총 결제금액 <span>145,000원</span>
+        총 결제금액 <span>{price.toLocaleString()}원</span>
       </p>
     </div>
   );

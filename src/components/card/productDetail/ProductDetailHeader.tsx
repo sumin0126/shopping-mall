@@ -60,7 +60,12 @@ const ProductDetailHeader = ({ product }: IProductDetailHeaderProps) => {
       return;
     }
 
-    router.push(PATHNAME.PAYMENT);
+    router.push({
+      pathname: PATHNAME.PAYMENT,
+      query: {
+        productId: product.id,
+      },
+    });
   };
   return (
     <div className="product-detail-header">

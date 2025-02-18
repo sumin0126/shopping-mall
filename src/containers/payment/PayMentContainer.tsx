@@ -3,6 +3,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 
 import { useRouter } from 'next/router';
 
+import { productApi } from '@/apis/products';
 import { userApi } from '@/apis/users';
 import OrderHistoryProductInfo from '@/components/card/myPage/orderHistory/OrderHistoryProductInfo';
 import AlertModal from '@/components/modal/AlertModal';
@@ -11,6 +12,7 @@ import PaymentMethodContainer from '@/containers/payment/parts/PaymentMethodCont
 import ShippingAddressContainer from '@/containers/payment/parts/ShippingAddressContainer';
 import TotalPriceContainer from '@/containers/payment/parts/TotalPriceContainer';
 
+import type { IProduct } from '@/apis/products/type';
 import type { ICheckUserResponse } from '@/apis/users/type';
 
 // 폼 데이터에 대한 타입
@@ -34,7 +36,14 @@ export interface IMethodForm {
 const PayMentContainer = () => {
   const [userInfo, setUserInfo] = useState<ICheckUserResponse>();
   const [isAlertOpenModal, setIsAlertOpenModal] = useState(false);
+  const [product, setProduct] = useState<IProduct | null>(null);
+
   const router = useRouter();
+
+  const { productId } = router.query;
+
+  const today = new Date();
+  const formattedDate = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
 
   // useFrom 호출하여 methods 객체 생성
   const methods = useForm<IMethodForm>({
@@ -54,15 +63,16 @@ const PayMentContainer = () => {
     },
   });
 
-  // 주문 상품 임시 데이터
-  const orderHistoryData = {
-    id: 1,
-    imageUrl: '/img/accessory/accessory1.jpg',
-    orderDate: '2025.01.19',
-    name: 'FUR Large',
-    color: 'shakerato (LIMITED)',
-    price: 145000,
-  };
+  useEffect(() => {
+    if (!productId) {
+      return;
+    }
+
+    const id = Number(productId); // id를 숫자로 변환
+    productApi.getProduct({ id }).then(res => {
+      setProduct(res);
+    });
+  }, [productId]);
 
   // 사용자 정보 불러와서 폼의 초기값으로 설정
   useEffect(() => {
@@ -86,6 +96,10 @@ const PayMentContainer = () => {
     setIsAlertOpenModal(true);
   };
 
+  if (!product) {
+    return;
+  }
+
   return (
     <div className="payment-container">
       <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
@@ -102,18 +116,18 @@ const PayMentContainer = () => {
 
           {/* 주문정보 */}
           <OrderHistoryProductInfo
-            imageUrl={orderHistoryData.imageUrl}
-            orderDate={orderHistoryData.orderDate}
-            name={orderHistoryData.name}
-            color={orderHistoryData.color}
-            price={orderHistoryData.price}
+            imageUrl={product.imageUrl}
+            orderDate={formattedDate}
+            name={product.name}
+            color={product.color || ''}
+            price={product.price}
           />
 
           {/* 총 결제금액 */}
-          <TotalPriceContainer />
+          <TotalPriceContainer price={product.price} />
 
           {/* 결제 버튼 */}
-          <button className="payment-btn">145,000원 결제하기</button>
+          <button className="payment-btn">{product.price.toLocaleString()}원 결제하기</button>
         </form>
       </FormProvider>
 

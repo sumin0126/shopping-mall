@@ -22,8 +22,12 @@ const RemoodProductsContainer = () => {
       });
   }, []);
 
-  if (!remoodProducts || !remoodProducts.data) {
-    return;
+  if (
+    !remoodProducts ||
+    !remoodProducts.data ||
+    (Array.isArray(remoodProducts.data) && remoodProducts.data.length === 0)
+  ) {
+    return <p>상품이 없습니다</p>;
   }
   return (
     <>
