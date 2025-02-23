@@ -43,8 +43,11 @@ https://github.com/user-attachments/assets/99842350-9687-4404-b75a-25c266d547ee
 
 ## ✏️ 프로젝트 설명
 
-가방 브랜드 **'minimute'** 웹사이트를 클론 코딩하여 주요 쇼핑몰 기능을 구현한 개인 프로젝트입니다. <br/>
-TypeScript, React, Next.js를 기반으로 클라이언트 중심의 UI/UX 환경을 구축하고, Axios와 JWT 기반 인증을 통해 사용자와 서버 간의 안전한 데이터 통신을 <br/> 구현했습니다.
+가방 브랜드 **'minimute'** 웹사이트를 클론 코딩하여 주요 쇼핑몰 기능을 구현한 개인 프로젝트입니다.
+
+TypeScript, React, Next.js를 기반으로 클라이언트 중심의 UI/UX 환경을 구축하고,
+
+Axios와 JWT 기반 인증을 통해 사용자와 서버 간의 안전한 데이터 통신을 구현했습니다.
 
 <br/><br/><br/>
 
