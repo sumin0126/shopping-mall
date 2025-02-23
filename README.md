@@ -1,4 +1,4 @@
-# 🛍️ Shopping Mall - 'minimute' Clone Project
+# 🛍️ Shopping Mall
 
 #### ❝ 상품 조회, 회원가입 및 로그인, 아이디/비밀번호 찾기, 마이페이지, 장바구니, 주문 관리 등 쇼핑몰의 주요기능을 구현한 서비스입니다 ❞
 
