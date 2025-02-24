@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/router';
 
@@ -18,11 +18,9 @@ const Header = () => {
   const [isOpenShopNavBar, setIsOpenShopNavBar] = useState(false);
   const [isOpenAboutNavBar, setIsOpenAboutNavBar] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
-  const [isOpenSearch, setIsOpenSearch] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
 
-  const searchInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   // 클릭 시 로그인 페이지로 이동하는 함수
@@ -73,27 +71,10 @@ const Header = () => {
     setIsOpenAboutNavBar(true);
   };
 
-  // 클릭 시 search bar 열어주는 함수
-  const handleClickSearch = () => {
-    setIsOpenSearch(true);
-  };
-
   // 클릭 시 about navbar 닫아주는 함수
   const closeAboutNavBar = () => {
     setIsOpenAboutNavBar(false);
   };
-
-  // 클릭 시 search bar 닫아주는 함수
-  const closeSearchBar = () => {
-    setIsOpenSearch(false);
-  };
-
-  // 검색창이 열릴때마다 검색창에 커서를 포커스해주는 함수
-  useEffect(() => {
-    if (isOpenSearch) {
-      searchInputRef.current?.focus();
-    }
-  }, [isOpenSearch]);
 
   // 로컬스토리지에서 isLogin 상태 가져오기
   useEffect(() => {
@@ -139,7 +120,7 @@ const Header = () => {
       {/* 오른쪽 */}
       <div className="main-header-right">
         {/* 모바일 오른쪽 : 돋보기 아이콘 버튼 */}
-        <button className="mobile-header-right" onClick={handleClickSearch}>
+        <button className="mobile-header-right">
           <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
         </button>
 

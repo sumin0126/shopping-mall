@@ -47,7 +47,7 @@ const MainContainer = () => {
         <Image src="/img/brandstory/brandstory3.png" alt="mainImg" fill style={{ objectFit: 'cover' }} />
       </div>
 
-      <MainProductList products={bestProducts.data} category="Best" isSlider={true} />
+      <MainProductList products={bestProducts.data} category="Best" isSlider={true} isVisibleList={true} />
       <MainProductList products={newProducts.data} category="New" isSlider={false} />
 
       <div className="lookBook-wrapper">
