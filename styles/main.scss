@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-@use './login.scss';
-@use './lookbook.scss';
-@use './navbar.scss';
-@use './brandstory.scss';
-@use './showroom.scss';
-@use './layout.scss';
-@use './newarrival.scss';
-@use './productdetail.scss';
-@use './signup.scss';
-@use './mypage.scss';
-@use './cart.scss';
-@use './payment.scss';
-@use './modal.scss';
-@use './findid.scss';
-@use './global.scss';
+@import './login.scss';
+@import './lookbook.scss';
+@import './navbar.scss';
+@import './brandstory.scss';
+@import './showroom.scss';
+@import './layout.scss';
+@import './newarrival.scss';
+@import './productdetail.scss';
+@import './signup.scss';
+@import './mypage.scss';
+@import './cart.scss';
+@import './payment.scss';
+@import './modal.scss';
+@import './findid.scss';
+@import './global.scss';
 
 * {
   padding: 0;
