@@ -33,32 +33,32 @@ const FindIdContainer = () => {
   const checkedPhoneNumber = watch('checkedPhoneNumber');
 
   // 확인 버튼 클릭 시, 실행되는 함수
-  // const handleSubmitForm = async (data: IForm) => {
-  //   try {
-  //     // 이메일이나 휴대폰번호를 아이디처럼 사용하여 로그인 시도
-  //     const userId = checkedEmail ? data.email : data.phoneNumber;
-  //     const password = 'dummyPassword';
+  const handleSubmitForm = async (data: IForm) => {
+    try {
+      // 이메일이나 휴대폰번호를 아이디처럼 사용하여 로그인 시도
+      const userId = checkedEmail ? data.email : data.phoneNumber;
+      const password = 'dummyPassword';
 
-  //     if (!userId) {
-  //       throw new Error('이메일 또는 휴대폰 번호를 입력해주세요 !');
-  //     }
+      if (!userId) {
+        throw new Error('이메일 또는 휴대폰 번호를 입력해주세요 !');
+      }
 
-  //     // 로그인 API 요청 (아이디 찾기 목적으로 활용)
-  //     const res = await userApi.postUsersLogin({ userId, password });
+      // 로그인 API 요청 (아이디 찾기 목적으로 활용)
+      const res = await userApi.postUsersLogin({ userId, password });
 
-  //     if (res && res.token) {
-  //       // 성공시 이메일/휴대폰 번호를 아이디로 간주
-  //       setUserId(userId);
-  //       setIsOpenModal(true);
-  //       console.log('아이디 찾기 성공', res);
-  //     } else {
-  //       setErrorMessage('등록된 정보를 찾을 수 없습니다 !');
-  //     }
-  //   } catch (err) {
-  //     console.error('API 요청 실패', err);
-  //     setErrorMessage('서버와 통신중 에러가 발생했습니다.');
-  //   }
-  // };
+      if (res && res.token) {
+        // 성공시 이메일/휴대폰 번호를 아이디로 간주
+        setUserId(userId);
+        setIsOpenModal(true);
+        console.log('아이디 찾기 성공', res);
+      } else {
+        setErrorMessage('등록된 정보를 찾을 수 없습니다 !');
+      }
+    } catch (err) {
+      console.error('API 요청 실패', err);
+      setErrorMessage('서버와 통신중 에러가 발생했습니다.');
+    }
+  };
 
   // email 체크박스 선택 시, 실행되는 함수
   const handleClickCheckedEmail = () => {

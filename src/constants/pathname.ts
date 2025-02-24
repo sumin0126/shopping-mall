@@ -17,4 +17,4 @@ export const PATHNAME = {
 } as const;
 
 // baseAxios에서 사용하는 기본 URL
-export const BASE_URL = 'http://43.201.96.112/api';
+export const BASE_URL = 'https://comeng7.store/api';
