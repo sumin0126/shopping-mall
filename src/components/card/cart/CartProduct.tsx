@@ -11,7 +11,7 @@ interface ICartProduct {
   imageUrl: string;
   onChange: (id: number, isChecked: boolean) => void;
   count: number;
-  updateCount: (id: number, count: number) => void;
+  updateCount: (productId: number, quantity: number) => void;
   onClickProduct: (productId: number) => void;
   deleteProduct: (productId: number) => void;
 }
@@ -45,13 +45,13 @@ const CartProduct = ({
   // 빼기 버튼 클릭 시, 수량을 1씩 빼주는 함수
   const minusProductCount = () => {
     const newCount = count > 1 ? count - 1 : 1;
-    updateCount(id, newCount);
+    updateCount(productId, newCount);
   };
 
   // 더하기 버튼 클릭 시, 수량을 1씩 더해주는 함수
   const plusProductCount = () => {
     const newCount = count + 1;
-    updateCount(id, newCount);
+    updateCount(productId, newCount);
   };
 
   // remove 버튼 클릭 시, 장바구니에서 상품을 삭제하는 함수

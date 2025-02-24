@@ -11,7 +11,7 @@ import type { ICartResponse } from '@/apis/carts/type';
 interface ICartProductList {
   wishList: ICartResponse[];
   productCounts: { [id: number]: number };
-  updateProductCount: (id: number, count: number) => void;
+  updateProductCount: (productId: number, quantity: number) => void;
   handleClickDeleteProduct: (productId: number) => void;
 }
 

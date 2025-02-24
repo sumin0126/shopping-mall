@@ -107,3 +107,13 @@
     margin-top: 10px;
   }
 }
+
+.no-product-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 120px - 375.88px);
+  text-align: center;
+  color: #555;
+}

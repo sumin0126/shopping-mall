@@ -22,8 +22,8 @@ const TwinProductsContainer = () => {
       });
   }, []);
 
-  if (!twinProducts || !twinProducts.data) {
-    return;
+  if (!twinProducts || !twinProducts.data || (Array.isArray(twinProducts.data) && twinProducts.data.length === 0)) {
+    return <p className="no-product-message">해당 카테고리 상품이 없습니다</p>;
   }
   return (
     <>

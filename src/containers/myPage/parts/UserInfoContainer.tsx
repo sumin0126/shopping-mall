@@ -10,15 +10,6 @@ import AlertModal from '@/components/modal/AlertModal';
 
 import type { ICheckUserResponse } from '@/apis/users/type';
 
-// interface IUpdateUserRequest {
-//   name: string;
-//   phoneNumber: string;
-//   email: string;
-//   address: string;
-//   postCode: string;
-//   userId: string;
-// }
-
 /**
  * @description 마이페이지 - 회원정보 컨테이너
  */
@@ -54,12 +45,12 @@ const UserInfoContainer = () => {
     return;
   }
 
-  // 핸드폰 번호에 하이픈 추가해주는 함수
+  // 핸드폰 번호 포맷팅(핸드폰 번호에 하이픈 추가해주는 함수)
   const formatPhoneNumber = (phoneNumber: string) => {
     return phoneNumber.replace(/(\d{3})(\d{3,4})(\d{4})/, '$1-$2-$3');
   };
 
-  // 날짜 설정 함수
+  // 가입 날짜 포맷팅(날짜 설정 함수)
   const formatDate = (createdAt: string) => {
     const date = new Date(createdAt);
     const year = date.getFullYear();
@@ -74,7 +65,7 @@ const UserInfoContainer = () => {
     setEditMode(!editMode);
   };
 
-  // 수정 시, 사용자 정보를 입력한 값으로 변경해주는 함수
+  // 사용자 정보가 들어있는 필드를 입력한 값으로 수정해주는 함수
   const handleChangeUserInfo = (field: keyof typeof editUserInfo, value: string) => {
     setEditUserInfo(prev => ({
       ...prev,
@@ -200,6 +191,7 @@ const UserInfoContainer = () => {
         )}
       </div>
 
+      {/* 수정 완료시 알림 모달 */}
       {isOpenModal && (
         <AlertModal modalTitle="수정이 완료되었습니다 !" handleClickConfirm={() => setIsOpenModal(false)} />
       )}

@@ -25,9 +25,10 @@ const RemoodProductsContainer = () => {
   if (
     !remoodProducts ||
     !remoodProducts.data ||
+    // Array.isArray를 통해 배열인지 먼저 확인하기
     (Array.isArray(remoodProducts.data) && remoodProducts.data.length === 0)
   ) {
-    return <p>상품이 없습니다</p>;
+    return <p className="no-product-message">해당 카테고리 상품이 없습니다</p>;
   }
   return (
     <>

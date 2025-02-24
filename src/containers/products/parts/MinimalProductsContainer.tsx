@@ -20,8 +20,12 @@ const MinimalProductsContainer = () => {
       .then(res => setMinimalProducts(res));
   }, []);
 
-  if (!minimalProducts || !minimalProducts.data) {
-    return;
+  if (
+    !minimalProducts ||
+    !minimalProducts.data ||
+    (Array.isArray(minimalProducts.data) && minimalProducts.data.length === 0)
+  ) {
+    return <p className="no-product-message">해당 카테고리 상품이 없습니다</p>;
   }
 
   return (

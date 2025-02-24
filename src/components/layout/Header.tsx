@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import AboutNavbar from '@/components/layout/navbar/AboutNavbar';
 import ShopNavbar from '@/components/layout/navbar/ShopNavbar';
+import AlertModal from '@/components/modal/AlertModal';
 import ConfirmModal from '@/components/modal/ConfirmModal';
 import { PATHNAME } from '@/constants/pathname';
 
@@ -18,7 +19,8 @@ const Header = () => {
   const [isOpenAboutNavBar, setIsOpenAboutNavBar] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [logoutModal, setLogoutModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
@@ -30,7 +32,11 @@ const Header = () => {
 
   // 클릭 시 마이페이지로 이동하는 함수
   const handleClickMypage = () => {
-    router.push(PATHNAME.MYPAGE);
+    if (isLogin) {
+      router.push(PATHNAME.MYPAGE);
+    } else {
+      setLoginModal(true);
+    }
   };
 
   // 클릭 시 메인 페이지로 이동하는 함수
@@ -45,7 +51,11 @@ const Header = () => {
 
   // 클릭 시 장바구니 페이지로 이동하는 함수
   const handleClickCart = () => {
-    router.push(PATHNAME.CART);
+    if (isLogin) {
+      router.push(PATHNAME.CART);
+    } else {
+      setLoginModal(true);
+    }
   };
 
   // 클릭 시 shop navbar 열어주는 함수
@@ -93,7 +103,7 @@ const Header = () => {
 
   // 로그아웃 버튼 클릭 시 실행되는 함수
   const handleClickLogout = () => {
-    setIsOpenModal(true);
+    setLogoutModal(true);
   };
 
   return (
@@ -135,48 +145,41 @@ const Header = () => {
 
         {/* PC 오른쪽 : 텍스트 버튼들 */}
         <div className="desktop-header-right">
-          <button className="search" onClick={handleClickSearch}>
-            SEARCH
-          </button>
           <button className="cart" onClick={handleClickCart}>
             CART
           </button>
-          <button className="login" onClick={isLogin ? handleClickMypage : handleClickLogin}>
-            {isLogin ? 'MY PAGE' : 'LOGIN'}
+          <button className="mypage" onClick={handleClickMypage}>
+            MY PAGE
+          </button>
+          <button className="login" onClick={isLogin ? handleClickLogout : handleClickLogin}>
+            {isLogin ? 'LOGOUT' : 'LOGIN'}
           </button>
         </div>
 
-        {/* SEARCH 클릭 시, 열리는 검색바 */}
-        {isOpenSearch && (
-          <div className="search-bar-container">
-            <div className={`search-bar-overlay ${isOpenSearch ? 'show' : ''}`} onClick={closeSearchBar}></div>
-            <div className={`search-bar-wrapper ${isOpenSearch ? 'open' : ''}`}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
-              <input type="text" className="search-input" ref={searchInputRef} placeholder="검색어를 입력하세요..." />
-            </div>
-          </div>
+        {/* 로그인 요청 모달 */}
+        {loginModal && (
+          <AlertModal
+            modalTitle="로그인 후 이용해주세요"
+            handleClickConfirm={() => {
+              setLoginModal(false);
+              router.push(PATHNAME.LOGIN);
+            }}
+          />
         )}
 
-        {/* 로그인 상태시, 로그아웃 버튼 활성화 */}
-        {isLogin && (
-          <button className="logout" onClick={handleClickLogout}>
-            LOGOUT
-          </button>
-        )}
-
-        {/* 로그아웃 모달 */}
-        {isOpenModal && (
+        {/* 로그아웃 안내 모달 */}
+        {logoutModal && (
           <ConfirmModal
             modalTitle="로그아웃 하시겠습니까?"
             handleClickConfirm={() => {
-              setIsOpenModal(false);
+              setLogoutModal(false);
               localStorage.removeItem('token');
               localStorage.setItem('isLogin', 'false');
               setIsLogin(false);
               router.push(PATHNAME.MAIN);
             }}
             handleClickCancel={() => {
-              setIsOpenModal(false);
+              setLogoutModal(false);
             }}
           />
         )}

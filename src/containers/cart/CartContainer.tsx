@@ -39,8 +39,12 @@ const CartContainer = () => {
   };
 
   // 상품의 수량을 업데이트해주는 함수
-  const updateProductCount = (id: number, count: number) => {
-    setProductCounts(prev => ({ ...prev, [id]: count }));
+  const updateProductCount = (productId: number, quantity: number) => {
+    cartApi.postCarts({ productId, quantity }).then(res => {
+      console.log('상품 수량 업데이트', res);
+    });
+
+    setProductCounts(prev => ({ ...prev, [productId]: quantity }));
   };
 
   return (

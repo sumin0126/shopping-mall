@@ -22,8 +22,8 @@ const CloProductsContainer = () => {
       });
   }, []);
 
-  if (!cloProducts || !cloProducts.data) {
-    return;
+  if (!cloProducts || !cloProducts.data || (Array.isArray(cloProducts.data) && cloProducts.data.length === 0)) {
+    return <p className="no-product-message">해당 카테고리 상품이 없습니다</p>;
   }
   return (
     <>

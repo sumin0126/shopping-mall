@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { userApi } from '@/apis/users';
+import AlertModal from '@/components/modal/AlertModal';
+
 interface IForm {
   name: string;
   email?: string;
@@ -9,10 +12,12 @@ interface IForm {
   checkedPhoneNumber: boolean;
 }
 /**
- * @description 유저 아이디 찾기 컨테이너
+ * @description 사용자 아이디 찾기 컨테이너
  */
 const FindIdContainer = () => {
+  const [userId, setUserId] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   // useFrom hook 초기화
   const {
@@ -23,32 +28,37 @@ const FindIdContainer = () => {
     formState: { errors },
   } = useForm<IForm>({ mode: 'onSubmit', defaultValues: { checkedEmail: true, checkedPhoneNumber: false } });
 
-  // 실시간으로 체크박스 상태 감지
+  // 사용자가 이메일과 전화번호중 어느 방식을 선택했는지 실시간으로 감지
   const checkedEmail = watch('checkedEmail');
   const checkedPhoneNumber = watch('checkedPhoneNumber');
 
   // 확인 버튼 클릭 시, 실행되는 함수
-  const handleSubmitForm = async () => {
-    try {
-      // 유저 정보를 api 호출을 통해 서버에 전달
-      // const res = await userApi.postFindId(data);
-      const res = {
-        userId: null,
-      };
+  // const handleSubmitForm = async (data: IForm) => {
+  //   try {
+  //     // 이메일이나 휴대폰번호를 아이디처럼 사용하여 로그인 시도
+  //     const userId = checkedEmail ? data.email : data.phoneNumber;
+  //     const password = 'dummyPassword';
 
-      if (res.userId) {
-        alert(`아이디는 ${res.userId} 입니다 !`);
-      } else {
-        alert('등록된 정보를 찾을 수 없습니다 !');
-      }
-    } catch (err) {
-      if (err instanceof Error) {
-        setErrorMessage(err.message);
-      } else {
-        setErrorMessage('An unknown error occurred.');
-      }
-    }
-  };
+  //     if (!userId) {
+  //       throw new Error('이메일 또는 휴대폰 번호를 입력해주세요 !');
+  //     }
+
+  //     // 로그인 API 요청 (아이디 찾기 목적으로 활용)
+  //     const res = await userApi.postUsersLogin({ userId, password });
+
+  //     if (res && res.token) {
+  //       // 성공시 이메일/휴대폰 번호를 아이디로 간주
+  //       setUserId(userId);
+  //       setIsOpenModal(true);
+  //       console.log('아이디 찾기 성공', res);
+  //     } else {
+  //       setErrorMessage('등록된 정보를 찾을 수 없습니다 !');
+  //     }
+  //   } catch (err) {
+  //     console.error('API 요청 실패', err);
+  //     setErrorMessage('서버와 통신중 에러가 발생했습니다.');
+  //   }
+  // };
 
   // email 체크박스 선택 시, 실행되는 함수
   const handleClickCheckedEmail = () => {
@@ -147,9 +157,19 @@ const FindIdContainer = () => {
 
           {/* 확인 버튼 */}
           <div className="button-wrapper">
-            <button className="confirm-btn">확인</button>
+            <button type="submit" className="confirm-btn">
+              확인
+            </button>
           </div>
         </form>
+
+        {/* 아이디 표시 모달 */}
+        {isOpenModal && userId && (
+          <AlertModal
+            modalTitle={`회원님의 아이디는 ${userId} 입니다.`}
+            handleClickConfirm={() => setIsOpenModal(false)}
+          />
+        )}
       </div>
     </div>
   );

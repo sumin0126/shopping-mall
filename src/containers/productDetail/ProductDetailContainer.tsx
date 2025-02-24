@@ -11,12 +11,13 @@ import ProductDetailMain from '@/components/card/productDetail/ProductDetailMain
 
 import type { IProduct } from '@/apis/products/type';
 
-// 버튼 상태 텍스트
+// 읽기전용으로 TAB을 정의해줌
 const TAB = {
   DETAIL: 'DETAIL',
   INFO: 'INFO',
 } as const;
 
+// 딱 TAB에있는 DETAIL과 INFO만 사용하기위해
 type TTabType = (typeof TAB)[keyof typeof TAB];
 
 /**
@@ -41,11 +42,11 @@ const ProductDetailContainer = () => {
   }, [id]);
 
   // 버튼 클릭 시 버튼의 상태를 업데이트 해주는 함수
-  const handleClickButton = (tab: TTabType) => {
+  const handleClickTab = (tab: TTabType) => {
     setCurrentTab(tab);
   };
 
-  // 상품 메인이미지 데이터
+  // 상품 메인이미지 목데이터
   const ProductImage = [
     '/img/productdetail/productdetailmain1.jpg',
     '/img/productdetail/productdetailmain1-2.jpg',
@@ -59,22 +60,24 @@ const ProductDetailContainer = () => {
 
   return (
     <div className="product-detail-container">
-      {/* 상품 정보 */}
+      {/* 상세페이지 헤더 */}
       <ProductDetailHeader product={product} />
 
-      {/* 상품 이미지와 정보를 나눠주는 버튼들 */}
+      {/* Detail, Info 버튼들 */}
       <div className="main-button">
         <button
           className={classNames('detail', {
             active: currentTab === TAB.DETAIL,
           })}
-          onClick={() => handleClickButton(TAB.DETAIL)}
+          onClick={() => handleClickTab(TAB.DETAIL)}
         >
           DETAIL
         </button>
         <button
-          className={`info ${currentTab === TAB.INFO ? 'active' : ''}`}
-          onClick={() => handleClickButton(TAB.INFO)}
+          className={classNames('info', {
+            active: currentTab === TAB.INFO,
+          })}
+          onClick={() => handleClickTab(TAB.INFO)}
         >
           INFO
         </button>
