@@ -5,7 +5,7 @@
 <br/>
 
 
-https://github.com/user-attachments/assets/99842350-9687-4404-b75a-25c266d547ee
+https://github.com/user-attachments/assets/1cab4eb4-0359-44f4-85cb-616002eb5e09
 
 
 
@@ -60,7 +60,8 @@ https://github.com/user-attachments/assets/ac820e8d-b112-48cb-8f75-4adb8f6ad2eb
 
 
 사용자가 회원가입 시, 입력한 정보를 API 요청을 통해 서버에게 전달합니다
-카카오 우편번호 API를 활용해 사용자가 주소를 쉽게 입력할 수 있으며, 필수 입력 사항에 대해 폼 유효성 검사를 수행합니다.
+카카오 우편번호 API를 활용해 사용자가 주소를 쉽게 입력할 수 있으며,
+필수 입력 사항에 대해 폼 유효성 검사를 수행합니다.
 
 
 <br/><br/><br/>
