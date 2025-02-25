@@ -20,7 +20,9 @@ https://github.com/user-attachments/assets/1cab4eb4-0359-44f4-85cb-616002eb5e09
 
 ### ▸ 주요 기능
 
-### ▸ 부수적인 기능
+### ▸ 부기능
+
+### ▸ 설치 및 실행
 
 <br/><br/>
 
@@ -53,15 +55,14 @@ Axios와 JWT 기반 인증을 통해 사용자와 서버 간의 안전한 데이
 
 ## 💡 주요 기능
 
-### ▸ 회원가입 기능
+### ▸ 회원가입
 
 
 https://github.com/user-attachments/assets/ac820e8d-b112-48cb-8f75-4adb8f6ad2eb
 
 
-사용자가 회원가입 시, 입력한 정보를 API 요청을 통해 서버에게 전달합니다
-카카오 우편번호 API를 활용해 사용자가 주소를 쉽게 입력할 수 있으며,<br/>
-필수 입력 사항에 대해 폼 유효성 검사를 수행합니다.
+사용자가 회원가입 시, 입력한 정보를 API 요청을 통해 서버에게 전달합니다. <br/>
+카카오 우편번호 API를 활용해 사용자가 주소를 쉽게 입력할 수 있으며, 필수 입력 사항에 대해 폼 유효성 검사를 수행합니다.
 
 
 <br/><br/><br/>
@@ -102,13 +103,13 @@ https://github.com/user-attachments/assets/0844f441-9880-4559-a2eb-63bc0532f205
 
 <br/><br/><br/>
 
-### ▸ 결제 페이지 이동 및 주문 정보 처리
+### ▸ 상품 결제
 
 
-https://github.com/user-attachments/assets/4c4464fb-eeab-4a9c-b9d6-97cc02b10170
+https://github.com/user-attachments/assets/8a603d51-3338-4b8a-9ec1-98550fa5bf21
 
 
-결제 페이지에서는 사용자의 기본 회원 정보가 자동으로 입력되며, 사용자가 원할시에는 새로운 배송지 정보를 입력할 수도 있습니다.
+결제 페이지에서는 사용자의 기본 회원 정보가 자동으로 입력되며, 사용자가 원할시에는 새로운 배송지 정보를 입력할 수도 있습니다. <br/>
 사용자가 주문 정보를 입력하고 결제를 완료하면, 서버에 주문 정보를 POST 요청으로 전달하고 주문 내역 페이지로 이동합니다.
 
 <br/><br/><br/>
@@ -116,28 +117,25 @@ https://github.com/user-attachments/assets/4c4464fb-eeab-4a9c-b9d6-97cc02b10170
 ### ▸ 주문 내역 확인
 
 
-https://github.com/user-attachments/assets/47ed5262-b51f-4af1-9e44-77d27eed30d9
+https://github.com/user-attachments/assets/99df0810-e831-4bbe-b7e9-d089f454bc42
 
 
 주문이 완료된 후에는 주문 내역 페이지에서 사용자별 주문 정보를 서버에 GET 요청으로 불러와 렌더링합니다.
 
 <br/><br/><br/>
 
-### ▸ 마이페이지
+### ▸ 마이페이지 (회원정보 수정)
 
 
-https://github.com/user-attachments/assets/50d6078a-aad6-45bc-9ef7-e8ae4f2a62d6
+https://github.com/user-attachments/assets/4d891f66-3b11-4371-9ef0-09c69a483b92
 
 
-로그인한 사용자만 마이페이지에 접근할 수 있으며, 서버에 GET 요청을 보내 사용자 정보를 조회합니다.
+로그인한 사용자만 마이페이지에 접근할 수 있으며, 서버에 GET 요청을 보내 사용자 정보를 조회합니다. <br/>
 정보 수정을 원할시에는 수정 버튼을 클릭하여 일부 정보를 수정할 수 있습니다.
 
 <br/><br/><br/>
 
 ### ▸ 아이디/비밀번호 찾기
-
-
-https://github.com/user-attachments/assets/d9aea0fb-80a9-4902-a39a-ca602ad64069
 
 
 기능 구현중입니다...
@@ -165,4 +163,24 @@ https://github.com/user-attachments/assets/d9aea0fb-80a9-4902-a39a-ca602ad64069
 Recoil 상태관리를 활용해 하단 Footer에 위치한 4곳의 쇼룸 버튼 중 하나를 클릭하면, 쇼룸 페이지로 이동 후 선택된 쇼룸 카드가 자동으로 열립니다.
 
 <br/><br/><br/>
+
+## ⚙️ 설치 및 실행
+
+
+```bash
+# 의존성 설치
+npm install
+
+# 개발 서버 실행
+npm run dev
+
+# 프로덕션 빌드
+npm run build
+
+# 프로덕션 서버 실행
+npm start
+
+# 테스트 실행
+npm test
+```
 
