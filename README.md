@@ -38,6 +38,7 @@ https://github.com/user-attachments/assets/1cab4eb4-0359-44f4-85cb-616002eb5e09
 ![scss](https://img.shields.io/badge/SCSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 **[https://react-blog-qwdd0fxv8-sumins-projects-fc972773.vercel.app/](https://react-blog-qwdd0fxv8-sumins-projects-fc972773.vercel.app/)**
+**https://dev.d1p0a0dshz98j5.amplifyapp.com/**
 
 <br/><br/><br/>
 
@@ -97,8 +98,8 @@ https://github.com/user-attachments/assets/0844f441-9880-4559-a2eb-63bc0532f205
 
 
 - 상품 추가 : 사용자가 상품을 장바구니에 추가하면, 해당 상품의 id와 수량을 서버에 POST 요청하여 상품을 추가합니다.
-- 수량 변경 : 아직 기능 구현중...
-- 상품 삭제 : 장바구니에서 특정 상품을 삭제하면, DELETE 요청을 서버에 보내 해당 상품을 제거합니다.
+- 수량 변경 : 장바구니에서 상품 수량을 변경하면, 해당 상품의 id와 수량을 서버에 재요청하여 수량을 변경해줍니다.
+- 상품 삭제 : 장바구니에서 특정 상품을 삭제하면, 해당 상품의 id를 서버에 DELETE 요청을 보내 제거합니다.
 
 <br/><br/><br/>
 
