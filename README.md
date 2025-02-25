@@ -137,9 +137,6 @@ https://github.com/user-attachments/assets/4d891f66-3b11-4371-9ef0-09c69a483b92
 ### ▸ 아이디/비밀번호 찾기
 
 
-https://github.com/user-attachments/assets/d9aea0fb-80a9-4902-a39a-ca602ad64069
-
-
 기능 구현중입니다...
 
 <br/><br/><br/>
