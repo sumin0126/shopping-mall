@@ -5,7 +5,7 @@
 <br/>
 
 
-https://github.com/user-attachments/assets/99842350-9687-4404-b75a-25c266d547ee
+https://github.com/user-attachments/assets/1cab4eb4-0359-44f4-85cb-616002eb5e09
 
 
 
@@ -37,7 +37,7 @@ https://github.com/user-attachments/assets/99842350-9687-4404-b75a-25c266d547ee
 ![next.js](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff&style=for-the-badge)
 ![scss](https://img.shields.io/badge/SCSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-**[https://react-blog-qwdd0fxv8-sumins-projects-fc972773.vercel.app/](https://react-blog-qwdd0fxv8-sumins-projects-fc972773.vercel.app/)**
+**https://dev.d1p0a0dshz98j5.amplifyapp.com/**
 
 <br/><br/><br/>
 
@@ -56,11 +56,12 @@ Axios와 JWT 기반 인증을 통해 사용자와 서버 간의 안전한 데이
 ### ▸ 회원가입 기능
 
 
-https://github.com/user-attachments/assets/7d2562ad-efcb-47db-8a0a-381c15a638bd
+https://github.com/user-attachments/assets/ac820e8d-b112-48cb-8f75-4adb8f6ad2eb
 
 
 사용자가 회원가입 시, 입력한 정보를 API 요청을 통해 서버에게 전달합니다
-카카오 우편번호 API를 활용해 사용자가 주소를 쉽게 입력할 수 있으며, 필수 입력 사항에 대해 폼 유효성 검사를 수행합니다.
+카카오 우편번호 API를 활용해 사용자가 주소를 쉽게 입력할 수 있으며,<br/>
+필수 입력 사항에 대해 폼 유효성 검사를 수행합니다.
 
 
 <br/><br/><br/>
@@ -68,11 +69,11 @@ https://github.com/user-attachments/assets/7d2562ad-efcb-47db-8a0a-381c15a638bd
 ### ▸ JWT 기반 로그인
 
 
-https://github.com/user-attachments/assets/4689fa92-16c0-4a8d-9beb-8a894f8a4d5a
+https://github.com/user-attachments/assets/6fc446c2-4610-4c0f-a085-a77017bb83ee
 
 
-사용자가 아이디와 비밀번호를 API 요청을 통해 서버에 전달하고, 서버는 토큰을 발급하여 클라이언트에게 전달합니다.
-클라이언트는 받은 토큰을 localStorage에 저장하고, 이 토큰을 통해 사용자 인증 상태를 유지합니다.
+사용자가 아이디와 비밀번호를 API 요청을 통해 서버에 전달하고, 서버는 토큰을 발급하여 클라이언트에게 전달합니다. <br/>
+클라이언트는 받은 토큰을 localStorage에 저장하고, 이 토큰을 통해 사용자 인증 상태를 유지합니다. <br/>
 페이지 접근 시 로그인 유무를 확인해 인증된 사용자만 마이페이지, 주문내역 등에 접근할 수 있습니다.
 
 <br/><br/><br/>
@@ -80,10 +81,10 @@ https://github.com/user-attachments/assets/4689fa92-16c0-4a8d-9beb-8a894f8a4d5a
 ### ▸ 카테고리별 상품 조회
 
 
-https://github.com/user-attachments/assets/2dcaf1f6-c3d3-4400-8fdd-92a42006b61b
+https://github.com/user-attachments/assets/b35103fe-96ad-44eb-a307-1cb551fdf747
 
 
-사용자가 네비게이션 바에서 특정 카테고리를 선택하면, 해당 카테고리의 코드(Category Code)에 따라 서버에 GET 요청을 보냅니다.
+사용자가 네비게이션 바에서 특정 카테고리를 선택하면, 해당 카테고리의 코드(Category Code)에 따라 서버에 GET 요청을 보냅니다. <br/>
 서버는 요청 받은 카테고리에 속하는 상품 목록을 반환하고, 클라이언트는 받은 데이터를 기반으로 페이지를 동적으로 렌더링합니다.
 
 
@@ -92,12 +93,12 @@ https://github.com/user-attachments/assets/2dcaf1f6-c3d3-4400-8fdd-92a42006b61b
 ### ▸ 장바구니 기능 (추가, 수량 변경, 삭제)
 
 
-https://github.com/user-attachments/assets/fdf8101f-0591-4762-9628-c44ec94ad670
+https://github.com/user-attachments/assets/0844f441-9880-4559-a2eb-63bc0532f205
 
 
 - 상품 추가 : 사용자가 상품을 장바구니에 추가하면, 해당 상품의 id와 수량을 서버에 POST 요청하여 상품을 추가합니다.
-- 수량 변경 : 아직 기능 구현중...
-- 상품 삭제 : 장바구니에서 특정 상품을 삭제하면, DELETE 요청을 서버에 보내 해당 상품을 제거합니다.
+- 수량 변경 : 장바구니에서 상품 수량을 변경하면, 해당 상품의 id와 수량을 서버에 재요청하여 수량을 변경해줍니다.
+- 상품 삭제 : 장바구니에서 특정 상품을 삭제하면, 해당 상품의 id를 서버에 DELETE 요청을 보내 제거합니다.
 
 <br/><br/><br/>
 
