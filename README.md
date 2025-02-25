@@ -105,7 +105,7 @@ https://github.com/user-attachments/assets/0844f441-9880-4559-a2eb-63bc0532f205
 ### ▸ 결제 페이지 이동 및 주문 정보 처리
 
 
-https://github.com/user-attachments/assets/4c4464fb-eeab-4a9c-b9d6-97cc02b10170
+https://github.com/user-attachments/assets/8a603d51-3338-4b8a-9ec1-98550fa5bf21
 
 
 결제 페이지에서는 사용자의 기본 회원 정보가 자동으로 입력되며, 사용자가 원할시에는 새로운 배송지 정보를 입력할 수도 있습니다.
@@ -116,7 +116,7 @@ https://github.com/user-attachments/assets/4c4464fb-eeab-4a9c-b9d6-97cc02b10170
 ### ▸ 주문 내역 확인
 
 
-https://github.com/user-attachments/assets/47ed5262-b51f-4af1-9e44-77d27eed30d9
+https://github.com/user-attachments/assets/99df0810-e831-4bbe-b7e9-d089f454bc42
 
 
 주문이 완료된 후에는 주문 내역 페이지에서 사용자별 주문 정보를 서버에 GET 요청으로 불러와 렌더링합니다.
@@ -126,7 +126,7 @@ https://github.com/user-attachments/assets/47ed5262-b51f-4af1-9e44-77d27eed30d9
 ### ▸ 마이페이지
 
 
-https://github.com/user-attachments/assets/50d6078a-aad6-45bc-9ef7-e8ae4f2a62d6
+https://github.com/user-attachments/assets/4d891f66-3b11-4371-9ef0-09c69a483b92
 
 
 로그인한 사용자만 마이페이지에 접근할 수 있으며, 서버에 GET 요청을 보내 사용자 정보를 조회합니다.
