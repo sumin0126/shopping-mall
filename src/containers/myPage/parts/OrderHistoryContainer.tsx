@@ -1,33 +1,37 @@
+import { useEffect, useState } from 'react';
+
 import OrderHistoryList from '@/components/list/OrderHistoryList';
+
+export interface IOrder {
+  id: number;
+  imageUrl: string;
+  orderDate: string;
+  name: string;
+  color: string;
+  price: number;
+}
 
 /**
  * @description 마이페이지 - 주문내역 컨테이너
  */
 const OrderHistoryContainer = () => {
-  // 임시 데이터
-  const orderHistoryData = [
-    {
-      id: 1,
-      imageUrl: '/img/accessory/accessory1.jpg',
-      orderDate: '2024.01.19',
-      name: 'FUR Large',
-      color: 'shakerato (LIMITED)',
-      price: 145000,
-    },
-    {
-      id: 2,
-      imageUrl: '/img/accessory/accessory12.jpg',
-      orderDate: '2024.01.19',
-      name: 'FUR Large',
-      color: 'shakerato (LIMITED)',
-      price: 40000,
-    },
-  ];
+  const [orderHistoryData, setOrderHistoryData] = useState<IOrder[]>([]);
+
+  useEffect(() => {
+    const currentData = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+    setOrderHistoryData(currentData);
+  }, []);
 
   return (
     <div className="order-history-container">
       <p className="title">주문/배송 내역</p>
-      <OrderHistoryList orderHistoryData={orderHistoryData} />
+      {orderHistoryData.length > 0 ? (
+        <OrderHistoryList orderHistoryData={orderHistoryData} />
+      ) : (
+        <div className="noti-wrapper">
+          <p className="noti-title">주문한 상품이 없습니다</p>
+        </div>
+      )}
     </div>
   );
 };

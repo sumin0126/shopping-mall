@@ -72,7 +72,7 @@ const ShopNavbar = ({ isOpenShopNavBar, closeShopNavBar }: IShopNavbarProps) => 
           onClick={() => {
             router.push(PATHNAME.NEWARRIVAL);
           }}
-          className={currentPathname === '/newarrival' ? 'highlight-category' : ''}
+          className={currentPathname === '/new-arrival' ? 'highlight-category' : ''}
         >
           NEW ARRIVAL
         </button>
@@ -81,7 +81,7 @@ const ShopNavbar = ({ isOpenShopNavBar, closeShopNavBar }: IShopNavbarProps) => 
           onClick={() => {
             router.push(PATHNAME.ALLITEMS);
           }}
-          className={currentPathname === '/allitems' ? 'highlight-category' : ''}
+          className={currentPathname === '/all-items' ? 'highlight-category' : ''}
         >
           ALL ITEMS
         </button>

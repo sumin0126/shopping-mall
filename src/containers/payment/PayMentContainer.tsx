@@ -69,6 +69,7 @@ const PayMentContainer = () => {
     }
 
     const id = Number(productId); // id를 숫자로 변환
+
     productApi.getProduct({ id }).then(res => {
       setProduct(res);
     });
@@ -92,6 +93,27 @@ const PayMentContainer = () => {
 
   // 상품 결제 버튼 클릭 시, 실행되는 함수
   const handleClickPayment = (data: IMethodForm) => {
+    if (!product) return;
+
+    // 로컬스토리지에 저장할 주문 데이터 생성
+    const orderData = {
+      id: product.id,
+      imageUrl: product.imageUrl,
+      orderDate: formattedDate,
+      name: product.name,
+      color: product.color,
+      price: product.price,
+    };
+
+    // 이전 주문 내역 불러오기
+    const previousOrderHistory = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+
+    // 새로운 주문 데이터를 기존 데이터에 추가
+    const updatedOrders = [...previousOrderHistory, orderData];
+
+    // 로컬스토리지에 업데이트된 데이터 저장
+    localStorage.setItem('orderHistory', JSON.stringify(updatedOrders));
+
     console.log(data);
     setIsAlertOpenModal(true);
   };

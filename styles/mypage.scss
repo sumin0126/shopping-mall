@@ -117,6 +117,19 @@
     font-family: 'Open Sans';
   }
 
+  .noti-wrapper {
+    width: 100%;
+    height: calc(610px - 181.5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .noti-title {
+      text-align: center;
+      color: #999;
+    }
+  }
+
   .order-history-list-container {
     width: 100%;
     height: auto;

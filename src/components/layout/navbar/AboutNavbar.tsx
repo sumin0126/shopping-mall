@@ -47,7 +47,7 @@ const AboutNavbar = ({ isOpenAboutNavBar, closeAboutNavBar }: IAboutNavbarProps)
     <div className="navbar-container">
       <div className={`navbar-overlay ${isOpenAboutNavBar ? 'show' : ''}`} onClick={closeAboutNavBar} />
       <nav className={`navbar-wrapper ${isOpenAboutNavBar ? 'open' : ''}`}>
-        <p>SHOP</p>
+        <p>ABOUT</p>
         {navbarCategorys.map(category => {
           return (
             <button
