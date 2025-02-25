@@ -39,7 +39,6 @@ const PayMentContainer = () => {
   const [product, setProduct] = useState<IProduct | null>(null);
 
   const router = useRouter();
-
   const { productId } = router.query;
 
   const today = new Date();
@@ -63,6 +62,7 @@ const PayMentContainer = () => {
     },
   });
 
+  // productId로 여러 상품 불러오기
   useEffect(() => {
     if (!productId) {
       return;
@@ -114,7 +114,7 @@ const PayMentContainer = () => {
     // 로컬스토리지에 업데이트된 데이터 저장
     localStorage.setItem('orderHistory', JSON.stringify(updatedOrders));
 
-    console.log(data);
+    console.log(data, updatedOrders);
     setIsAlertOpenModal(true);
   };
 

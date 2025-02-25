@@ -35,7 +35,13 @@ const BrandStorySlider = ({ BrandStoryImage }: IBrandStorySlider) => {
       <Slider {...settings}>
         {BrandStoryImage.map(image => (
           <div key={image.id} className="slider-card-wrapper">
-            <Image src={image.img} alt="brandStorySliderImg" fill style={{ objectFit: 'cover' }} />
+            <Image
+              className="brand-story-img"
+              src={image.img}
+              alt="brandStorySliderImg"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
           </div>
         ))}
       </Slider>

@@ -18,8 +18,8 @@ const OrderHistoryContainer = () => {
   const [orderHistoryData, setOrderHistoryData] = useState<IOrder[]>([]);
 
   useEffect(() => {
-    const currentData = JSON.parse(localStorage.getItem('orderHistory') || '[]');
-    setOrderHistoryData(currentData);
+    const currentOrders = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+    setOrderHistoryData(currentOrders);
   }, []);
 
   return (

@@ -38,12 +38,32 @@
 
 .brand-story-slider {
   width: 68vw;
-  height: auto;
+  height: 640px;
   margin-bottom: 60px;
+  overflow: hidden;
 
   .slider-card-wrapper {
     width: 100%;
     height: 640px;
     position: relative;
+    border-radius: 0 !important;
+
+    .brand-story-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // 슬라이더 도트 위치 조정
+  .slick-dots {
+    position: absolute;
+    bottom: 10px; // 도트를 이미지 하단에 고정
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
   }
 }

@@ -42,11 +42,31 @@ const CartProductList = ({
   const handleClickSelectItems = () => {
     if (selectedItems.length === 0) {
       setIsAlertOpenModal(true);
-    } else {
-      const selectedProducts = wishList.filter(product => selectedItems.includes(product.productId));
-      console.log(selectedProducts);
+      return;
+    }
 
-      router.push(PATHNAME.PAYMENT);
+    // 선택된 상품의 id만 추출
+    const selectedProductId = wishList
+      .filter(product => selectedItems.includes(product.productId))
+      .map(product => product.productId);
+
+    if (selectedProductId.length > 0) {
+      router.push({
+        pathname: PATHNAME.PAYMENT,
+        query: { productId: selectedProductId.join(',') },
+      });
+    }
+  };
+
+  // 전체상품주문시 실행되는 함수
+  const handleClickAllItems = () => {
+    const allProductId = wishList.map(product => product.productId);
+
+    if (allProductId.length > 0) {
+      router.push({
+        pathname: PATHNAME.PAYMENT,
+        query: { productId: allProductId.join(',') },
+      });
     }
   };
 
@@ -56,12 +76,6 @@ const CartProductList = ({
       pathname: PATHNAME.PRODUCT_DETAIL,
       query: { id: productId },
     });
-  };
-
-  // 전체상품주문시 실행되는 함수
-  const handleClickAllItems = () => {
-    console.log(wishList);
-    router.push(PATHNAME.PAYMENT);
   };
 
   return (
