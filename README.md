@@ -37,7 +37,6 @@ https://github.com/user-attachments/assets/1cab4eb4-0359-44f4-85cb-616002eb5e09
 ![next.js](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff&style=for-the-badge)
 ![scss](https://img.shields.io/badge/SCSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-**[https://react-blog-qwdd0fxv8-sumins-projects-fc972773.vercel.app/](https://react-blog-qwdd0fxv8-sumins-projects-fc972773.vercel.app/)**
 **https://dev.d1p0a0dshz98j5.amplifyapp.com/**
 
 <br/><br/><br/>
