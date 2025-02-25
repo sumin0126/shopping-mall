@@ -72,15 +72,14 @@
       position: absolute;
       top: 20px;
       right: 30px;
-    }
-  }
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      line-height: 1;
 
-  .wish-icon {
-    font-size: 18px;
-    line-height: 18px;
-
-    &.active {
-      color: rgb(255, 90, 214);
+      &.active {
+        color: rgb(255, 90, 214);
+      }
     }
   }
 
