@@ -42,6 +42,13 @@
       font-family: 'Open Sans';
     }
 
+    .user-data-list-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
     .user-data-card-container {
       width: 100%;
       display: flex;
@@ -57,12 +64,19 @@
         gap: 14px;
 
         .email-icon,
-        .phone-icon,
         .user-icon,
         .address-icon,
         .post-code-icon,
         .createdAt-icon {
           font-size: 18px;
+          line-height: 18px;
+          color: #bcbcbc;
+        }
+
+        .phone-icon {
+          font-size: 20px;
+          margin-right: 3px;
+          line-height: 18px;
           color: #bcbcbc;
         }
 
@@ -74,14 +88,92 @@
         }
       }
     }
+
+    .phone-edit-box,
+    .email-edit-box,
+    .address-edit-box,
+    .postCode-edit-box {
+      margin-top: 14px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 14px;
+
+      .email-icon,
+      .address-icon,
+      .post-code-icon {
+        font-size: 18px;
+        line-height: 18px;
+        color: #bcbcbc;
+      }
+
+      .phone-icon {
+        font-size: 20px;
+        line-height: 18px;
+        margin-right: 3px;
+        color: #bcbcbc;
+      }
+
+      .phone-input,
+      .email-input,
+      .address-input,
+      .postCode-input {
+        min-width: 240px;
+        width: auto;
+        font-size: 16px;
+        color: #666;
+        font-weight: 400;
+        font-family: 'Open Sans';
+        border: 1px solid #c1c1c1;
+        padding-left: 10px;
+        border-radius: 6px;
+        overflow: hidden;
+        height: 30px;
+
+        &:focus {
+          outline: none;
+          border: 1px solid #555;
+        }
+      }
+    }
   }
 
+  .button-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+
+    .save-button {
+      width: 80px;
+      border: none;
+      border-radius: 20px;
+      height: 32px;
+      background-color: #222;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: 'Open Sans';
+      color: #fff;
+    }
+
+    .cancel-button {
+      width: 80px;
+      border: 1px solid #222;
+      border-radius: 20px;
+      height: 32px;
+      background-color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: 'Open Sans';
+      color: #222;
+    }
+  }
   .info-edit-btn {
     width: 80px;
     border: 1px solid #222;
     border-radius: 20px;
     height: 32px;
-    background-color: transparent;
+    background-color: #fff;
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.8s ease;
