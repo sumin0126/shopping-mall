@@ -128,7 +128,7 @@ https://github.com/user-attachments/assets/99df0810-e831-4bbe-b7e9-d089f454bc42
 https://github.com/user-attachments/assets/4d891f66-3b11-4371-9ef0-09c69a483b92
 
 
-로그인한 사용자만 마이페이지에 접근할 수 있으며, 서버에 GET 요청을 보내 사용자 정보를 조회합니다.
+로그인한 사용자만 마이페이지에 접근할 수 있으며, 서버에 GET 요청을 보내 사용자 정보를 조회합니다. <br/>
 정보 수정을 원할시에는 수정 버튼을 클릭하여 일부 정보를 수정할 수 있습니다.
 
 <br/><br/><br/>
