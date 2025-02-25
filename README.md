@@ -56,7 +56,7 @@ Axios와 JWT 기반 인증을 통해 사용자와 서버 간의 안전한 데이
 ### ▸ 회원가입 기능
 
 
-https://github.com/user-attachments/assets/7d2562ad-efcb-47db-8a0a-381c15a638bd
+https://github.com/user-attachments/assets/ac820e8d-b112-48cb-8f75-4adb8f6ad2eb
 
 
 사용자가 회원가입 시, 입력한 정보를 API 요청을 통해 서버에게 전달합니다
@@ -68,7 +68,7 @@ https://github.com/user-attachments/assets/7d2562ad-efcb-47db-8a0a-381c15a638bd
 ### ▸ JWT 기반 로그인
 
 
-https://github.com/user-attachments/assets/4689fa92-16c0-4a8d-9beb-8a894f8a4d5a
+https://github.com/user-attachments/assets/6fc446c2-4610-4c0f-a085-a77017bb83ee
 
 
 사용자가 아이디와 비밀번호를 API 요청을 통해 서버에 전달하고, 서버는 토큰을 발급하여 클라이언트에게 전달합니다.
@@ -80,7 +80,7 @@ https://github.com/user-attachments/assets/4689fa92-16c0-4a8d-9beb-8a894f8a4d5a
 ### ▸ 카테고리별 상품 조회
 
 
-https://github.com/user-attachments/assets/2dcaf1f6-c3d3-4400-8fdd-92a42006b61b
+https://github.com/user-attachments/assets/b35103fe-96ad-44eb-a307-1cb551fdf747
 
 
 사용자가 네비게이션 바에서 특정 카테고리를 선택하면, 해당 카테고리의 코드(Category Code)에 따라 서버에 GET 요청을 보냅니다.
@@ -92,7 +92,7 @@ https://github.com/user-attachments/assets/2dcaf1f6-c3d3-4400-8fdd-92a42006b61b
 ### ▸ 장바구니 기능 (추가, 수량 변경, 삭제)
 
 
-https://github.com/user-attachments/assets/fdf8101f-0591-4762-9628-c44ec94ad670
+https://github.com/user-attachments/assets/0844f441-9880-4559-a2eb-63bc0532f205
 
 
 - 상품 추가 : 사용자가 상품을 장바구니에 추가하면, 해당 상품의 id와 수량을 서버에 POST 요청하여 상품을 추가합니다.
