@@ -166,28 +166,21 @@ Recoil 상태관리를 활용해 하단 Footer에 위치한 4곳의 쇼룸 버�
 
 ## ⚙️ 설치 및 실행
 
-# 의존성 설치
+
 ```bash
+# 의존성 설치
 npm install
-```
 
 # 개발 서버 실행
-```bash
 npm run dev
-```
 
 # 프로덕션 빌드
-```bash
 npm run build
-```
 
 # 프로덕션 서버 실행
-```bash
 npm start
-```
 
 # 테스트 실행
-```bash
 npm test
 ```
 
