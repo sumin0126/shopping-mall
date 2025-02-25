@@ -20,7 +20,7 @@ https://github.com/user-attachments/assets/1cab4eb4-0359-44f4-85cb-616002eb5e09
 
 ### ▸ 주요 기능
 
-### ▸ 부수적인 기능
+### ▸ 부기능
 
 <br/><br/>
 
@@ -53,7 +53,7 @@ Axios와 JWT 기반 인증을 통해 사용자와 서버 간의 안전한 데이
 
 ## 💡 주요 기능
 
-### ▸ 회원가입 기능
+### ▸ 회원가입
 
 
 https://github.com/user-attachments/assets/ac820e8d-b112-48cb-8f75-4adb8f6ad2eb
@@ -102,7 +102,7 @@ https://github.com/user-attachments/assets/0844f441-9880-4559-a2eb-63bc0532f205
 
 <br/><br/><br/>
 
-### ▸ 결제 페이지 이동 및 주문 정보 처리
+### ▸ 상품 결제
 
 
 https://github.com/user-attachments/assets/8a603d51-3338-4b8a-9ec1-98550fa5bf21
@@ -123,7 +123,7 @@ https://github.com/user-attachments/assets/99df0810-e831-4bbe-b7e9-d089f454bc42
 
 <br/><br/><br/>
 
-### ▸ 마이페이지
+### ▸ 마이페이지 (회원정보 수정)
 
 
 https://github.com/user-attachments/assets/4d891f66-3b11-4371-9ef0-09c69a483b92
