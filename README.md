@@ -60,7 +60,7 @@ https://github.com/user-attachments/assets/ac820e8d-b112-48cb-8f75-4adb8f6ad2eb
 
 
 사용자가 회원가입 시, 입력한 정보를 API 요청을 통해 서버에게 전달합니다
-카카오 우편번호 API를 활용해 사용자가 주소를 쉽게 입력할 수 있으며,
+카카오 우편번호 API를 활용해 사용자가 주소를 쉽게 입력할 수 있으며,<br/>
 필수 입력 사항에 대해 폼 유효성 검사를 수행합니다.
 
 
@@ -72,8 +72,8 @@ https://github.com/user-attachments/assets/ac820e8d-b112-48cb-8f75-4adb8f6ad2eb
 https://github.com/user-attachments/assets/6fc446c2-4610-4c0f-a085-a77017bb83ee
 
 
-사용자가 아이디와 비밀번호를 API 요청을 통해 서버에 전달하고, 서버는 토큰을 발급하여 클라이언트에게 전달합니다.
-클라이언트는 받은 토큰을 localStorage에 저장하고, 이 토큰을 통해 사용자 인증 상태를 유지합니다.
+사용자가 아이디와 비밀번호를 API 요청을 통해 서버에 전달하고, 서버는 토큰을 발급하여 클라이언트에게 전달합니다. <br/>
+클라이언트는 받은 토큰을 localStorage에 저장하고, 이 토큰을 통해 사용자 인증 상태를 유지합니다. <br/>
 페이지 접근 시 로그인 유무를 확인해 인증된 사용자만 마이페이지, 주문내역 등에 접근할 수 있습니다.
 
 <br/><br/><br/>
@@ -84,7 +84,7 @@ https://github.com/user-attachments/assets/6fc446c2-4610-4c0f-a085-a77017bb83ee
 https://github.com/user-attachments/assets/b35103fe-96ad-44eb-a307-1cb551fdf747
 
 
-사용자가 네비게이션 바에서 특정 카테고리를 선택하면, 해당 카테고리의 코드(Category Code)에 따라 서버에 GET 요청을 보냅니다.
+사용자가 네비게이션 바에서 특정 카테고리를 선택하면, 해당 카테고리의 코드(Category Code)에 따라 서버에 GET 요청을 보냅니다. <br/>
 서버는 요청 받은 카테고리에 속하는 상품 목록을 반환하고, 클라이언트는 받은 데이터를 기반으로 페이지를 동적으로 렌더링합니다.
 
 
