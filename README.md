@@ -22,6 +22,8 @@ https://github.com/user-attachments/assets/1cab4eb4-0359-44f4-85cb-616002eb5e09
 
 ### ▸ 부기능
 
+### ▸ 설치 및 실행
+
 <br/><br/>
 
 ## 🔧 개요
@@ -161,4 +163,21 @@ https://github.com/user-attachments/assets/4d891f66-3b11-4371-9ef0-09c69a483b92
 Recoil 상태관리를 활용해 하단 Footer에 위치한 4곳의 쇼룸 버튼 중 하나를 클릭하면, 쇼룸 페이지로 이동 후 선택된 쇼룸 카드가 자동으로 열립니다.
 
 <br/><br/><br/>
+
+## ⚙️ 설치 및 실행
+
+# 의존성 설치
+npm install
+
+# 개발 서버 실행
+npm run dev
+
+# 프로덕션 빌드
+npm run build
+
+# 프로덕션 서버 실행
+npm start
+
+# 테스트 실행
+npm test
 
