@@ -67,16 +67,12 @@
         .user-icon,
         .address-icon,
         .post-code-icon,
-        .createdAt-icon {
-          font-size: 18px;
-          line-height: 18px;
-          color: #bcbcbc;
-        }
-
+        .createdAt-icon,
         .phone-icon {
-          font-size: 20px;
-          margin-right: 3px;
-          line-height: 18px;
+          font-size: 18px;
+          width: 18px;
+          height: 18px;
+          line-height: 1;
           color: #bcbcbc;
         }
 
@@ -101,16 +97,12 @@
 
       .email-icon,
       .address-icon,
-      .post-code-icon {
-        font-size: 18px;
-        line-height: 18px;
-        color: #bcbcbc;
-      }
-
+      .post-code-icon,
       .phone-icon {
-        font-size: 20px;
-        line-height: 18px;
-        margin-right: 3px;
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+        line-height: 1;
         color: #bcbcbc;
       }
 
