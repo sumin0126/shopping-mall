@@ -17,6 +17,7 @@
   padding: 3% 4%;
   z-index: 20;
   background-color: #fff;
+  overflow: visible;
 
   button {
     border: none;
@@ -39,12 +40,14 @@
       align-items: center;
       justify-content: left;
       gap: 10%;
+      height: 40px;
 
       .shop,
       .about,
       .look-book {
         font-family: 'Playfair Display';
         font-weight: 600;
+        overflow: visible;
       }
     }
 
@@ -84,6 +87,7 @@
       align-items: center;
       justify-content: right;
       gap: 10%;
+      height: 40px;
 
       .cart,
       .login,
@@ -91,6 +95,7 @@
       .mypage {
         font-family: 'Playfair Display';
         font-weight: 600;
+        overflow: visible;
       }
     }
 
@@ -100,69 +105,6 @@
       cursor: pointer;
       font-size: 18px;
       color: #222;
-    }
-
-    .search-bar-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      pointer-events: none;
-
-      .search-bar-overlay {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        pointer-events: none;
-
-        &.show {
-          opacity: 1;
-          pointer-events: auto;
-        }
-      }
-
-      .search-bar-wrapper {
-        position: absolute;
-        top: 48px;
-        right: 220px;
-        width: 0;
-        height: 26px;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid #222;
-        transition: width 0.5s ease;
-        pointer-events: auto;
-
-        &.open {
-          width: 180px;
-        }
-
-        .search-icon {
-          margin-left: 5px;
-          font-size: 14px;
-          color: #444;
-        }
-
-        .search-input {
-          flex: 1; /* 검색창이 남은 공간을 차지하게끔 */
-          border: none;
-          background-color: transparent;
-          cursor: auto;
-          padding-left: 10px;
-          height: 100%;
-          font-size: 14px;
-
-          &:focus {
-            outline: none;
-          }
-
-          &::placeholder {
-            color: #444;
-          }
-        }
-      }
     }
   }
 
@@ -207,10 +149,10 @@
   .shop,
   .about,
   .look-book,
-  .search,
   .cart,
   .login,
-  .logout {
+  .logout,
+  .mypage {
     position: relative;
 
     &::after {

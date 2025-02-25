@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { faBars, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faUser as regularUser } from '@fortawesome/free-regular-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import AboutNavbar from '@/components/layout/navbar/AboutNavbar';
@@ -119,9 +120,9 @@ const Header = () => {
 
       {/* 오른쪽 */}
       <div className="main-header-right">
-        {/* 모바일 오른쪽 : 돋보기 아이콘 버튼 */}
+        {/* 모바일 오른쪽 : 유저 아이콘 버튼 */}
         <button className="mobile-header-right">
-          <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
+          <FontAwesomeIcon icon={regularUser} className="user-icon" />
         </button>
 
         {/* PC 오른쪽 : 텍스트 버튼들 */}
