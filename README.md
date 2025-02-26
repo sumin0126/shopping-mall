@@ -20,7 +20,7 @@ https://github.com/user-attachments/assets/1cab4eb4-0359-44f4-85cb-616002eb5e09
 
 ### ▸ 주요 기능
 
-### ▸ 부가 기능
+### ▸ 추가 기능
 
 ### ▸ 설치 및 실행
 
@@ -146,8 +146,8 @@ https://github.com/user-attachments/assets/4d891f66-3b11-4371-9ef0-09c69a483b92
 
 ### ▸ 메인페이지 이미지 슬라이더
 
-'React-Slick-Carousel'을 활용해 자동 이미지 슬라이더를 구현했습니다.
-사용자는 슬라이더를 수동으로 조작할 수도 있으며, 반응형 설정을 통해 다양한 디바이스에서도 최적의 UX를 제공합니다.
+'React-Slick-Carousel'을 활용하여 자동 이미지 슬라이더를 구현했습니다.
+사용자는 수동 조작 가능하며, 반응형 설정을 통해 다양한 디바이스에서도 최적의 UX를 제공합니다.
 
 <br/><br/><br/>
 
@@ -161,6 +161,7 @@ https://github.com/user-attachments/assets/4d891f66-3b11-4371-9ef0-09c69a483b92
 ### ▸ Recoil 기반 쇼룸 기능
 
 Recoil 상태관리를 활용해 하단 Footer에 위치한 4곳의 쇼룸 버튼 중 하나를 클릭하면, 쇼룸 페이지로 이동 후 선택된 쇼룸 카드가 자동으로 열립니다.
+이를 통해 사용자 경험이 향상되었습니다.
 
 <br/><br/><br/>
 
