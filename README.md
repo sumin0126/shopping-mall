@@ -142,7 +142,7 @@ https://github.com/user-attachments/assets/4d891f66-3b11-4371-9ef0-09c69a483b92
 
 <br/><br/><br/>
 
-## 💡 부가 기능
+## 💡 추가 기능
 
 ### ▸ 메인페이지 이미지 슬라이더
 
