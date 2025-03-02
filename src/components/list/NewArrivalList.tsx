@@ -65,9 +65,6 @@ const NewArrivalList = ({ products }: INewArrivalListProps) => {
             icon={faChevronLeft}
             className={`arrow-left ${currentPage === 1 ? 'disabled' : ''}`}
             onClick={handlePrevPage}
-            // style={{
-            //   opacity: currentPage > 1 ? 1 : 0.3,
-            // }}
           />
         )}
 
@@ -78,9 +75,6 @@ const NewArrivalList = ({ products }: INewArrivalListProps) => {
               key={pageNumber}
               onClick={() => setCurrentPage(pageNumber)}
               className={currentPage === pageNumber ? 'active' : ''}
-              // style={{
-              //   fontWeight: currentPage === pageNumber ? 'bold' : 'normal',
-              // }}
             >
               {pageNumber}
             </p>
@@ -93,9 +87,6 @@ const NewArrivalList = ({ products }: INewArrivalListProps) => {
             icon={faChevronRight}
             className={`arrow-right ${currentPage === totalPages ? 'disabled' : ''}`}
             onClick={handleNextPage}
-            // style={{
-            //   opacity: currentPage < totalPages ? 1 : 0.3,
-            // }}
           />
         )}
       </div>

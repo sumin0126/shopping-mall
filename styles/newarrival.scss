@@ -39,8 +39,8 @@
 
       // 현재 페이지 스타일
       &.active {
-        font-weight: bold;
-        color: #222;
+        font-weight: bold !important;
+        color: #222 !important;
       }
 
       &.hover {
@@ -51,7 +51,9 @@
     // 좌우 화살표 스타일
     .arrow-left,
     .arrow-right {
-      font-size: 20px;
+      font-size: 20px !important;
+      width: 20px !important;
+      height: 20px !important;
       color: #999;
       cursor: pointer;
       transition:
@@ -64,9 +66,9 @@
 
       // 비활성화된 상태일때 스타일
       &.disabled {
-        opacity: 0.3;
-        cursor: default;
-        pointer-events: none;
+        opacity: 0.3 !important;
+        cursor: default !important;
+        pointer-events: none !important;
       }
     }
   }
