@@ -31,19 +31,42 @@
     margin: 40px 0;
 
     p {
-      font-family: 'Playfair Display' !important;
-      cursor: pointer !important;
-      font-size: 16px !important;
-      color: #555 !important;
+      font-family: 'Playfair Display';
+      cursor: pointer;
+      font-size: 16px;
+      color: #555;
+      transition: font-weight 0.3 ease;
+
+      // 현재 페이지 스타일
+      &.active {
+        font-weight: bold;
+        color: #222;
+      }
+
+      &.hover {
+        color: #000;
+      }
     }
 
+    // 좌우 화살표 스타일
     .arrow-left,
     .arrow-right {
       font-size: 20px;
       color: #999;
       cursor: pointer;
+      transition:
+        color 0.3s ease,
+        opacity 0.3s ease;
+
       &:hover {
         color: #555;
+      }
+
+      // 비활성화된 상태일때 스타일
+      &.disabled {
+        opacity: 0.3;
+        cursor: default;
+        pointer-events: none;
       }
     }
   }

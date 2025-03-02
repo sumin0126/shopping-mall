@@ -58,15 +58,16 @@ const NewArrivalList = ({ products }: INewArrivalListProps) => {
         ))}
       </div>
 
+      {/* 페이지네이션 왼쪽 화살표 */}
       <div className="page-nation">
         {totalPages > 1 && (
           <FontAwesomeIcon
             icon={faChevronLeft}
-            className="arrow-left"
+            className={`arrow-left ${currentPage === 1 ? 'disabled' : ''}`}
             onClick={handlePrevPage}
-            style={{
-              opacity: currentPage > 1 ? 1 : 0.3,
-            }}
+            // style={{
+            //   opacity: currentPage > 1 ? 1 : 0.3,
+            // }}
           />
         )}
 
@@ -76,23 +77,25 @@ const NewArrivalList = ({ products }: INewArrivalListProps) => {
             <p
               key={pageNumber}
               onClick={() => setCurrentPage(pageNumber)}
-              style={{
-                fontWeight: currentPage === pageNumber ? 'bold' : 'normal',
-              }}
+              className={currentPage === pageNumber ? 'active' : ''}
+              // style={{
+              //   fontWeight: currentPage === pageNumber ? 'bold' : 'normal',
+              // }}
             >
               {pageNumber}
             </p>
           );
         })}
 
+        {/* 페이지네이션 오른쪽 화살표 */}
         {totalPages > 1 && (
           <FontAwesomeIcon
             icon={faChevronRight}
-            className="arrow-right"
+            className={`arrow-right ${currentPage === totalPages ? 'disabled' : ''}`}
             onClick={handleNextPage}
-            style={{
-              opacity: currentPage < totalPages ? 1 : 0.3,
-            }}
+            // style={{
+            //   opacity: currentPage < totalPages ? 1 : 0.3,
+            // }}
           />
         )}
       </div>
