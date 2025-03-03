@@ -135,10 +135,6 @@ https://github.com/user-attachments/assets/4d891f66-3b11-4371-9ef0-09c69a483b92
 
 <br/><br/><br/>
 
-### ▸ 아이디/비밀번호 찾기
-
-
-현재 개발중인 기능입니다. 추후 업데이트 예정입니다.
 
 <br/><br/><br/>
 
