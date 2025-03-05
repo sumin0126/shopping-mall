@@ -10,6 +10,8 @@ import type {
   IFindIdResponse,
   ILoginRequest,
   ILoginResponse,
+  IUpdateUserRequest,
+  IUpdateUserResponse,
 } from '@/apis/users/type';
 
 /**
@@ -39,6 +41,11 @@ export const userApi = {
   // 유저 정보를 가져오는 함수
   getUsersMe: () => {
     return baseAxios.get<ICheckUserResponse>('/users/me').then(res => res.data);
+  },
+
+  // 유저 정보를 수정(업데이트)하는 함수
+  putUsersMe: (params: IUpdateUserRequest) => {
+    return baseAxios.put<IUpdateUserResponse>('/users/me', params).then(res => res.data);
   },
 
   // 아이디를 찾기 위해 유저 정보를 보내는 함수

@@ -54,7 +54,7 @@ const CartProduct = ({
     updateCount(productId, newCount);
   };
 
-  // remove 버튼 클릭 시, 장바구니에서 상품을 삭제하는 함수
+  // // remove 버튼 클릭 시, 장바구니에서 상품을 삭제하는 함수
   // const handleClickDeleteProduct = () => {
   //   setWishList(wishList => wishList.filter(product => product.id !== id));
   // };

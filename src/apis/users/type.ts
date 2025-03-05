@@ -45,13 +45,32 @@ export interface ICreateUserResponse {
   createdAt?: string;
 }
 
-// 유저 정보 조회 시 반환하는 데이터 타입
+// 유저 정보 조회 시 서버에서 반환하는 데이터 타입
 export interface ICheckUserResponse {
   name: string;
   email: string;
+  userId: string;
   phoneNumber: string;
   postCode?: string;
   address?: string;
+  createdAt: string;
+}
+
+// 유저정보수정 요청 시 데이터 타입
+export interface IUpdateUserRequest {
+  email: string;
+  phoneNumber: string;
+  address: string;
+  postCode: string;
+}
+
+// 유저정보수정 요청 시 서버에서 반환하는 데이터 타입
+export interface IUpdateUserResponse {
+  name: string;
+  email: string;
   userId: string;
+  phoneNumber: string;
+  postCode?: string;
+  address?: string;
   createdAt: string;
 }
