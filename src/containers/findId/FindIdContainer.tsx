@@ -20,6 +20,8 @@ const FindIdContainer = () => {
   const [userId] = useState<string | null>('admin');
   const [isOpenModal, setIsOpenModal] = useState(false);
 
+  const router = useRouter();
+
   // useFrom hook 초기화
   const {
     register,
@@ -28,8 +30,6 @@ const FindIdContainer = () => {
     watch,
     formState: { errors },
   } = useForm<IForm>({ mode: 'onSubmit', defaultValues: { checkedEmail: true, checkedPhoneNumber: false } });
-
-  const router = useRouter();
 
   // 사용자가 이메일과 전화번호중 어느 방식을 선택했는지 실시간으로 감지
   const checkedEmail = watch('checkedEmail');
