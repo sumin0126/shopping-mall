@@ -206,7 +206,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .main-container {
     .main-img {
       height: 400px;
@@ -271,6 +271,14 @@
         font-size: 10px;
         width: 100px;
         height: 30px;
+      }
+    }
+
+    .lookBook-wrapper {
+      width: 100%;
+      height: 400px;
+      .lookBook-banner-img {
+        height: 400px;
       }
     }
   }

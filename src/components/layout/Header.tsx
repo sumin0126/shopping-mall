@@ -122,7 +122,7 @@ const Header = () => {
       <div className="main-header-right">
         {/* 모바일 오른쪽 : 유저 아이콘 버튼 */}
         <button className="mobile-header-right">
-          <FontAwesomeIcon icon={regularUser} className="user-icon" />
+          <FontAwesomeIcon icon={regularUser} className="user-icon" onClick={handleClickLogin} />
         </button>
 
         {/* PC 오른쪽 : 텍스트 버튼들 */}
