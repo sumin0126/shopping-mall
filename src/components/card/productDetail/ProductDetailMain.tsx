@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 interface IProductDetailMainProps {
   ProductImage: string[];
 }
@@ -14,7 +12,7 @@ const ProductDetailMain = ({ ProductImage }: IProductDetailMainProps) => {
     <div className="product-detail-main-container">
       <div className="image-wrapper">
         {ProductImage.map(src => (
-          <Image key={src} src={src} alt="img" width={800} height={1000} style={{ objectFit: 'cover' }} />
+          <img key={src} src={src} alt="img" />
         ))}
       </div>
     </div>

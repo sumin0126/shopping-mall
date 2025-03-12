@@ -1,5 +1,5 @@
 .product-detail-container {
-  width: 100%;
+  width: 100vw;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -45,6 +45,8 @@
 
   .product-thumbnail {
     width: 50%;
+    height: 480px;
+    position: relative;
   }
 }
 
@@ -127,15 +129,14 @@
 
   .image-wrapper {
     width: 60%;
-    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
     img {
       width: 100%;
       height: auto;
+      object-fit: cover;
     }
   }
 }
@@ -188,5 +189,127 @@
 
   .quality {
     margin-top: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-detail-container {
+    .product-detail-header {
+      width: 100%;
+      margin-top: 30px;
+      padding: 0px 40px;
+
+      .product-thumbnail {
+        width: 50%;
+        height: 380px;
+      }
+
+      .product-info-container {
+        .name {
+          font-size: 22px;
+        }
+
+        .color {
+          font-size: 14px;
+        }
+
+        .price {
+          font-size: 24px;
+          margin: 20px 0;
+        }
+
+        .description {
+          font-size: 14px;
+        }
+      }
+
+      .product-action-container {
+        margin-top: 30px;
+        button {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .main-button {
+      width: 80%;
+      margin-top: 50px;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .product-detail-container {
+    .product-detail-header {
+      width: 100%;
+      margin-top: 20px;
+      padding: 0px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 40px;
+
+      .product-thumbnail {
+        width: 100%;
+        height: 380px;
+      }
+
+      .info-action-wrapper {
+        width: 90%;
+      }
+
+      .product-info-container {
+        align-items: center;
+        gap: 10px;
+
+        .name {
+          font-size: 20px;
+        }
+
+        .color {
+          font-size: 12px;
+        }
+
+        .price {
+          font-size: 22px;
+          margin: 0;
+        }
+
+        .description {
+          display: none;
+        }
+      }
+
+      .product-action-container {
+        margin-top: 60px;
+        width: 100%;
+        button {
+          width: 500px;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .main-button {
+      width: 80%;
+      margin-top: 80px;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .product-detail-main-container {
+      margin-top: 50px;
+
+      .image-wrapper {
+        width: 80%;
+      }
+    }
   }
 }

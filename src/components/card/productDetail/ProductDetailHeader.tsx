@@ -70,7 +70,13 @@ const ProductDetailHeader = ({ product }: IProductDetailHeaderProps) => {
   return (
     <div className="product-detail-header">
       <div className="product-thumbnail">
-        <Image src={product.imageUrl} alt={product.imageUrl} width={480} height={480} style={{ objectFit: 'cover' }} />
+        <Image
+          className="product-detail-img"
+          src={product.imageUrl}
+          alt={product.imageUrl}
+          fill
+          style={{ objectFit: 'cover' }}
+        />
       </div>
 
       <div className="info-action-wrapper">

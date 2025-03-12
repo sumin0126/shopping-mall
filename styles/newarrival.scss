@@ -142,3 +142,28 @@
   text-align: center;
   color: #555;
 }
+
+@media (max-width: 768px) {
+  .new-arrival-list-container {
+    .list-wrapper {
+      padding: 0 40px;
+    }
+  }
+
+  .new-arrival-card-container {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .new-arrival-list-container {
+    .list-wrapper {
+      padding: 0 40px;
+    }
+  }
+
+  .new-arrival-card-container {
+    width: 100%;
+    margin: 20px 0;
+  }
+}
