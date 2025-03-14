@@ -130,3 +130,55 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .login-container {
+    height: 550px;
+  }
+
+  .login-img {
+    height: 550px;
+  }
+
+  .login-wrapper {
+    width: 80%;
+    padding: 40px 40px;
+
+    .login-box-header {
+      .account {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+
+      .title {
+        font-size: 20px;
+      }
+    }
+
+    .login-box-bottom {
+      .find-box {
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+          font-size: 12px;
+          margin: 0;
+          padding: 0;
+        }
+
+        .id {
+          font-size: 12px;
+        }
+
+        .ps {
+          font-size: 12px;
+        }
+      }
+
+      .login-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+    }
+  }
+}
