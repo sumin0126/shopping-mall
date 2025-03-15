@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import AboutNavbar from '@/components/layout/navbar/AboutNavbar';
 import ShopNavbar from '@/components/layout/navbar/ShopNavbar';
+import UserNavbar from '@/components/layout/navbar/UserNavbar';
 import AlertModal from '@/components/modal/AlertModal';
 import ConfirmModal from '@/components/modal/ConfirmModal';
 import { PATHNAME } from '@/constants/pathname';
@@ -21,12 +22,23 @@ const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
+  const [isOpenUserNavBar, setIsOpenUserNavBar] = useState(false);
 
   const router = useRouter();
 
   // 클릭 시 로그인 페이지로 이동하는 함수
   const handleClickLogin = () => {
     router.push(PATHNAME.LOGIN);
+  };
+
+  // 클릭 시 사용자 정보 네비바를 열어주는 함수
+  const openUserNavBar = () => {
+    setIsOpenUserNavBar(true);
+  };
+
+  // 클릭 시 사용자 정보 네비바를 닫아주는 함수
+  const closeUserNavBar = () => {
+    setIsOpenUserNavBar(false);
   };
 
   // 클릭 시 마이페이지로 이동하는 함수
@@ -83,6 +95,15 @@ const Header = () => {
     setIsLogin(loginStatus === 'true');
   }, []);
 
+  // 모바일 환경에서 유저 아이콘 클릭 시 실행되는 함수
+  const handleClickUserIcon = () => {
+    if (isLogin) {
+      openUserNavBar();
+    } else {
+      handleClickLogin();
+    }
+  };
+
   // 로그아웃 버튼 클릭 시 실행되는 함수
   const handleClickLogout = () => {
     setLogoutModal(true);
@@ -122,7 +143,7 @@ const Header = () => {
       <div className="main-header-right">
         {/* 모바일 오른쪽 : 유저 아이콘 버튼 */}
         <button className="mobile-header-right">
-          <FontAwesomeIcon icon={regularUser} className="user-icon" onClick={handleClickLogin} />
+          <FontAwesomeIcon icon={regularUser} className="user-icon" onClick={handleClickUserIcon} />
         </button>
 
         {/* PC 오른쪽 : 텍스트 버튼들 */}
@@ -158,6 +179,7 @@ const Header = () => {
               localStorage.removeItem('token');
               localStorage.setItem('isLogin', 'false');
               setIsLogin(false);
+              window.dispatchEvent(new Event('storage'));
               router.push(PATHNAME.MAIN);
             }}
             handleClickCancel={() => {
@@ -169,6 +191,11 @@ const Header = () => {
 
       <ShopNavbar isOpenShopNavBar={isOpenShopNavBar} closeShopNavBar={closeShopNavBar} />
       <AboutNavbar isOpenAboutNavBar={isOpenAboutNavBar} closeAboutNavBar={closeAboutNavBar} />
+      <UserNavbar
+        isOpenUserNavBar={isOpenUserNavBar}
+        closeUserNavBar={closeUserNavBar}
+        setIsOpenUserNavBar={setIsOpenUserNavBar}
+      />
     </div>
   );
 };
