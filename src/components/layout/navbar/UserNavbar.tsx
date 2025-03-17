@@ -72,6 +72,7 @@ const UserNavbar = ({ isOpenUserNavBar, closeUserNavBar, setIsOpenUserNavBar, se
             localStorage.setItem('isLogin', 'false');
             setIsOpenUserNavBar(false);
             setIsLogin(false);
+            router.push(PATHNAME.MAIN);
           }}
           handleClickCancel={() => {
             setIsOpenModal(false);
