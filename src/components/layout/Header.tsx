@@ -98,8 +98,10 @@ const Header = () => {
   // 모바일 환경에서 유저 아이콘 클릭 시 실행되는 함수
   const handleClickUserIcon = () => {
     if (isLogin) {
+      console.log(isLogin);
       openUserNavBar();
     } else {
+      console.log(isLogin);
       handleClickLogin();
     }
   };
@@ -179,7 +181,6 @@ const Header = () => {
               localStorage.removeItem('token');
               localStorage.setItem('isLogin', 'false');
               setIsLogin(false);
-              window.dispatchEvent(new Event('storage'));
               router.push(PATHNAME.MAIN);
             }}
             handleClickCancel={() => {
@@ -195,6 +196,7 @@ const Header = () => {
         isOpenUserNavBar={isOpenUserNavBar}
         closeUserNavBar={closeUserNavBar}
         setIsOpenUserNavBar={setIsOpenUserNavBar}
+        setIsLogin={setIsLogin}
       />
     </div>
   );
