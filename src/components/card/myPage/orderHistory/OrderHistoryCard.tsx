@@ -16,8 +16,6 @@ const OrderHistoryCard = ({ imageUrl, orderDate, name, color, price }: IOrderHis
     <div className="order-history-card-container">
       {/* 상품 정보 컴포넌트 */}
       <OrderHistoryProductInfo imageUrl={imageUrl} orderDate={orderDate} name={name} color={color} price={price} />
-      {/* 버튼 컴포넌트 */}
-      {/* <OrderHistoryAction /> */}
     </div>
   );
 };

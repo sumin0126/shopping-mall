@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 
 interface IOrderHistoryProductInfo {
   imageUrl: string;
@@ -22,7 +22,7 @@ const OrderHistoryProductInfo = ({ imageUrl, orderDate, name, color, price }: IO
     <div className="order-history-product-info-container">
       {/* 주문한 상품 대표이미지 */}
       <div className="image-wrapper">
-        <Image src={imageUrl} alt={imageUrl} width={150} height={150} style={{ objectFit: 'cover' }} />
+        <img src={imageUrl} alt={imageUrl} />
       </div>
 
       {/* 주문한 상품 정보 */}
