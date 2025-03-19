@@ -51,6 +51,18 @@ const CartSummary = ({ wishList, productCounts }: ICartSummary) => {
           <span>원</span>
         </p>
       </div>
+
+      {/* 태블릿 버전 */}
+      <div className="mobile-cart-summary">
+        <p className="title">(총 상품금액) </p>
+        <p className="price">{productPrice.toLocaleString('ko-KR')}원</p>
+        <p>+</p>
+        <p className="title">(배송비)</p>
+        <p className="price">{shippingPrice.toLocaleString('ko-KR')}원</p>
+        <p>=</p>
+        <p className="title">(총 합계금액)</p>
+        <p className="price">{totalProductPrice.toLocaleString('ko-KR')}원</p>
+      </div>
     </div>
   );
 };

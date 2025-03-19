@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import Image from 'next/image';
-
 interface ICartProduct {
   id: number;
   productId: number;
@@ -54,11 +52,6 @@ const CartProduct = ({
     updateCount(productId, newCount);
   };
 
-  // // remove 버튼 클릭 시, 장바구니에서 상품을 삭제하는 함수
-  // const handleClickDeleteProduct = () => {
-  //   setWishList(wishList => wishList.filter(product => product.id !== id));
-  // };
-
   // 체크박스 클릭 시, 상태 업데이트
   const handleClickCheckBox = () => {
     setIsChecked(!isChecked);
@@ -71,15 +64,7 @@ const CartProduct = ({
       <input type="checkbox" className="check-box" onClick={handleClickCheckBox} />
 
       {/* 상품 이미지 */}
-      <Image
-        src={imageUrl}
-        className="product-img"
-        alt="cartImg"
-        width={220}
-        height={220}
-        style={{ objectFit: 'cover' }}
-        onClick={() => onClickProduct(productId)}
-      />
+      <img src={imageUrl} className="product-img" alt="cartImg" onClick={() => onClickProduct(productId)} />
 
       {/* 상품 정보 */}
       <div className="product-info">

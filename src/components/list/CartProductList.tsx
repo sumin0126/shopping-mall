@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import router from 'next/router';
 
+import CartOrderButton from '@/components/button/CartOrderButton';
 import CartProduct from '@/components/card/cart/CartProduct';
 import AlertModal from '@/components/modal/AlertModal';
 import { PATHNAME } from '@/constants/pathname';
@@ -108,12 +109,12 @@ const CartProductList = ({
       )}
 
       {/* 버튼 */}
-      {wishList.length > 0 && (
-        <div className="button-container">
-          <button onClick={handleClickSelectItems}>선택상품주문</button>
-          <button onClick={handleClickAllItems}>전체상품주문</button>
-        </div>
-      )}
+      {wishList.length > 0 &&
+        // <div className="button-container">
+        //   <button onClick={handleClickSelectItems}>선택상품주문</button>
+        //   <button onClick={handleClickAllItems}>전체상품주문</button>
+        // </div>
+        CartOrderButton({ handleClickSelectItems, handleClickAllItems })}
 
       {/* 주문 모달 */}
       {isAlertOpenModal && (
