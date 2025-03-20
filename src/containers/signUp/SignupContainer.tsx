@@ -195,7 +195,7 @@ const SignupContainer = () => {
               })}
               type="password"
               className="ps-input"
-              placeholder="영문 대소문자, 숫자, 특수문자 중 2가지 이상 조합으로 10~16자이어야 합니다."
+              placeholder="대소문자, 숫자, 특수문자 중 2가지 이상 조합으로 10~16자이어야 합니다."
             />
             {errors.password && <p className="password-error-message">{errors.password.message}</p>}
           </div>
