@@ -14,7 +14,7 @@ export interface ICartListResponse {
   data: ICartResponse[];
 }
 
-// 장바구니에 상품 추가시 요청 데이터 타입
+// 장바구니에 상품 추가 요청 시 데이터 타입
 export interface ICartRequest {
   productId: number;
   quantity: number;
