@@ -101,3 +101,59 @@
     }
   }
 }
+
+// 태블릿
+@media (max-width: 768px) {
+  .find-password-container {
+    width: 100vw;
+    padding: 0 90px;
+
+    .title {
+      width: 100%;
+      font-size: 22px;
+      margin-top: 60px;
+      margin-bottom: 80px;
+    }
+
+    // form
+    .form-container {
+      width: 80%;
+    }
+  }
+}
+
+// 모바일
+@media (max-width: 480px) {
+  .find-password-container {
+    width: 100vw;
+    height: 0;
+    min-height: 640px;
+    padding: 0 40px;
+
+    .title {
+      width: 100%;
+      font-size: 20px;
+      margin-top: 60px;
+      margin-bottom: 80px;
+    }
+
+    // form
+    .form-container {
+      width: 80%;
+
+      form {
+        .name-input-wrapper,
+        .phoneNumber-input-wrapper,
+        .id-input-wrapper {
+          .name-input,
+          .phoneNumber-input,
+          .id-input {
+            &::placeholder {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
