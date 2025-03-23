@@ -88,6 +88,7 @@
   }
 }
 
+// 모바일
 @media (max-width: 480px) {
   .navbar-overlay {
     display: none;
@@ -98,9 +99,20 @@
     width: 100vw;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
+    align-items: center;
+    gap: 30px;
 
     &.open {
       transform: translateX(0) !important;
+    }
+
+    button {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 22px;
+      margin-bottom: 30px;
     }
 
     .close-icon {
