@@ -34,9 +34,11 @@ export interface IMethodForm {
  * @description 상품 결제 컨테이너
  */
 const PayMentContainer = () => {
-  const [userInfo, setUserInfo] = useState<ICheckUserResponse>();
-  const [isAlertOpenModal, setIsAlertOpenModal] = useState(false);
-  const [product, setProduct] = useState<IProduct | null>(null);
+  const [userInfo, setUserInfo] = useState<ICheckUserResponse>(); // 유저 기본 정보
+  const [isAlertOpenModal, setIsAlertOpenModal] = useState(false); // 결제 완료 모달
+
+  // 장바구니에서 전달받은 상품들을 API로 받아서 저장
+  const [products, setProducts] = useState<IProduct[]>([]);
 
   const router = useRouter();
   const { productId } = router.query;
@@ -68,11 +70,23 @@ const PayMentContainer = () => {
       return;
     }
 
-    const id = Number(productId); // id를 숫자로 변환
+    // 주문하려는 상품의 id 문자열들을 숫자 배열로 변환
+    const ids =
+      typeof productId === 'string'
+        ? productId
+            .split(',')
+            .map(Number)
+            .filter(id => !isNaN(id))
+        : [];
 
-    productApi.getProduct({ id }).then(res => {
-      setProduct(res);
-    });
+    // 주문하려는 각 id에 대해 개별적으로 API 요청하여 불러오기
+    Promise.all(ids.map(id => productApi.getProduct({ id })))
+      .then(resArray => {
+        setProducts(resArray);
+      })
+      .catch(err => {
+        console.error('상품 불러오기 실패', err);
+      });
   }, [productId]);
 
   // 사용자 정보 불러와서 폼의 초기값으로 설정
@@ -91,25 +105,28 @@ const PayMentContainer = () => {
     return;
   }
 
+  // 모든 상품들의 가격을 더한 총 결제금액
+  const totalPrice = products.reduce((sum, product) => sum + product.price, 0);
+
   // 상품 결제 버튼 클릭 시, 실행되는 함수
   const handleClickPayment = (data: IMethodForm) => {
-    if (!product) return;
+    if (!products.length) return;
 
-    // 로컬스토리지에 저장할 주문 데이터 생성
-    const orderData = {
+    // 결제 버튼 클릭 시, 로컬스토리지에 저장할 주문 데이터 생성
+    const orderData = products.map(product => ({
       id: product.id,
       imageUrl: product.imageUrl,
       orderDate: formattedDate,
       name: product.name,
       color: product.color,
       price: product.price,
-    };
+    }));
 
     // 이전 주문 내역 불러오기
     const previousOrderHistory = JSON.parse(localStorage.getItem('orderHistory') || '[]');
 
     // 새로운 주문 데이터를 기존 데이터에 추가
-    const updatedOrders = [...previousOrderHistory, orderData];
+    const updatedOrders = [...previousOrderHistory, ...orderData];
 
     // 로컬스토리지에 업데이트된 데이터 저장
     localStorage.setItem('orderHistory', JSON.stringify(updatedOrders));
@@ -118,7 +135,7 @@ const PayMentContainer = () => {
     setIsAlertOpenModal(true);
   };
 
-  if (!product) {
+  if (!products.length) {
     return;
   }
 
@@ -137,19 +154,22 @@ const PayMentContainer = () => {
           <PaymentMethodContainer />
 
           {/* 주문정보 */}
-          <OrderHistoryProductInfo
-            imageUrl={product.imageUrl}
-            orderDate={formattedDate}
-            name={product.name}
-            color={product.color || ''}
-            price={product.price}
-          />
+          {products.map(product => (
+            <OrderHistoryProductInfo
+              key={product.id}
+              imageUrl={product.imageUrl}
+              orderDate={formattedDate}
+              name={product.name}
+              color={product.color || ''}
+              price={product.price}
+            />
+          ))}
 
           {/* 총 결제금액 */}
-          <TotalPriceContainer price={product.price} />
+          <TotalPriceContainer price={totalPrice} />
 
           {/* 결제 버튼 */}
-          <button className="payment-btn">{product.price.toLocaleString()}원 결제하기</button>
+          <button className="payment-btn">{totalPrice.toLocaleString()}원 결제하기</button>
         </form>
       </FormProvider>
 

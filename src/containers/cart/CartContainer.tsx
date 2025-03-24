@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 
+import router from 'next/router';
+
 import { cartApi } from '@/apis/carts';
 import CartSummary from '@/components/card/cart/CartSummary';
 import CartProductList from '@/components/list/CartProductList';
 import AlertModal from '@/components/modal/AlertModal';
+import { PATHNAME } from '@/constants/pathname';
 
 import type { ICartResponse } from '@/apis/carts/type';
 
@@ -47,6 +50,20 @@ const CartContainer = () => {
     setProductCounts(prev => ({ ...prev, [productId]: quantity }));
   };
 
+  // 모바일 환경에서 주문버튼 클릭 시, 실행되는 함수
+  const mobileOrderButton = () => {
+    const allProductId = wishList.map(product => Number(product.productId));
+
+    if (allProductId.length > 0) {
+      router.push({
+        pathname: PATHNAME.PAYMENT,
+        query: { productId: allProductId.join(',') },
+      });
+    }
+
+    console.log('주문 상품 번호 : ', allProductId.join(','));
+  };
+
   return (
     <div className="cart-container">
       {/* 상품목록과 총 금액 */}
@@ -58,6 +75,13 @@ const CartContainer = () => {
           handleClickDeleteProduct={handleClickDeleteProduct}
         />
         <CartSummary wishList={wishList} productCounts={productCounts} />
+
+        {/* 모바일 환경에서 주문 버튼 */}
+        {wishList.length > 0 && (
+          <button className="mobile-order-btn" onClick={mobileOrderButton}>
+            주문
+          </button>
+        )}
       </div>
 
       {/* 상품 삭제 안내 모달 */}

@@ -109,12 +109,7 @@ const CartProductList = ({
       )}
 
       {/* 버튼 */}
-      {wishList.length > 0 &&
-        // <div className="button-container">
-        //   <button onClick={handleClickSelectItems}>선택상품주문</button>
-        //   <button onClick={handleClickAllItems}>전체상품주문</button>
-        // </div>
-        CartOrderButton({ handleClickSelectItems, handleClickAllItems })}
+      {wishList.length > 0 && CartOrderButton({ handleClickSelectItems, handleClickAllItems })}
 
       {/* 주문 모달 */}
       {isAlertOpenModal && (
