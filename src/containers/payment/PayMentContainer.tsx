@@ -157,6 +157,7 @@ const PayMentContainer = () => {
           {products.map(product => (
             <OrderHistoryProductInfo
               key={product.id}
+              productId={product.id}
               imageUrl={product.imageUrl}
               orderDate={formattedDate}
               name={product.name}
