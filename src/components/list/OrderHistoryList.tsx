@@ -24,6 +24,7 @@ const OrderHistoryList = ({ orderHistoryData }: IOrderHistoryList) => {
       {orderHistoryData.map(data => (
         <OrderHistoryCard
           key={data.id}
+          productId={data.id}
           imageUrl={data.imageUrl}
           orderDate={data.orderDate}
           name={data.name}

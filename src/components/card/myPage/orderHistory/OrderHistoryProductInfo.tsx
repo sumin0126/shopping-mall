@@ -1,4 +1,6 @@
-// import Image from 'next/image';
+import router from 'next/router';
+
+import { PATHNAME } from '@/constants/pathname';
 
 interface IOrderHistoryProductInfo {
   imageUrl: string;
@@ -6,6 +8,7 @@ interface IOrderHistoryProductInfo {
   name: string;
   color: string;
   price: number;
+  productId: number;
 }
 
 /**
@@ -16,13 +19,22 @@ interface IOrderHistoryProductInfo {
  * @param name - 상품명
  * @param color - 상품 컬러
  * @param price - 상품 가격
+ * @param productId - 상품 아이디
  */
-const OrderHistoryProductInfo = ({ imageUrl, orderDate, name, color, price }: IOrderHistoryProductInfo) => {
+const OrderHistoryProductInfo = ({ imageUrl, orderDate, name, color, price, productId }: IOrderHistoryProductInfo) => {
+  // 썸네일 클릭 시, 상품 상세페이지로 이동하는 함수
+  const handleClickProductDetail = (productId: number) => {
+    router.push({
+      pathname: PATHNAME.PRODUCT_DETAIL,
+      query: { id: productId },
+    });
+  };
+
   return (
     <div className="order-history-product-info-container">
       {/* 주문한 상품 대표이미지 */}
       <div className="image-wrapper">
-        <img src={imageUrl} alt={imageUrl} />
+        <img src={imageUrl} alt={imageUrl} onClick={() => handleClickProductDetail(productId)} />
       </div>
 
       {/* 주문한 상품 정보 */}
