@@ -378,3 +378,114 @@
     }
   }
 }
+
+// 태블릿
+@media (max-width: 768px) {
+  .payment-container {
+    padding: 30px;
+
+    form {
+      // 배송정보
+      .shipping-address-container {
+        width: 100%;
+      }
+    }
+
+    // 주문정보
+    .order-history-product-info-container {
+      width: 100%;
+    }
+
+    // 결제수단
+    .payment-method-container {
+      width: 100%;
+    }
+
+    // 결제금액 안내
+    .total-price-container {
+      width: 100%;
+    }
+
+    // 결제 버튼
+    .payment-btn {
+      margin: 30px 0;
+    }
+  }
+}
+
+// 모바일
+@media (max-width: 480px) {
+  .payment-container {
+    padding: 30px;
+
+    .title {
+      font-size: 16px;
+    }
+
+    form {
+      // 배송정보
+      .shipping-address-container {
+        width: 100%;
+        padding: 40px;
+
+        // 배송정보 체크 박스
+        .shipping-choice-checkbox {
+          gap: 40px;
+        }
+      }
+    }
+
+    // 주문정보
+    .order-history-product-info-container {
+      width: 100%;
+
+      .product-info-wrapper {
+        gap: 14px;
+        margin-left: 30px;
+
+        .order-date {
+          font-size: 14px;
+        }
+
+        .product-name-color {
+          font-size: 14px;
+        }
+
+        .product-price {
+          font-size: 18px;
+        }
+      }
+    }
+
+    // 결제수단
+    .payment-method-container {
+      width: 100%;
+      padding: 40px;
+
+      .accountNumber-error-message,
+      .depositorName-error-message {
+        font-size: 14px;
+      }
+    }
+
+    // 결제금액 안내
+    .total-price-container {
+      width: 100%;
+
+      p {
+        font-size: 14px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    // 결제 버튼
+    .payment-btn {
+      margin: 30px 0;
+      width: 240px;
+      font-size: 14px;
+    }
+  }
+}

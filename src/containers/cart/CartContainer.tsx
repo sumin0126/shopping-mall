@@ -78,9 +78,11 @@ const CartContainer = () => {
 
         {/* 모바일 환경에서 주문 버튼 */}
         {wishList.length > 0 && (
-          <button className="mobile-order-btn" onClick={mobileOrderButton}>
-            주문
-          </button>
+          <div className="button-wrapper">
+            <button className="mobile-order-btn" onClick={mobileOrderButton}>
+              주문
+            </button>
+          </div>
         )}
       </div>
 
